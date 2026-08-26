@@ -1,0 +1,109 @@
+:root {
+  --bg: #fbfaf8;
+  --fg: #16150f;
+  --muted: #6b6a60;
+  --line: #ddd9d0;
+  --card: #ffffff;
+  --corroborated: #1f6b3a;
+  --contradicted: #9a2c1f;
+  --unverified: #7a5a12;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14140f;
+    --fg: #f2f0e9;
+    --muted: #9c9a90;
+    --line: #33322a;
+    --card: #1c1b15;
+    --corroborated: #6fd193;
+    --contradicted: #f0806f;
+    --unverified: #e0bd5c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+
+h1 { font-size: 1.75rem; margin: 0 0 0.35rem; letter-spacing: -0.02em; }
+.lede { color: var(--muted); margin: 0 0 2rem; }
+
+label { display: block; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+.hint { font-weight: 400; color: var(--muted); font-size: 0.875rem; }
+
+input[type='text'],
+input[type='file'] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--fg);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+button[disabled] { opacity: 0.45; cursor: progress; }
+
+.preview {
+  margin-top: 1rem;
+  max-width: 100%;
+  max-height: 15rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.result {
+  margin-top: 2.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: var(--card);
+}
+.result h2 { margin: 0 0 0.4rem; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.result p { margin: 0; color: var(--muted); }
+
+.result[data-verdict='CORROBORATED'] { border-left-color: var(--corroborated); }
+.result[data-verdict='CORROBORATED'] h2 { color: var(--corroborated); }
+.result[data-verdict='CONTRADICTED'] { border-left-color: var(--contradicted); }
+.result[data-verdict='CONTRADICTED'] h2 { color: var(--contradicted); }
+.result[data-verdict='UNVERIFIED'] { border-left-color: var(--unverified); }
+.result[data-verdict='UNVERIFIED'] h2 { color: var(--unverified); }
+
+.evidence { margin-top: 2rem; }
+.evidence h3 { font-size: 0.95rem; margin: 0 0 0.6rem; }
+.evidence ol { margin: 0; padding-left: 1.2rem; }
+.evidence li { margin-bottom: 0.5rem; }
+.evidence a { color: inherit; }
+.evidence .src { color: var(--muted); font-size: 0.85rem; }
+
+.error {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--contradicted);
+  border-radius: 8px;
+  color: var(--contradicted);
+}

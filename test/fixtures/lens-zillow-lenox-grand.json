@@ -1,0 +1,792 @@
+{
+  "search_metadata": {
+    "id": "6a8e83ebc4f20f1cd99659bb",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/PiORocW7ZtE3dkRApDX4kA/6a8e83ebc4f20f1cd99659bb.json",
+    "markdown_endpoint": "https://serpapi.com/searches/PiORocW7ZtE3dkRApDX4kA/6a8e83ebc4f20f1cd99659bb.md",
+    "created_at": "2026-08-26 06:12:59 UTC",
+    "processed_at": "2026-08-26 06:12:59 UTC",
+    "google_lens_url": "https://lens.google.com/uploadbyurl?url=https%3A%2F%2Fphotos.zillowstatic.com%2Ffp%2Fd7172703575fc2f8c035c6bdd7920979-p_e.webp",
+    "raw_html_file": "https://serpapi.com/searches/PiORocW7ZtE3dkRApDX4kA/6a8e83ebc4f20f1cd99659bb.html",
+    "total_time_taken": 2.66
+  },
+  "search_parameters": {
+    "engine": "google_lens",
+    "url": "https://photos.zillowstatic.com/fp/d7172703575fc2f8c035c6bdd7920979-p_e.webp",
+    "type": "exact_matches"
+  },
+  "exact_matches": [
+    {
+      "position": 1,
+      "title": "River Crossing Atx - Townhome - 2bd/2.5ba - W/d - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/river-crossing-atx-townhome-2bd-2-5ba-w-d-close-to-downtown-1550",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/lMIY6UAPUU5GKasXCCv9pD_3ILLVjr9SqHtR0baZRNU.jpeg",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 2,
+      "title": "Lenox Grand - 13505 Burnet Rd Austin TX (10 units available) | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/austin-tx/lenox-grand/CmB93F/",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/u-fPJrfcK-u17zWat8r8CHvFI9B9iHdoseCGUse74s4.jpeg",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 3,
+      "title": "Apartments For Rent in 78727, - 791 Rentals | Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/78727_zip/",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/t5LJeB3quI6gCVyY1J9YzuPu3spcj4hqqmnwZ707siQ.jpeg",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 4,
+      "title": "Lenox Grand - Austin, TX Apartments | Realtor.com®",
+      "source": "Realtor.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHklEQVR4Ae2VA5NcQRRG52_ED8nrnqgU27Zt21YxtkthuWLbTiHc0dq2cff2ot_YWHXVN2qc028amnpd9BLdgTkQErhBpFsQDiw6kewOKlwnkQ0IrsAAl5DJtiA9dmWVCldjwN-YWGDhAl3G4XaDdaKyOiBwg0QWIqAcAy5SwUT9CsdFNkcvEQ53I-VM2E8zpzP1IilzG85Dypm4T3CjSKboJFrqKZyHiQva6V4uOGUCDlKCAR9Tgk9xskfwMJGOxY7FGPBTinUiGefeghPICOxQZD1I9MSpED11lkUiBgxV6yfPgPQLlyHz6g2IX7XORkJXNSFllIsF124INi60N4voKTMh-94DMC-5L16CXtZC5rWbYF2Sdu0DO-MUGkU6zP7MZTIQLfOdPUoD6QQVRUUckvPkGaQeOgq5z19C0u59gMWizu4YyEDWIAv4P1HpqxNpnjv_Z2lSEofkf_oMhb__gIF2rqrL-_CJ16WdOe94HMZCZvWCk2kv_DHH3QVVEhfHIRXl5ZCwbiOvM3XtBWnnLkLqkeNg0HZ2NVYOY2vCBDocV-hUHoGsdCoQqwqU5xdwkDv5j_eEOYuxNdbF1Fxu5a5AwY-fHm1HBArWPJ8Ecp8-D61Azv2HoRXAcyEEAk0CcfGhXQOlycnqLnj1JsgCbdtb3AUl0THBFUjauQesS9zSlcERSDt9HrLv3LPN7buQuH13YAXcj-cCTQKVRUCzivBGARwAAAAASUVORK5CYII.png",
+      "link": "https://www.realtor.com/rentals/details/13505-Burnet-Rd_Austin_TX_78727_M90116-24999",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/s1sqttaw9Brgy4iPosjAe_oGrVA2HaAmdxRduByxp8s.jpeg",
+      "actual_image_width": 1280,
+      "actual_image_height": 853
+    },
+    {
+      "position": 5,
+      "title": "1 Bedroom Apartments for Rent in Lamplight Village, Austin, TX",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/171312/TX/Austin/Lamplight-Village/1-bedroom-apartments-for-rent",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/LqZbhGTlF1GEf_m2TQQMdJbzzLySu0RBazb3qp_JJyc.jpeg",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 6,
+      "title": "Apartments for Rent in Lamplight Village, TX - Austin - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/171312/TX/Austin/Lamplight-Village/apartments-for-rent",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/SoLUkKryRlcgI6YnGHs_PQE29lVaYWYysqCaU-LqBJ8.jpeg",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 7,
+      "title": "Apartments Under $1200 for Rent in Lamplight Village, Austin, TX",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/171312/TX/Austin/Lamplight-Village/apartments-under-1200-for-rent",
+      "thumbnail": "https://serpapi.com/searches/6a8e83ebc4f20f1cd99659bb/images/PY_35kU7Ipo3fe_vvmJdf0ROqY1yaGHEe5lDMYExQ0I.jpeg",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 8,
+      "title": "Lenox Grand - 13505 Burnet Rd, Austin, TX 78727 | Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/building/lenox-grand-13505-burnet-rd-austin-tx-78727-2756532937",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiprFnBjGBVqVPCqqFQd--Yr8RnLlfX6I7vmsE3FTvWN1ai1BIetXKjVHL&s",
+      "actual_image_width": 1024,
+      "actual_image_height": 683
+    },
+    {
+      "position": 9,
+      "title": "Apartments For Rent in Austin, TX with Gym/Fitness Center - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Austin,TX/fitnesscenter_bamenities/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 10,
+      "title": "Lenox Grand - 13505 Burnet Rd, Austin, TX 78727 - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/TX/Austin/13505-Burnet-Rd-78727/home/187468665",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5ppa9kY9CP-LGs6GgahAYA9sWSotgzO8jvmziOzFTroIzJfGSgAKExDzI&s",
+      "actual_image_width": 665,
+      "actual_image_height": 441
+    },
+    {
+      "position": 11,
+      "title": "Houses for Rent in Lamplight Village, Austin, TX - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/171312/TX/Austin/Lamplight-Village/houses-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 12,
+      "title": "Photo Gallery | Lenox Grand",
+      "source": "Lenox Grand",
+      "source_icon": "https://serpapi.com/images/i/_9j_4AAQSkZJRgABAQAAAQABAAD_2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys_RD84QzQ5OjcBCgoKDQwNGg8PGjclHyUrKzc3Nzc3Nzc3Nzc1Kys3NTc3Nzc3Nzc3Nzc3ListMzc3Nys2NTctNTcrLjU1Ky04N__AABEIABwAHAMBIgACEQEDEQH_xAAYAAEBAQEBAAAAAAAAAAAAAAAHBgUIBP_EACsQAAEDAgQGAgEFAAAAAAAAAAECAwQFBgAREjEHIUFRYYETkXEiMkKhsf_EABcBAAMBAAAAAAAAAAAAAAAAAAADBAH_xAAdEQACAgEFAAAAAAAAAAAAAAABAgAREgMTITFR_9oADAMBAAIRAxEAPwCq4r8SBaLbdPpaG3qs-jXmvmlhHRRHUnoPZ8lFsy6_dk6ZUa_ctSj0mA3802Q2-UZD-KEJHLUfx0xhcQ5rtQvquPPk6hMcaGfRKDpA-gMXFsUBU7h_Q4iiWKbMmvVGryVckJZaVpCSfOnkPffGQnoql81SwbsaiMy5dSorsdl8xZ7mt1tK05kBe-Y85j_cNtHqsSs0uNUqe58kaS2Ftq8dj2I2IxyZe1cFx3RPqiAUsuuaWU9m0jJP9DP3hP4M3FMgWo9FSC423NXozGekFKDl9kn3gMJVXHZ1usVl6oyLfjyX5Sy6XnnXFJUo7_oz04muKFPrNUtWmsW5GWYMZa0S6fAbyG4KFaE7jf3hnkMNSWVNPoStB3BxMz6QxDfBjOvoz7L295Yl1N3TfMG18j0wdcejAGi8MrmqSkrlRBS4p3fnn4_pH7ifGWHuw7Kg2vQhBSpUlbjhecddTpJUQByHQZJHLGvTaTFbKJK9bz3RTqtWX4xrZDFClmFkVEtQ4E__2Q.jpeg",
+      "link": "https://www.lenoxgrandatx.com/photogallery",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeFgKuVUwqH8gc3I65WbOXdqamkQWDROsnSNsulD46H7PfkPzjF0KF8a7A&s",
+      "actual_image_width": 1200,
+      "actual_image_height": 800
+    },
+    {
+      "position": 13,
+      "title": "Pet Friendly Houses for Rent in Lamplight Village, TX - Austin - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/171312/TX/Austin/Lamplight-Village/pet-friendly-houses-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 14,
+      "title": "Apartments For Rent in Austin, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Austin,TX/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 15,
+      "title": "Austin, TX Apartments for Rent - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/austin-tx/apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 16,
+      "title": "Apartment Communities For Rent in Austin, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Austin,TX/APARTMENT_COMMUNITY_type/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 17,
+      "title": "Apartments For Rent around San Leanna, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/San_Leanna,TX/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 18,
+      "title": "3 Bedroom Apartments For Rent in Austin, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Austin,TX/3p_beds/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 19,
+      "title": "Apartments Under $1500 for Rent in Gracy Woods, TX - Austin - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/175705/TX/Austin/Gracy-Woods/apartments-under-1500-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 20,
+      "title": "Apartments For Rent in Brushy Creek North, Round Rock, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Round_Rock,Brushy_Creek_North,TX/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 21,
+      "title": "Apartments for Rent in Lamplight Village, Austin | Realtor.com®",
+      "source": "Realtor.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHklEQVR4Ae2VA5NcQRRG52_ED8nrnqgU27Zt21YxtkthuWLbTiHc0dq2cff2ot_YWHXVN2qc028amnpd9BLdgTkQErhBpFsQDiw6kewOKlwnkQ0IrsAAl5DJtiA9dmWVCldjwN-YWGDhAl3G4XaDdaKyOiBwg0QWIqAcAy5SwUT9CsdFNkcvEQ53I-VM2E8zpzP1IilzG85Dypm4T3CjSKboJFrqKZyHiQva6V4uOGUCDlKCAR9Tgk9xskfwMJGOxY7FGPBTinUiGefeghPICOxQZD1I9MSpED11lkUiBgxV6yfPgPQLlyHz6g2IX7XORkJXNSFllIsF124INi60N4voKTMh-94DMC-5L16CXtZC5rWbYF2Sdu0DO-MUGkU6zP7MZTIQLfOdPUoD6QQVRUUckvPkGaQeOgq5z19C0u59gMWizu4YyEDWIAv4P1HpqxNpnjv_Z2lSEofkf_oMhb__gIF2rqrL-_CJ16WdOe94HMZCZvWCk2kv_DHH3QVVEhfHIRXl5ZCwbiOvM3XtBWnnLkLqkeNg0HZ2NVYOY2vCBDocV-hUHoGsdCoQqwqU5xdwkDv5j_eEOYuxNdbF1Fxu5a5AwY-fHm1HBArWPJ8Ecp8-D61Azv2HoRXAcyEEAk0CcfGhXQOlycnqLnj1JsgCbdtb3AUl0THBFUjauQesS9zSlcERSDt9HrLv3LPN7buQuH13YAXcj-cCTQKVRUCzivBGARwAAAAASUVORK5CYII.png",
+      "link": "https://www.realtor.com/apartments/Lamplight-Village_Austin_TX",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUoxHsH09xtRqOPKe6mJtD9jkdePOgVgnu2DakhvnE-YnBoh5JD8dyPvFt&s",
+      "actual_image_width": 960,
+      "actual_image_height": 640
+    },
+    {
+      "position": 22,
+      "title": "2 Bedroom Apartments for Rent in 78727, TX - Austin - Realtor.com",
+      "source": "Realtor.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHklEQVR4Ae2VA5NcQRRG52_ED8nrnqgU27Zt21YxtkthuWLbTiHc0dq2cff2ot_YWHXVN2qc028amnpd9BLdgTkQErhBpFsQDiw6kewOKlwnkQ0IrsAAl5DJtiA9dmWVCldjwN-YWGDhAl3G4XaDdaKyOiBwg0QWIqAcAy5SwUT9CsdFNkcvEQ53I-VM2E8zpzP1IilzG85Dypm4T3CjSKboJFrqKZyHiQva6V4uOGUCDlKCAR9Tgk9xskfwMJGOxY7FGPBTinUiGefeghPICOxQZD1I9MSpED11lkUiBgxV6yfPgPQLlyHz6g2IX7XORkJXNSFllIsF124INi60N4voKTMh-94DMC-5L16CXtZC5rWbYF2Sdu0DO-MUGkU6zP7MZTIQLfOdPUoD6QQVRUUckvPkGaQeOgq5z19C0u59gMWizu4YyEDWIAv4P1HpqxNpnjv_Z2lSEofkf_oMhb__gIF2rqrL-_CJ16WdOe94HMZCZvWCk2kv_DHH3QVVEhfHIRXl5ZCwbiOvM3XtBWnnLkLqkeNg0HZ2NVYOY2vCBDocV-hUHoGsdCoQqwqU5xdwkDv5j_eEOYuxNdbF1Fxu5a5AwY-fHm1HBArWPJ8Ecp8-D61Azv2HoRXAcyEEAk0CcfGhXQOlycnqLnj1JsgCbdtb3AUl0THBFUjauQesS9zSlcERSDt9HrLv3LPN7buQuH13YAXcj-cCTQKVRUCzivBGARwAAAAASUVORK5CYII.png",
+      "link": "https://www.realtor.com/apartments/78727/beds-2-2",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUoxHsH09xtRqOPKe6mJtD9jkdePOgVgnu2DakhvnE-YnBoh5JD8dyPvFt&s",
+      "actual_image_width": 960,
+      "actual_image_height": 640
+    },
+    {
+      "position": 23,
+      "title": "78651 Luxury Apartments For Rent - 1436 Rentals - Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/round-rock-tx-78651/luxury-apartments/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 24,
+      "title": "Apartments For Rent in Merrelltown Austin - 1545 Rentals | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/merrelltown-austin-tx/apartments/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "date": "May 8, 2025",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 25,
+      "title": "Texas 1 Bedroom Apartments for Rent - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/tx/1-bedroom-apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 26,
+      "title": "Texas Apartments for Rent - 292,825 Rentals - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/tx/apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 27,
+      "title": "2 Bedroom Apartments for Rent in Texas - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/tx/2-bedroom-apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 28,
+      "title": "5767 Lawnmont Ave - Austin, TX - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/5767-lawnmont-ave",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 29,
+      "title": "1910 Philomena St Austin, TX Apartment for Rent - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/1910-philomena-st",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 30,
+      "title": "Apartments Under $1500 for Rent in Wells Branch, TX - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/city/26356/TX/Wells-Branch/apartments-under-1500-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 31,
+      "title": "13145 Farm to Market Rd 1325 unit 1325 - Austin, TX - Rent.com",
+      "source": "Rent.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAhFBMVEUAAACioqK-vr6oqKiIiIgICAjc3Nz____8_Pzq6uphYWH09PT39_d-fn4mJiaxsbHS0tJAQEDi4uJ0dHRkZGQyMjItLS3FxcU6OjoVFRUXHC9BS4IgJT9MTExYZ692iuxneMw7RXd_lP1EQz1DUI5aabMNFDMrMlWampojIhtPXJ5gcMGb5cQYAAAAqUlEQVR4Ac3QVQKDMBAE0EUnwd293t7_fnVf_hk0eXFaZhT1Fk03GDRxj5AWi_Y1gOMy6HjXrw8EHoMhXSMQWbMYQMazKBElDKbXbwwE2T8K1fdzKQB_dp9wfOIwMiVgFsShk1Ei4ZQ8hkS-uM1Y1XXzj62EXVDV9f1Q_eH19FQa-2maun_MBORqPV2y-UL7iqQB6naYpn73gbqy967fUlP0Q3M8NbTMnAH8nQrX1Sv5kgAAAABJRU5ErkJggg.png",
+      "link": "https://www.rent.com/r/13145-farm-to-market-rd-1325-austin-tx-lv1461755498",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8ed_EFiGZEAVTahHyrh6lA91N5k7eRoRQq64OCDYCtlHTshYbNBbQ791w&s",
+      "actual_image_width": 375,
+      "actual_image_height": 250
+    },
+    {
+      "position": 32,
+      "title": "12241 Abbey Glen Ln Austin TX | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/b/12241-abbey-glen-ln-austin-tx-9LT5nq/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 33,
+      "title": "Apartments for Rent in Travis County, TX - Page 15 - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/county/2866/TX/Travis-County/apartments-for-rent/page-15",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "date": "Aug 16, 2026",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 34,
+      "title": "3 Bedroom Apartments for Rent in Zip Code 78727 - Austin - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/78727/3-bedroom-apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 35,
+      "title": "Rentals near Harmony School of Science - Austin TX - Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/schools-for-rent/160175/harmony-school-of-science-austin/3_p/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 36,
+      "title": "Rental Listings in 78727 - 784 Rentals - Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/austin-tx-78727/rentals/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 37,
+      "title": "3 Bedroom Apartments for Rent in Austin, TX - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/austin-tx/3-bedroom-apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 38,
+      "title": "Rentals near IDEA Parmer Park College Preparatory - Austin TX",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/schools-for-rent/325842/idea-parmer-park-college-preparatory/3_p/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "date": "May 20, 2025",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 39,
+      "title": "Rentals near NYOS Charter School - Austin TX | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/schools-for-rent/70655/nyos-charter-school/3_p/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 40,
+      "title": "Zip Code 78727 Apartments for Rent - 924 Rentals - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/78727/apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 41,
+      "title": "Apartments for Rent with Laundry in Austin, TX - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/austin-tx/apartments-for-rent-with-laundry",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 42,
+      "title": "Rentals near Bais Menachem Hebrew Academy - Austin TX | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/schools-for-rent/152494/bais-menachem-hebrew-academy/3_p/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "date": "Aug 10, 2026",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 43,
+      "title": "1 Bedroom Apartments for Rent in Austin, TX - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/austin-tx/1-bedroom-apartments-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 44,
+      "title": "Apartments for Rent near Summitt Elementary School - Austin, TX ...",
+      "source": "Realtor.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHklEQVR4Ae2VA5NcQRRG52_ED8nrnqgU27Zt21YxtkthuWLbTiHc0dq2cff2ot_YWHXVN2qc028amnpd9BLdgTkQErhBpFsQDiw6kewOKlwnkQ0IrsAAl5DJtiA9dmWVCldjwN-YWGDhAl3G4XaDdaKyOiBwg0QWIqAcAy5SwUT9CsdFNkcvEQ53I-VM2E8zpzP1IilzG85Dypm4T3CjSKboJFrqKZyHiQva6V4uOGUCDlKCAR9Tgk9xskfwMJGOxY7FGPBTinUiGefeghPICOxQZD1I9MSpED11lkUiBgxV6yfPgPQLlyHz6g2IX7XORkJXNSFllIsF124INi60N4voKTMh-94DMC-5L16CXtZC5rWbYF2Sdu0DO-MUGkU6zP7MZTIQLfOdPUoD6QQVRUUckvPkGaQeOgq5z19C0u59gMWizu4YyEDWIAv4P1HpqxNpnjv_Z2lSEofkf_oMhb__gIF2rqrL-_CJ16WdOe94HMZCZvWCk2kv_DHH3QVVEhfHIRXl5ZCwbiOvM3XtBWnnLkLqkeNg0HZ2NVYOY2vCBDocV-hUHoGsdCoQqwqU5xdwkDv5j_eEOYuxNdbF1Fxu5a5AwY-fHm1HBArWPJ8Ecp8-D61Azv2HoRXAcyEEAk0CcfGhXQOlycnqLnj1JsgCbdtb3AUl0THBFUjauQesS9zSlcERSDt9HrLv3LPN7buQuH13YAXcj-cCTQKVRUCzivBGARwAAAAASUVORK5CYII.png",
+      "link": "https://www.realtor.com/apartments/Austin_TX/schools/Summitt-Elementary-School-0768579731",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUoxHsH09xtRqOPKe6mJtD9jkdePOgVgnu2DakhvnE-YnBoh5JD8dyPvFt&s",
+      "actual_image_width": 960,
+      "actual_image_height": 640
+    },
+    {
+      "position": 45,
+      "title": "New Rentals in Whitney Oaks, Austin | Realtor.com®",
+      "source": "Realtor.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHklEQVR4Ae2VA5NcQRRG52_ED8nrnqgU27Zt21YxtkthuWLbTiHc0dq2cff2ot_YWHXVN2qc028amnpd9BLdgTkQErhBpFsQDiw6kewOKlwnkQ0IrsAAl5DJtiA9dmWVCldjwN-YWGDhAl3G4XaDdaKyOiBwg0QWIqAcAy5SwUT9CsdFNkcvEQ53I-VM2E8zpzP1IilzG85Dypm4T3CjSKboJFrqKZyHiQva6V4uOGUCDlKCAR9Tgk9xskfwMJGOxY7FGPBTinUiGefeghPICOxQZD1I9MSpED11lkUiBgxV6yfPgPQLlyHz6g2IX7XORkJXNSFllIsF124INi60N4voKTMh-94DMC-5L16CXtZC5rWbYF2Sdu0DO-MUGkU6zP7MZTIQLfOdPUoD6QQVRUUckvPkGaQeOgq5z19C0u59gMWizu4YyEDWIAv4P1HpqxNpnjv_Z2lSEofkf_oMhb__gIF2rqrL-_CJ16WdOe94HMZCZvWCk2kv_DHH3QVVEhfHIRXl5ZCwbiOvM3XtBWnnLkLqkeNg0HZ2NVYOY2vCBDocV-hUHoGsdCoQqwqU5xdwkDv5j_eEOYuxNdbF1Fxu5a5AwY-fHm1HBArWPJ8Ecp8-D61Azv2HoRXAcyEEAk0CcfGhXQOlycnqLnj1JsgCbdtb3AUl0THBFUjauQesS9zSlcERSDt9HrLv3LPN7buQuH13YAXcj-cCTQKVRUCzivBGARwAAAAASUVORK5CYII.png",
+      "link": "https://www.realtor.com/apartments/Whitney-Oaks_Austin_TX/sby-6",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5g0NUhOgGbmuHfzdTuWctYgLc-mzTmSw6OyXyk2bgZS-tvJw-j17EipXy&s",
+      "actual_image_width": 480,
+      "actual_image_height": 320
+    },
+    {
+      "position": 46,
+      "title": "3 Bedroom Apartments for Rent in Texas - Page 4 - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/tx/3-bedroom-apartments-for-rent/page/4",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRLhLu6_8z7kBGXMei44KXqVYQNS9YRQUfKj9xF1eGa86ytFp7bslj_Hh&s",
+      "actual_image_width": 960,
+      "actual_image_height": 720
+    },
+    {
+      "position": 47,
+      "title": "78727 Pet Friendly Apartments - 674 Rentals - Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/austin-tx-78727/pet-friendly/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 48,
+      "title": "Lenox Grand | Austin, TX | Starting at $1,179 - ForRent.com",
+      "source": "ForRent.com",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAbFBMVEUBSHYAOW0AQ3MAO269ytXDz9lff5xngp62w9CvvcutushTdpUAMWn___-GnbKdrL2jtMTm6u7s7_JxjKXV3uVJb5D7_v4ALGcANWt_mK4AL2gAJmQAP3EARXQcUn0qWoIsW4M9ZIiOo7duiKIc7qfHAAAAvElEQVR4AdXRRQLEIAwF0JJQd3e__x0nbSHjB-jfIA_HuF2EDgCqAJtUMS3bcc94vlAYhDpRzNVEPDE9kuWEhSNlQT0laKzq5gxh2wnROzR1YEQYx9FAwog6h5YQGad5npcJ9UwZhja8H8gNCAt57mk2xgd2fNp0GBmrZaXMSCi3bTPDMBNPxPHIuWczYE_r-sB4nZtPu9Gg4R_mYbgxhvCGYNHpkB_-QtgdxzqrjhMP_GXGFdCfhUh2szwA-RARbrHl1YAAAAAASUVORK5CYII.png",
+      "link": "https://www.forrent.com/tx/austin/lenox-grand/jfr6j96",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOX9PstFiRIxnp8pPmyqd1xUSxouJ6aGiBCrFC9hG_0s1WTef8yekmPmOc&s",
+      "actual_image_width": 650,
+      "actual_image_height": 433
+    },
+    {
+      "position": 49,
+      "title": "Apartments Under $2000 for Rent in Gracy Woods, TX - Austin - Redfin",
+      "source": "Redfin",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAKlBMVEVHcEzeM0HeM0HeM0HeM0HeM0HeM0HeM0HeMkHeM0HeM0HeM0HeM0HeM0ECWCcBAAAADXRSTlMAcInmm68mxxVP21w9wLJQ-AAAAJRJREFUKJG1kUkSxSAIRAVR48D9r_tTFYwtSdVfpVfiY2gxhK9VpcRYpL4g0lvk0BEVFA9kWZ0y1HmmumrbE7bJ-hxFY9Ac3g1azFfElrm5kdmI0ZO9cPnD18peuF8kv5arVfoP2cMC5quDtq8K7hZsm_uEMNtK0owBjse_MFTStkvzR5ipJQSky5A4dub3dU4cPtUPZbINCtL3I10AAAAASUVORK5CYII.png",
+      "link": "https://www.redfin.com/neighborhood/175705/TX/Austin/Gracy-Woods/apartments-under-2000-for-rent",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74_nQxcGO-Q_i4pIh5-wQPnqrsPyGrYwwW1b33jiuBXf2Ar4VLoJUwtck&s",
+      "actual_image_width": 640,
+      "actual_image_height": 460
+    },
+    {
+      "position": 50,
+      "title": "Apartments For Rent near Chaparral Star Academy, Austin, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Chaparral_Star_Academy%7C5700088480_school/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 51,
+      "title": "Gracy Woods Austin Pet Friendly Apartments - 571 Rentals | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/gracy-woods-austin-tx/pet-friendly/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 52,
+      "title": "Apartments For Rent Under $1500 in Austin TX | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/austin-tx/apartments-under-1500/6_p/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 53,
+      "title": "Rental Listings in Gracy Woods Austin - 705 Rentals | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/gracy-woods-austin-tx/rentals/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 54,
+      "title": "12805 Stanford Dr, Austin, TX 78748 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/12805-stanford-dr-austin-tx-78748-20rysrb/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "Mar 19, 2026",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 55,
+      "title": "3301 Speedway St Apt 201, Austin, TX 78705 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/3301-speedway-st-austin-tx-78705-24110t9/201/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "23 hours ago",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 56,
+      "title": "3300 Oak Creek Dr - Austin, TX - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/3300-oak-creek-dr",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 57,
+      "title": "5309- C Indio Dr - Austin, TX - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/5309-c-indio-dr",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 58,
+      "title": "The Olivine - 3201 Century Park Blvd Austin TX (2 units available)",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/austin-tx/the-olivine/5Xht6H/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 59,
+      "title": "1013 Banyon St, Austin, TX 78757 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/1013-banyon-st-austin-tx-78757-w4p6q9/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 60,
+      "title": "Section 8 - 5 Beds 2 Baths Single Family Home Apartments Austin, TX",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/section-8-5-beds-2-baths-single-family-home",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    },
+    {
+      "position": 61,
+      "title": "14704 General Williamson Dr, Austin, TX 78734 - HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/14704-general-williamson-dr-austin-tx-78734-1kya314/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "4 days ago",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 62,
+      "title": "1625 Breezy Cv, Round Rock, TX 78664 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/1625-breezy-cv-round-rock-tx-78664-1x7sdw2/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "Oct 11, 2025",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 63,
+      "title": "Highline Apartments - 13201 Legendary Dr Austin TX (10 units ...",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/austin-tx/highline-apartments/CkBgkm/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 64,
+      "title": "Broadstone Frontera Ridge - 2880 Frontera Dr Round Rock TX (13 ...",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/round-rock-tx/broadstone-frontera-ridge/CkCjyh/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 65,
+      "title": "Park at Wells Branch - 1915 Wells Branch Pkwy Austin TX (9 units ...",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/austin-tx/park-at-wells-branch/5Xht85/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 66,
+      "title": "The Langdon on Parmer - 12430 Metric Blvd, Austin, TX 78758 | Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/building/the-langdon-on-parmer-12430-metric-blvd-austin-tx-78758-1001413715",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9jxMz28lpgY88mMbQMPyVaGB6QFuf_5PHW5uPWYIplTEsoDqsqWmaFIz&s",
+      "actual_image_width": 320,
+      "actual_image_height": 213
+    },
+    {
+      "position": 67,
+      "title": "On The Green - 12007 N Lamar Blvd, Austin, TX 78753 | Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/building/on-the-green-12007-n-lamar-blvd-austin-tx-78753-1001414212",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9jxMz28lpgY88mMbQMPyVaGB6QFuf_5PHW5uPWYIplTEsoDqsqWmaFIz&s",
+      "actual_image_width": 320,
+      "actual_image_height": 213
+    },
+    {
+      "position": 68,
+      "title": "Bridge at Mesa Verde - 3201 Duval Rd, Austin, TX 78759 | Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/building/bridge-at-mesa-verde-3201-duval-rd-austin-tx-78759-1001414124",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT9jxMz28lpgY88mMbQMPyVaGB6QFuf_5PHW5uPWYIplTEsoDqsqWmaFIz&s",
+      "actual_image_width": 320,
+      "actual_image_height": 213
+    },
+    {
+      "position": 69,
+      "title": "Apartments For Rent in Gracy Woods Austin - 624 Rentals | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/gracy-woods-austin-tx/apartments/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZViBpc8w8tsmSkfOE0KxAMzAj0FgVQ5IyABaTWgKMh900m_GvO8SwY6E&s",
+      "actual_image_width": 596,
+      "actual_image_height": 446
+    },
+    {
+      "position": 70,
+      "title": "12205 Abbey Glen Ln Austin TX | Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/b/12205-abbey-glen-ln-austin-tx-5XzYbw/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 71,
+      "title": "Apartments For Rent around Rollingwood, TX - Trulia",
+      "source": "Trulia",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAsVBMVEUArbsAsLwAr7wDfqUCjKsEX5gDeaMAtr8ES5EERI8AucEFHoUDdaEDb54Aq7oCmbEBorUFAH4ClK8AAIADJIYEVZQFFYMDh6kAqbhsaKIAF4ICZpsWLoba6e3___-wscsAH4UAT5Jan7jS0uCc09rr4v_Ntv_Ot_9UUKJpYbFksNCx2uDLs__GtfrJ5Onm8vS5tPTF4uZAtMD49f8wrcCFydGc0NjD1-pZu8Z4xM1pwMpXkB5EAAAA_ElEQVR4AbxOtQGAMADDXeru_f9HWLGVjPHiB5RVUZYfWlU3ZdtV1ZtU9sM4zUu_bk9xn0EDAdxXiJ7ZbcSIUNZBPj1KgeipZIqwtRnn8nZUQ2OdhyHMOPJ7FCR3IjNlUH_UPgc7CIMwAIYXH6BnLvSEoHaCdILA-z-YdNthw7N_SEPyBQLjd5QRu1p3uzv7OL8ICKXZup59no8qj6Gjs2uvASNyRFxmMfeeRkwaRcUuA3rcWgaTIPu9j9ioag_gxwrD2kSTke3RlPYl58q1BPaFI8ERiQAbFVMjxxYYjwhVQ1AmhhISkTZ4vjdx66NBrn2T2vBa2IYsGf_sCyBEIfP91Q-xAAAAAElFTkSuQmCC.png",
+      "link": "https://www.trulia.com/for_rent/Rollingwood,TX/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTttnawYTt7sc9bQf6qz3IImj1WlVz-KYginKdKT0NkUkJjf7V2lExU6x5-&s",
+      "date": "Jul 11, 2026",
+      "actual_image_width": 640,
+      "actual_image_height": 427
+    },
+    {
+      "position": 72,
+      "title": "1003 E 45th St, Austin, TX 78751 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/1003-e-45th-st-austin-tx-78751-stjjts/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "Dec 20, 2025",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 73,
+      "title": "3204 Bruce Dr Apt 1, Austin, TX 78735 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/3204-bruce-dr-austin-tx-78735-1kya95n/1/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "May 2, 2026",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 74,
+      "title": "11709 Lago De Garda Dr, Austin, TX 78747 | HotPads",
+      "source": "HotPads",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAA81BMVEX____--_nxtKPjXCPtnIT87OfhUADhUxLhVRnhSwDphWb429Pol4LiXCfrcUbhj3_QQxraVCfoZTfydE32elXrtavQPxHRSifYSxn3mX_PPAXhl4ncVS_6tqr7_v3QOAD13tr1woLuxjnsvhT12pH9-ewqqqF3w73q9vXdgW_swrntlkTrvADx0G3779JDsKiS19PYblbeXDjQnyrRoSrjti3W7OpexLrDYUX2bUrQnyHzyk7502X73IROt69Vy8K5cFnq1q_kzJ7itUH96rmbk4LMlQDv4ch6zcSv49_WqUHVrVmPlILveUHevXj85qz9yLyDPUXlAAABFUlEQVR4Ac3QAxbDQBQF0NS2bcSaOKnt_a-mP7UW0HcwuMOP_XMcTpfb85s8bq_P5Q8EQz8sHPBH7PgD0W-MxRO2uZKp9DdmsrlsPpJMp1OFbwwVi6FSOQ1YwRxvUoX31Ir1et7GRrPV7rxYt9fHsnGcSKTTZLPVbLYomrljj2W7HB-PZ4V0WkRSE9Jq3TbLXZZlFUWN54S0hpCoS03DtG4bB2ADRRmO4oIW0pE-nkxNc3a_0d4IOAd0LNCiszRMo_O40t64Ws_hzoKuo83WNGnsFvmC6_6uVk7tJwcdIdM8Pn7CcfZOZR3iT8xyqaOpxTDYPRwHd8Je6C4XW4SmbethoN2bgW4WumG9FVC-0YURXPifOQMfli1KHpF_kgAAAABJRU5ErkJggg.png",
+      "link": "https://hotpads.com/11709-lago-de-garda-dr-austin-tx-78747-1y4p2ub/pad",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucCIkcTTvaHXeCOT4tWKpIJjzasUsKeMSlgPYGemYRTCjsSpHqYitj484&s",
+      "date": "3 days ago",
+      "actual_image_width": 500,
+      "actual_image_height": 333
+    },
+    {
+      "position": 75,
+      "title": "1915 Alex Ave Austin TX (1 units available) - Zillow",
+      "source": "Zillow",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAdVBMVEUEav8AZv93of8AW_8AY_8rd__u9P____-5zf8AaP8AXf9omP_j6_8DbP8AWv-kv_9Siv8AX__V4v-OsP8AYv9Bgf_4-__Q3v9-pf-zyf_E1f9ynf8ecf8AYP9jkv9fkP84ff-at__K2f9Hhf_B0f-Rsv_y9_96yIHuAAAAv0lEQVR4Ac3PUwIDQRBF0VTrjY1ojP0vMbad-3saVYOvRFeIGL9kQipoXD9rhol5lk1nzHGxyvOPiUSATaFzaFGcrCAdjoCxoe8ZTbDICnVDOCmgpnuYjeekxTybn7MtADkdoDswMr_QRZngCGmi-wZVKo5KzAtcebA_lxowFTESzcyMaN_0sgYgyR55PCMSPh0P5In5C0SZ0VRBQXvYAuFi1Cwz2wTAMeaZ4EWLeWcQTdcDl3DewzhXftjc_rEZvDgN-gNB6YkAAAAASUVORK5CYII.png",
+      "link": "https://www.zillow.com/apartments/austin-tx/1915-alex/5dXgbd/",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdHMis8aMRpIQwGbilHYScvPlNZxpO5ww4YnczrJgsWrwbZSBxo_5je2U7&s",
+      "actual_image_width": 278,
+      "actual_image_height": 207
+    },
+    {
+      "position": 76,
+      "title": "The Grove 2/2 Furnished Apartments Austin, TX - Rentable",
+      "source": "Rentable",
+      "source_icon": "https://serpapi.com/images/i/iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y-mAAAAYFBMVEWXHCCVFBmUDBKWGByeJCirUFLDfX-jPD-YAA3p0tKRAADKnZ____-1bG6jNTmfKS2_g4P89vamREfly8zJk5SvW12oSUzixseZCRPs2NmZISXz4-SdMjX46uvgvL3LjI8uTqtIAAAAiUlEQVR4Ac3JQRaCIBAA0JkGQ2jShERAs_vfsh6LIqStz7_9cAh4IqghIQibs6wdtkq1-sJXrFynmFV_GyqJxvKblfeRNucmTia3PZMurcHiOssftvtZ8oEzwVOWfbps-yyjF_O3ZuEjZGjJcyHYOx-1HNbn6Iw0LkKRYW20bjGBQpQa4S-CY3gBqAcNHUQ2YZMAAAAASUVORK5CYII.png",
+      "link": "https://www.rentable.co/austin-tx/the-grove-2-2-furnished",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UZUOeoImIXOOnMuh-lxwex9n9YRt4D67V3i7NBDCSHi-FFblxtf4R-ov&s",
+      "actual_image_width": 370,
+      "actual_image_height": 215
+    }
+  ]
+}
