@@ -58,6 +58,22 @@ describe('fetchExactMatches', () => {
     expect(r).toMatchObject({ ok: false, reason: 'transport' });
   });
 
+  // The status line is the only evidence left when the body names no error.
+  // Reading it as success would manufacture "the photo appears nowhere" out of
+  // a call that never succeeded - the two answers this type exists to separate.
+  test('reports a non-2xx JSON body carrying no error field as a failure', async () => {
+    const body = JSON.stringify({ search_metadata: { status: 'Error' } });
+    const r = await fetchExactMatches('u', 'k', { fetch: stubFetch(body, 503) });
+    expect(r.ok).toBe(false);
+  });
+
+  test('an ordinary 200 with an empty match list is still a real answer', async () => {
+    const body = JSON.stringify({ exact_matches: [] });
+    const r = await fetchExactMatches('u', 'k', { fetch: stubFetch(body, 200) });
+    expect(r).toMatchObject({ ok: true });
+    if (r.ok) expect(r.matches).toEqual([]);
+  });
+
   test('reports a network throw as a failure', async () => {
     const boom = async () => { throw new Error('ECONNRESET'); };
     const r = await fetchExactMatches('u', 'k', { fetch: boom as unknown as typeof fetch });

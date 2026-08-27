@@ -249,7 +249,40 @@ describe('handleAnalyze', () => {
     const body = await res.json();
     expect(body.verdict).toBe('UNVERIFIED');
     expect(body.reason).toBe('unreadable_address');
-    expect(body.sourceCount).toBe(4);
+    // Zero, not four: the lookup no longer runs for an address we cannot read,
+    // so there is nothing to count. The UI suppresses the evidence list for this
+    // reason anyway, so the number was never shown.
+    expect(body.sourceCount).toBe(0);
+  });
+
+  // An address we cannot read is knowable without the network, and a search is
+  // the one resource here that is metered and paid for.
+  test('spends no search when the address cannot be read', async () => {
+    let looked = 0;
+    const discarded: string[] = [];
+    const res = await handleAnalyze(
+      post({ imageUrl: IMAGE, address: 'Austin, TX' }),
+      deps({
+        lookup: async () => { looked += 1; return { ok: true, matches: syndicated('13505 Burnet Rd') }; },
+        discard: async (u) => void discarded.push(u),
+      }),
+    );
+    expect(looked).toBe(0);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.reason).toBe('unreadable_address');
+    expect(body.matches).toEqual([]);
+    // Still cleaned up: the short circuit must not strand a public photo.
+    expect(discarded).toEqual([IMAGE]);
+  });
+
+  test('spends no search for an empty address', async () => {
+    let looked = 0;
+    await handleAnalyze(
+      post({ imageUrl: IMAGE, address: '' }),
+      deps({ lookup: async () => { looked += 1; return { ok: true, matches: [] }; } }),
+    );
+    expect(looked).toBe(0);
   });
 
   test('a readable address carries no reason', async () => {

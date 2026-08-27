@@ -85,6 +85,18 @@ export async function fetchExactMatches(
     return { ok: false, reason: kind, message: redact(json.error, apiKey) };
   }
 
+  // A non-2xx whose body names no error has only the status line left as
+  // evidence. Falling through would return an empty match list, which reads as
+  // "the photo appears nowhere" — the opposite of "we could not check", and the
+  // one answer that must never be manufactured out of a failed call.
+  if (status >= 400) {
+    return {
+      ok: false,
+      reason: 'unknown',
+      message: redact(`HTTP ${status}, no error field in the response`, apiKey),
+    };
+  }
+
   // The API owns this array's shape; downstream treats every field as optional.
   const matches = Array.isArray(json.exact_matches) ? (json.exact_matches as Match[]) : [];
   return { ok: true, matches };

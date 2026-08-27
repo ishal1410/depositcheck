@@ -192,6 +192,9 @@ export default function Home() {
         <input
           id="address"
           type="text"
+          // The file input was required and this one was not, so the commonest
+          // way to reach the server with nothing to compare was one click away.
+          required
           maxLength={200}
           placeholder="13505 Burnet Rd, Austin TX"
           value={address}
