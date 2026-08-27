@@ -175,9 +175,12 @@ export async function handleUpload(req: Request, deps: UploadDeps): Promise<Resp
   try {
     const { url, token } = await deps.store(read.bytes, type);
     return Response.json({ url, ...(token ? { token } : {}) });
-  } catch {
+  } catch (e) {
     // The cause may carry storage credentials or internal hostnames, so the
-    // client is told only that storage failed. The detail belongs in the log.
+    // client is told only that storage failed — and the detail goes to the log,
+    // which is the only place an operator can tell an expired blob token apart
+    // from a dead network. Swallowing it left them a bare 502 and nothing else.
+    console.error('upload: blob store failed', e);
     return Response.json({ error: 'storage_unavailable' }, { status: 502 });
   }
 }

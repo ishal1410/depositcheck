@@ -1,4 +1,5 @@
 import { readCapped } from './upload';
+import { streetCandidates } from './address';
 import { classify, type Match } from './verdict';
 import type { LensResult } from './lens';
 import { clientKey, type RateLimiter } from './ratelimit';
@@ -101,6 +102,22 @@ export async function handleAnalyze(req: Request, deps: AnalyzeDeps): Promise<Re
   // returns below. Leaving it behind on a refused request would strand a
   // world-readable picture of someone's home that nothing else ever deletes.
   try {
+    // Ahead of both the limiter and the search. An address with no street
+    // number cannot be compared against anything, and that is knowable without
+    // the network — while the search below is metered and paid for. classify()
+    // keeps the same guard as the invariant for any other caller; this one only
+    // stops us buying an answer we already have. Inside the try so the finally
+    // still discards the photo.
+    if (streetCandidates(address).length === 0) {
+      return Response.json({
+        verdict: 'UNVERIFIED',
+        sourceCount: 0,
+        addressHits: 0,
+        reason: 'unreadable_address',
+        matches: [],
+      });
+    }
+
     // Limited here rather than at the top: a malformed request costs nothing,
     // and the resource actually worth protecting is the search quota below.
     if (deps.limiter) {

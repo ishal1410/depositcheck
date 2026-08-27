@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { MAX_UPLOAD_BYTES as MAX, handleUpload } from '../lib/upload';
 import { createRateLimiter } from '../lib/ratelimit';
 
@@ -91,6 +91,23 @@ describe('handleUpload', () => {
     const boom = async () => { throw new Error('BLOB_TOKEN=secret123 refused'); };
     const res = await handleUpload(req(jpeg), { store: boom });
     expect(JSON.stringify(await res.json())).not.toContain('secret123');
+  });
+
+  // Redacting the cause from the client is right; throwing it away is not. An
+  // operator staring at a bare 502 cannot tell a dead token from a dead network.
+  test('logs the cause of a storage failure server-side', async () => {
+    const logged: unknown[] = [];
+    const spy = vi.spyOn(console, 'error').mockImplementation((...a: unknown[]) => void logged.push(a));
+    try {
+      const boom = async () => { throw new Error('blob token expired'); };
+      await handleUpload(req(jpeg), { store: boom });
+    } finally {
+      spy.mockRestore();
+    }
+    // Not JSON.stringify: an Error serialises to {} and would hide the cause
+    // the assertion is here to prove was passed through.
+    expect(logged).toHaveLength(1);
+    expect(String((logged[0] as unknown[])[1])).toContain('blob token expired');
   });
 
   test('rate limits before the body is read or anything is stored', async () => {
