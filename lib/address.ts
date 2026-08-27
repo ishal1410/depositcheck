@@ -33,6 +33,58 @@ function suffixVariants(token: string): string[] {
   return [...out];
 }
 
+/**
+ * Every suffix we recognise, abbreviations and full words alike, longest-first
+ * so "street" is tried before "st". Built from SUFFIXES rather than repeated,
+ * so the two stay in sync by construction.
+ */
+const SUFFIX_ALTERNATION = [...new Set([...Object.keys(SUFFIXES), ...Object.values(SUFFIXES)])]
+  .sort((a, b) => b.length - a.length)
+  .join('|');
+
+/**
+ * A street address sitting inside someone else's title: number, optional
+ * directional, one or two name words, then a suffix.
+ *
+ * The suffix is REQUIRED, and that is the whole point. Listing titles are full
+ * of number-then-word pairs that are not addresses — "1 Bedroom Apartments",
+ * "5 Beds 2 Baths", "Under $1200 for Rent", "791 Rentals". Measured on 23 real
+ * titles, requiring the suffix found 4 addresses and 0 false ones; dropping it
+ * found 14, of which 10 were junk. Every one of those would become an
+ * accusation, so precision here is worth more than recall.
+ */
+const TITLE_ADDRESS = new RegExp(
+  String.raw`\b(\d{1,6})\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?([a-z][a-z'-]*(?:\s+[a-z][a-z'-]*)?)\s+(?:${SUFFIX_ALTERNATION})\b`,
+);
+
+export interface FoundAddress {
+  /**
+   * Comparison key: number and street name, lowercased, suffix dropped, so
+   * "Burnet Rd" and "Burnet Road" are one address rather than two. Internal.
+   */
+  key: string;
+  /**
+   * The address as the page actually wrote it, suffix and capitals intact.
+   * This is the half a person can check, so it is the half we show them —
+   * the key is a comparison artifact and reads as a typo on screen.
+   */
+  display: string;
+}
+
+/**
+ * The street address a title refers to, or null if it names none.
+ */
+export function extractStreetAddress(title: string): FoundAddress | null {
+  const m = TITLE_ADDRESS.exec(title.toLowerCase());
+  if (m === null || m.index === undefined) return null;
+  return {
+    key: `${m[1]} ${m[2].replace(/\s+/g, ' ')}`,
+    // Sliced from the original string, not the lowercased copy the regex ran
+    // against, so the site's own capitalisation survives.
+    display: title.slice(m.index, m.index + m[0].length).trim(),
+  };
+}
+
 export interface StreetCandidate {
   /** House number digits only; a trailing letter (123A) is kept separately. */
   number: string;

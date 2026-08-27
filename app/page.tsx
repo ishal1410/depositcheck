@@ -14,6 +14,8 @@ interface Analysis {
   sourceCount: number;
   addressHits: number;
   reason?: UnverifiedReason;
+  /** Set only on CONTRADICTED: the address the photos were found published as. */
+  contradictingAddress?: string;
   matches: Evidence[];
 }
 
@@ -33,10 +35,10 @@ const COPY: Record<Verdict, { heading: string; body: string }> = {
       'syndicated listing looks like. It is not a guarantee — keep verifying the landlord separately.',
   },
   CONTRADICTED: {
-    heading: 'Address not found on any copy',
+    heading: 'These photos belong to a different address',
     body:
-      'These photos are published widely, but not one of those listings carries the address you were ' +
-      'given. Hijacked listings look exactly like this: real photos lifted from a real property, ' +
+      'The listings carrying these photos name one specific property, and it is not the address you ' +
+      'were given. Hijacked listings look exactly like this: real photos lifted from a real property, ' +
       'relabelled with a different address. Check the sources below before sending any money.',
   },
   UNVERIFIED: {
@@ -48,15 +50,31 @@ const COPY: Record<Verdict, { heading: string; body: string }> = {
 };
 
 /**
- * Shown instead of the UNVERIFIED copy when the address, not the evidence, was
- * the problem. Saying "not enough copies" above a list of copies we did find
- * reads as a malfunction and leaves the user no way to correct their input.
+ * Shown instead of the generic UNVERIFIED copy when we know *why* we could not
+ * judge. "Not enough evidence" above a list of evidence reads as a malfunction,
+ * and leaves the user no idea what to do differently.
  */
-const UNREADABLE_ADDRESS = {
-  heading: 'We could not read that address',
-  body:
-    'The check needs a street number and street name — for example "13505 Burnet Rd". We did not ' +
-    'run the address comparison, so nothing below says anything about this listing either way.',
+const REASON_COPY: Record<UnverifiedReason, { heading: string; body: string }> = {
+  unreadable_address: {
+    heading: 'We could not read that address',
+    body:
+      'The check needs a street number and street name — for example "13505 Burnet Rd". We did not ' +
+      'run the address comparison, so nothing below says anything about this listing either way.',
+  },
+  generic_photo: {
+    heading: 'This photo cannot identify a property',
+    body:
+      'The same photo is published under several different addresses, which is normal for an ' +
+      'apartment building: one staged marketing shot is reused for every unit and on every listing ' +
+      'site. It cannot tell us which property this listing is for. Try a photo of the actual ' +
+      'unit — a window view or an odd corner works better than a show kitchen.',
+  },
+  no_addresses_found: {
+    heading: 'No address to compare against',
+    body:
+      'These photos do appear elsewhere, but none of those pages names a street address, so there is ' +
+      'nothing to check yours against. That is not a red flag by itself, and not a pass either.',
+  },
 };
 
 const ERRORS: Record<string, string> = {
@@ -211,16 +229,13 @@ export default function Home() {
       {result && (
         <>
           <section className="result" data-verdict={result.verdict}>
-            <h2>
-              {result.reason === 'unreadable_address'
-                ? UNREADABLE_ADDRESS.heading
-                : COPY[result.verdict].heading}
-            </h2>
-            <p>
-              {result.reason === 'unreadable_address'
-                ? UNREADABLE_ADDRESS.body
-                : COPY[result.verdict].body}
-            </p>
+            <h2>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}</h2>
+            <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
+            {result.contradictingAddress && (
+              <p className="competing">
+                Found published as <strong>{result.contradictingAddress}</strong>
+              </p>
+            )}
           </section>
 
           {result.reason !== 'unreadable_address' && result.matches.length > 0 && (

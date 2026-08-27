@@ -28,11 +28,17 @@ describe('classify', () => {
     expect(r.addressHits).toBeGreaterThan(0);
   });
 
-  test('CONTRADICTED when a widely published photo never shows the claimed address', () => {
+  // Was: "CONTRADICTED when a widely published photo never shows the claimed
+  // address". ADR-0001 reversed this deliberately. Wide publication plus a
+  // missing claim is exactly what a truncated result set looks like, and this
+  // photo is an apartment marketing shot whose matches name about thirty
+  // different properties, so it identifies none of them.
+  test('a photo published at many addresses accuses nobody', () => {
     const r = classify(load('lens-zillow-lenox-grand'), { address: '456 Oak Ave, Dallas, TX' });
-    expect(r.verdict).toBe('CONTRADICTED');
-    expect(r.sourceCount).toBeGreaterThanOrEqual(3);
+    expect(r.verdict).toBe('UNVERIFIED');
+    expect(r.reason).toBe('generic_photo');
     expect(r.addressHits).toBe(0);
+    expect(r.contradictingAddress).toBeUndefined();
   });
 
   test('will not accuse on thin evidence: too few sources stays UNVERIFIED', () => {
@@ -74,4 +80,60 @@ describe('classify', () => {
       expect(classify(load('lens-zillow-lenox-grand'), { address }).verdict).not.toBe('CONTRADICTED');
     },
   );
+
+  // ADR-0001. A truncated result set and a genuine mismatch produce an
+  // identical signal, so absence of the claimed address must never accuse.
+  describe('accuses only on positive evidence', () => {
+    test('the real truncated response must not accuse a genuine landlord', () => {
+      const truncated = load('lens-truncated-lenox');
+      const r = classify(truncated, { address: '13505 Burnet Rd, Austin, TX' });
+      expect(r.addressHits).toBe(0); // the corroborating rows are genuinely absent
+      expect(r.verdict).not.toBe('CONTRADICTED');
+      expect(r.reason).toBe('generic_photo');
+    });
+
+    test('a photo tied to exactly one other address, agreed by two sources, accuses', () => {
+      const matches = [
+        { title: '5210 Martin Ave, Austin, TX 78751 | Zillow', source: 'Zillow' },
+        { title: '5210 Martin Ave, Austin, TX 78751 - HotPads', source: 'HotPads' },
+      ];
+      const r = classify(matches, { address: '12 Elm St, Dallas, TX' });
+      expect(r.verdict).toBe('CONTRADICTED');
+      expect(r.contradictingAddress).toBe('5210 Martin Ave');
+    });
+
+    test('one competing address from a single source is not enough to accuse', () => {
+      const matches = [{ title: '12809 Palfrey Dr, Austin TX | Zillow', source: 'Zillow' }];
+      expect(classify(matches, { address: '12 Elm St' }).verdict).toBe('UNVERIFIED');
+    });
+
+    test('several competing addresses mean the photo identifies nothing', () => {
+      const matches = [
+        { title: '3300 Oak Creek Dr - Austin, TX', source: 'Rentable' },
+        { title: '800 Turkey Tree Rd, Spicewood, TX', source: 'HotPads' },
+        { title: '5210 Martin Ave, Austin, TX', source: 'Zillow' },
+      ];
+      const r = classify(matches, { address: '12 Elm St' });
+      expect(r.verdict).toBe('UNVERIFIED');
+      expect(r.reason).toBe('generic_photo');
+    });
+
+    test('matches carrying no address at all cannot accuse', () => {
+      const matches = [
+        { title: 'Apartments For Rent in Austin, TX - Trulia', source: 'Trulia' },
+        { title: 'Pet Friendly Apartments - 571 Rentals | Zillow', source: 'Zillow' },
+        { title: 'Photo Gallery | Lenox Grand', source: 'Lenox Grand' },
+      ];
+      const r = classify(matches, { address: '12 Elm St' });
+      expect(r.verdict).toBe('UNVERIFIED');
+      expect(r.reason).toBe('no_addresses_found');
+    });
+
+    test('the claimed address wins over any number of competing ones', () => {
+      // The real Lenox response carries 13505 Burnet Rd AND ~29 other addresses.
+      const r = classify(load('lens-zillow-lenox-grand'), { address: '13505 Burnet Rd, Austin, TX' });
+      expect(r.verdict).toBe('CORROBORATED');
+      expect(r.contradictingAddress).toBeUndefined();
+    });
+  });
 });

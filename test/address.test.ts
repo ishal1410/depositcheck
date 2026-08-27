@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, test } from 'vitest';
-import { addressAppearsIn } from '../lib/address';
+import { addressAppearsIn, extractStreetAddress } from '../lib/address';
 
 /** Real captured Google Lens response: 76 exact matches for one Austin listing photo. */
 const lenox = JSON.parse(
@@ -116,5 +116,44 @@ describe('addressAppearsIn', () => {
   // "East" is the street name here, not a directional to be skipped over.
   test('a street actually named after a direction still matches', () => {
     expect(addressAppearsIn(['1200 East St, Austin TX'], '1200 East St')).toBe(1);
+  });
+});
+
+describe('extractStreetAddress', () => {
+  test('reads a street address out of a real listing title', () => {
+    expect(extractStreetAddress('5210 Martin Ave, Austin, TX 78751 | Zillow'))
+      .toMatchObject({ key: '5210 martin', display: '5210 Martin Ave' });
+  });
+
+  // Real titles from a live Lens response. A loose number+word extractor found
+  // 14 "addresses" in these, 10 of them junk; each would become an accusation.
+  test.each([
+    ['1 Bedroom Apartments for Rent in Lamplight Village, Austin, TX'],
+    ['Apartments Under $1200 for Rent in Lamplight Village, Austin, TX'],
+    ['Section 8 - 5 Beds 2 Baths Single Family Home Apartments Austin, TX'],
+    ['Gracy Woods Austin Pet Friendly Apartments - 571 Rentals | Zillow'],
+    ['Apartments For Rent in 78727, - 791 Rentals | Trulia'],
+    ['Lenox Grand - Austin, TX Apartments | Realtor.com'],
+    ['Photo Gallery | Lenox Grand'],
+  ])('reads no address out of listing vocabulary: %s', (t) => {
+    expect(extractStreetAddress(t)).toBeNull();
+  });
+
+  test('reads a two-word street name', () => {
+    expect(extractStreetAddress('3300 Oak Creek Dr - Austin, TX - Rentable'))
+      .toMatchObject({ key: '3300 oak creek', display: '3300 Oak Creek Dr' });
+  });
+
+  test('skips a directional before the street name', () => {
+    expect(extractStreetAddress('Lenox Grand - 13505 N Burnet Rd Austin TX')?.key).toBe('13505 burnet');
+  });
+
+  test('keeps a directional that is itself the street name', () => {
+    expect(extractStreetAddress('now leasing 1200 East St, Austin')?.key).toBe('1200 east');
+  });
+
+  test('treats an abbreviated and a spelled-out suffix as the same address', () => {
+    expect(extractStreetAddress('13505 Burnet Road, Austin')?.key)
+      .toBe(extractStreetAddress('13505 Burnet Rd, Austin')?.key);
   });
 });

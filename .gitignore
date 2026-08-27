@@ -4,3 +4,9 @@ node_modules/
 .next/
 tsconfig.tsbuildinfo
 .bug-hunter/
+
+.vercel
+.env*
+# Added by `vercel link`, which does not know this template is meant to ship.
+# It is the setup instructions the challenge asks for, so it must stay tracked.
+!.env.example

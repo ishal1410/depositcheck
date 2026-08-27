@@ -139,7 +139,10 @@ export async function handleAnalyze(req: Request, deps: AnalyzeDeps): Promise<Re
       return Response.json({ error: result.reason }, { status: 502 });
     }
 
-    const { verdict, sourceCount, addressHits, reason } = classify(result.matches, { address });
+    const { verdict, sourceCount, addressHits, reason, contradictingAddress } = classify(
+      result.matches,
+      { address },
+    );
     return Response.json({
       verdict,
       sourceCount,
@@ -147,6 +150,10 @@ export async function handleAnalyze(req: Request, deps: AnalyzeDeps): Promise<Re
       // Carried through so the UI can say "we could not read that address"
       // instead of "not enough copies" while listing the copies it found.
       ...(reason ? { reason } : {}),
+      // The address the photo was actually found to belong to. This is the
+      // evidence behind an accusation, so it has to reach the person deciding
+      // whether to wire money.
+      ...(contradictingAddress ? { contradictingAddress } : {}),
       // Re-projected rather than passed through: these rows are third-party data
       // heading for a UI, and every field is optional at the source.
       matches: result.matches.map((m: Match) => ({

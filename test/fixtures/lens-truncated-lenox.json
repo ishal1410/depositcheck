@@ -1,0 +1,120 @@
+{
+ "_comment": "Real truncated SerpApi google_lens exact_matches response captured from DepositCheck production on 2026-08-27. Same photo normally returns 84-88 matches including three that name 13505 Burnet Rd; this response returned 23 and none of them. It caused a false CONTRADICTED against a genuine landlord.",
+ "exact_matches": [
+  {
+   "title": "River Crossing Atx - Townhome - 2bd/2.5ba - W/d - Rentable",
+   "source": "Rentable",
+   "link": "https://lens.google.com/goto?url=CAESmgEB6zswFZX5G4PmuCeqjQ7XgV-v3cO8go40BOeXaDznRNHKmXC5AMvuPx2SRHAW_0u0kSRJAkVIloBR7nvCvB-_itUh9nziBoFvE54-WaJxABTBhIna8_lvKkkchc9trZ1sV2RsCz1bbSQd0V7KwqoXzRZRkmXAadnDcm7SDJpcu9F0L5Gn-yARVoy8xIWy572y9yXd-TTxmRmd"
+  },
+  {
+   "title": "Lenox Grand - Austin, TX Apartments | Realtor.com\u00ae",
+   "source": "Realtor.com",
+   "link": "https://lens.google.com/goto?url=CAESjAEB6zswFYtMKx2EOnVhQdHfgAZdpUC7Iu7VpHhBt67aUbp6goqw--I4dBHUDF_SVBpikcCW8YA2ViSt-pZ2HyeDfOsfX7XHMol9JZikEdmyP25b26Wvv1Hp25Iv34mBuwISuNOBQBMlCLbc_aNvtmG6FB7jNBFpKnjWMu20cWIJz7hfNY1cXTbMBOfoBw"
+  },
+  {
+   "title": "1 Bedroom Apartments for Rent in Lamplight Village, Austin, TX",
+   "source": "Redfin",
+   "link": "https://lens.google.com/goto?url=CAESnAEB6zswFZdlP9ZHlAjizlbkterkrM2eLK-97Lo4ChgPoPTGJzwXAC9eKiLUlDYbSniYiu-iF9RBFe4aVNWFMEByt8v3UjTVPVx02iTl9xtYnIJmrdBd7Xyv-D5QnNMeFKgj50DGzWp1syj6MdnXOuUdpEaIx9--xgUdSThNOjdDEvx-x4F-qk3vwsX-6EoObF2zXOtzRIgJnOAbq6I"
+  },
+  {
+   "title": "Apartments Under $1200 for Rent in Lamplight Village, Austin, TX",
+   "source": "Redfin",
+   "link": "https://lens.google.com/goto?url=CAESnQEB6zswFSlJ4x8WQLMvQ3kMRPPALjS7BUT4-YbtmySjo2Q6FHZy1tm0kuj4LAb32XdQMXkMrDil8mLPnW77oP-jiB6rK2ypTqH8T1nCRzr-ztlDc73UmnBJKi-jcpQbahC4_1EdCNq_71A5-TvGXBjMTDGMX4k0UJkeNXe77FI_4R5uHI85k9KBUkzdZgEuKfXr5jYbV-iOm4y8rR29"
+  },
+  {
+   "title": "Photo Gallery | Lenox Grand",
+   "source": "Lenox Grand",
+   "link": "https://lens.google.com/goto?url=CAESYgHrOzAV1FVE-VtkE4NEP40XWFTgoRWiq_d-nuFjwxBbXrJkN_9YNpP9d9j0WvS4erXDK5r-Rt1UZetsh-arZg9eYtb-rJoNr1rzgzpMUOuM__doZIJvuLUO1UgKoj1NS0Td"
+  },
+  {
+   "title": "Apartments For Rent in Austin, TX with Gym/Fitness Center - Trulia",
+   "source": "Trulia",
+   "link": "https://lens.google.com/goto?url=CAESewHrOzAV9Ww_qY04t5K6eYJMdYMsdNOgD6J9q6_Hz9PBa9VeIP7wTlBHQcAbac4afLzyxQNXMlrC7FP74je_a8SBVlKbQ5OoXkLOXbH2VjtsSETkTsGOaFT8r0R3Aif11II5dPTGPOpu_ZiJYft66yWiW5DCcl6mOlUFZg"
+  },
+  {
+   "title": "Apartment Communities For Rent in Austin, TX - Trulia",
+   "source": "Trulia",
+   "link": "https://lens.google.com/goto?url=CAESewHrOzAV2mKmIyBwVaGYwa1ywXZJScn81CALmeYAujsK-rOZjItVDyjHz0-rkEOGjDzDyck8vIKdXbB5XfrT1U-y6qnMOpYfIDetCNy-E8rv8DqwlvkO_4e0lcZPTRLmtpcQIeXM8uKzu_aMv2LRS0al3qfVVvnTrh5JNw"
+  },
+  {
+   "title": "2 Bedroom Apartments for Rent in 78727, TX - Austin - Realtor.com",
+   "source": "Realtor.com",
+   "link": "https://lens.google.com/goto?url=CAESaQHrOzAVXNw1pd6_ybMjPB6BuDOnwB4KQBJSI3q6qjq72Rmwg0ryrxeXIm64seiqjZJITbdkGJYBj3g752rzkLOyv_vfcpg7PnGgxxSWBMwP0sGpny2q3qROM1EgOncSl0F9MqmVUia0xw"
+  },
+  {
+   "title": "Apartments Under $1500 for Rent in Wells Branch, TX - Redfin",
+   "source": "Redfin",
+   "link": "https://lens.google.com/goto?url=CAESiAEB6zswFelyMC97KmMHe7HdSMqVenq_bwiMewdBcIRdfew9_q_HH-YtnJk3a280iQj7llfuGbDAdMUgf1VSr2AY4RnZTGFOsT7B3vzfDkJkMZtr7roYDsSQq1DuKTyzk0KW6xyhAptZnHPncjGs-3-2rkG4tk5dBVOOV1ux1nP4X-MifpI04jRN"
+  },
+  {
+   "title": "Apartments for Rent with Laundry in Austin, TX - HotPads",
+   "source": "HotPads",
+   "link": "https://lens.google.com/goto?url=CAESdgHrOzAVEIjepfhz3PNHK_k3sjAqyoHuWZCXbhJWwC0M5NqBUFGlPPtcDobNiTjYg8aTfK3yAPpX9tXqUeeZkbQcYlSSwWNuwfiyGiNt07zz7sx6eonLsUC-LXa4OFQMdgJt8OzfiQKryNXsz8jlQOlQCyikiIQ"
+  },
+  {
+   "title": "New Rentals in Whitney Oaks, Austin | Realtor.com\u00ae",
+   "source": "Realtor.com",
+   "link": "https://lens.google.com/goto?url=CAESdwHrOzAVsA6xSZE3swbeMlJnA1ryHG4xS_F0wm3dGLJPMeqMGAfjqa0yuYiv7wzj3u0uQL5oIxY63ZWwqzAS5u3jTNb-XiXVJ17lOFRtIPfkemZlk13rz2Bpvo5WmtTQrXYbiHbPwcq8s58FUSArOUNnqO-m0ES2"
+  },
+  {
+   "title": "Apartments Under $2000 for Rent in Gracy Woods, TX - Austin - Redfin",
+   "source": "Redfin",
+   "link": "https://lens.google.com/goto?url=CAESlwEB6zswFfTx7DWnf6ZO3vjFvPnzOP9HRAvBFZB6sz5k35UyUEPLAK4AlZ9cIQ-xXzDXob8BogS074D71ZZ3qzBtMuMD8xNj4YWpQIVUw1mco_egIY1XRVvjgYfEQdmSyPQOicoEDWaCaoHHtcFMCXZrza9VASUCxFDrsSEu2Q_PrLzuw5mQp8-lL2zikIisxCxl4K082OX9"
+  },
+  {
+   "title": "Lenox Grand | Austin, TX | Starting at $1,179 - ForRent.com",
+   "source": "ForRent.com",
+   "link": "https://lens.google.com/goto?url=CAESbQHrOzAVhgOquuGSEG4Na-WtYY7SPj1oBTBW7AC3d7ADDhVxCInsSBE26y_LLScqEp2_ZAMyE7GS23EpdtovbVn-5npVsKL4uLOULFstmhMABf2vSIBiJuBoIzKc4yk8lBRBvkDthA2ECLLUQNQ"
+  },
+  {
+   "title": "Apartments for Rent near Summitt Elementary School - Austin, TX ...",
+   "source": "Realtor.com",
+   "link": "https://lens.google.com/goto?url=CAESkQEB6zswFVkp6QpiBTOGZNuYZof3V9E2KvEd_gwFtiSwAswiCoxCZ782lwHWGaQSfBWDyQIw1xNLbBqC6xWFHsBZQAppv5cpufBa2j9rINa-3saDCgCalVAVG8ljBB_xt6mQy5cQu8rahgk83cz9Ey95uCjTZXCWQd9-TQWsMX2jeYTqMcb5NySzgBdMP2gz8C4-"
+  },
+  {
+   "title": "3300 Oak Creek Dr - Austin, TX - Rentable",
+   "source": "Rentable",
+   "link": "https://lens.google.com/goto?url=CAESawHrOzAV_QpVJtvfc5QIR0TkYeCp_Tk6uyKjOxuToc4PJ2v3AV-u3I8M8YpqvQJAbHBTgHAo8BTaGIpTw-cOYFE3VZ2Mc6FWjqYgJdXHVRNnOJiw91fs_gaie4GIXT1nynIkms-HcLECoj6M"
+  },
+  {
+   "title": "Gracy Woods Austin Pet Friendly Apartments - 571 Rentals | Zillow",
+   "source": "Zillow",
+   "link": "https://lens.google.com/goto?url=CAEScgHrOzAVoQbsDzOpHr79kMnbILdc5iec6SM0Z39kAxW0y_qH16IXIzI-OEVQqEm5MPcrLX5yJ4hr7e_f8niWdN1HskzWmjtYxmnOrEg7K032kDSsfgIPHtkZznJq98tJ7CjBMsxfTXeeB9NoyigVxGNGHw"
+  },
+  {
+   "title": "5309- C Indio Dr - Austin, TX - Rentable",
+   "source": "Rentable",
+   "link": "https://lens.google.com/goto?url=CAESaQHrOzAVVEQLmH77eZNLozt56eCD4RZnjba26mCWDTUD1e2XOYJRO50oal0FekZqPqAYurtJ1yaQJ4eiBOEI-NaCPUU-LdWg7yS87O6-PmmllgNTSOD3fP9UfgG2ODExnU6IyfsUj6trRg"
+  },
+  {
+   "title": "Section 8 - 5 Beds 2 Baths Single Family Home Apartments Austin, TX",
+   "source": "Rentable",
+   "link": "https://lens.google.com/goto?url=CAEShQEB6zswFfp7Sh2-anJqJ4opvOhBOpNXIO7gxSX9Ysw_351sjky3ipa7xzOkySISyB2rm-CjhsvcdmFa3S_kWYWKQBa0CclguAFHUIROk5WmMcbmtavdOGRjCqqEFAA-k8oCbO0ar4pj9WNeab1rgCrImNALVw9hOl35yDaTxBX4gY2MPaPP"
+  },
+  {
+   "title": "Rental Listings in Gracy Woods Austin - 705 Rentals | Zillow",
+   "source": "Zillow",
+   "link": "https://lens.google.com/goto?url=CAESbQHrOzAVYcyKlYQTTkvhMB4mFe0a46A1jZZkuFHzPeZmp6YEYVgE_czqRmhiWmLFdqoXZSANByETO7U3OX3EXjwUuA6z8-YnRXMu9F6kDnRswqrRe83FqSnZBAcotSNg5__LYgG7vOgODrQ9m3U"
+  },
+  {
+   "title": "33Hundred - 3300 Wells Branch Pkwy - Austin, TX | Rent.",
+   "source": "Rent.com",
+   "link": "https://lens.google.com/goto?url=CAESdAHrOzAVdckmRhJIkYccnpLqi2Jl-svpGn0kjkYcffVbhyzF-Vr2KEWVaawyMT97YLofkr1gh_osp-gZyStCxOvqLxzO-qMkPvR8behDPvIUtN2JUYMhR-NURf26UfvALdOyELrNFQXMc5uL4mWrbLFV2OvM"
+  },
+  {
+   "title": "800 Turkey Tree Rd, Spicewood, TX 78669 - HotPads",
+   "source": "HotPads",
+   "link": "https://lens.google.com/goto?url=CAESfAHrOzAV7-XwW3zdAT416FlqOi-htQWnpTW-Q0ffJ7UFtR_MlNJnxDTvnEQ6Sbcg3nIeyz1FIpxi5VQUyvB3ZuidG_Oqpo8JJRRmeMluyPcpnKHlVUWia6I29eboPErFa36V1fM1CY2EBbsNxRK4iZdY5zmbc7JdT2-Gu-0"
+  },
+  {
+   "title": "Apartments For Rent in Gracy Woods Austin - 624 Rentals | Zillow",
+   "source": "Zillow",
+   "link": "https://lens.google.com/goto?url=CAEScAHrOzAVzxUrZOzUkIWBcV6RLZ_Q2GDDCCfYZkOYySbbjb-SUKtVBn_D-aZyBvZsbthkdiDNTnzP1PdjQK2nbpvy84oBO-x9ZkG54GeOphWRQM1q97bfYiI2XExp0YhljKGVjo7AM5Oaoe41G5c2WXc"
+  },
+  {
+   "title": "5210 Martin Ave, Austin, TX 78751 - HotPads",
+   "source": "HotPads",
+   "link": "https://lens.google.com/goto?url=CAESdwHrOzAVGcfxDrMXkJSE6tgIV4x2t1_-ETMcJ425XwUEJP4yRmzQLo3n2_pUgte70A7v8PYoTcNiSoJyW-04F9Ljd77Y_XsO0HHzuOVS2qSKTwhIScx98wOjtoDlZlbOVh4J5XHzoVzlhJA7aR06A3-Bg_P9vxTz"
+  }
+ ]
+}

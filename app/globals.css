@@ -93,6 +93,11 @@ button[disabled] { opacity: 0.45; cursor: progress; }
 .result[data-verdict='UNVERIFIED'] { border-left-color: var(--unverified); }
 .result[data-verdict='UNVERIFIED'] h2 { color: var(--unverified); }
 
+/* The competing address is the evidence behind an accusation, so it is set
+   apart from the explanatory copy rather than buried in it. */
+.result .competing { margin-top: 0.6rem; color: var(--fg); }
+.result .competing strong { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
 .evidence { margin-top: 2rem; }
 .evidence h3 { font-size: 0.95rem; margin: 0 0 0.6rem; }
 .evidence ol { margin: 0; padding-left: 1.2rem; }

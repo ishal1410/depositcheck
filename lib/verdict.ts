@@ -1,4 +1,4 @@
-import { addressAppearsIn, streetCandidates } from './address';
+import { addressAppearsIn, extractStreetAddress, streetCandidates } from './address';
 
 export type Verdict = 'CORROBORATED' | 'CONTRADICTED' | 'UNVERIFIED';
 
@@ -14,7 +14,11 @@ export interface Claim {
 }
 
 /** Why a verdict came out UNVERIFIED, when the distinction matters to the user. */
-export type UnverifiedReason = 'unreadable_address';
+export type UnverifiedReason =
+  | 'unreadable_address'
+  /** A generic photo: its matches point at many properties, or at none. */
+  | 'generic_photo'
+  | 'no_addresses_found';
 
 export interface Result {
   verdict: Verdict;
@@ -26,10 +30,22 @@ export interface Result {
    * tells the user "not enough copies" while listing the copies it found.
    */
   reason?: UnverifiedReason;
+  /**
+   * The single competing address the photo was found to belong to. Present only
+   * on CONTRADICTED, where it is the evidence: naming the address the photo
+   * really belongs to is what makes the warning checkable by the user.
+   */
+  contradictingAddress?: string;
 }
 
-/** Distinct sites a photo was found on, before we will call a listing hijacked. */
-export const MIN_SOURCES_TO_CONTRADICT = 3;
+/**
+ * Sources that must agree on the SAME competing address before we accuse.
+ *
+ * Not "sources overall" — that was the old meaning and it is what produced a
+ * false accusation at 9 sources. Two independent sites naming one other address
+ * is the measured shape of a real single-property listing.
+ */
+export const MIN_SOURCES_TO_CONTRADICT = 2;
 
 /**
  * Collapse a site's display labels to one identity.
@@ -43,6 +59,37 @@ export const MIN_SOURCES_TO_CONTRADICT = 3;
 function normalizeSource(raw: unknown): string {
   if (typeof raw !== 'string') return '';
   return raw.trim().toLowerCase().replace(/\.(com|co|net|org|io)\b.*$/, '').split(/\s+/)[0] ?? '';
+}
+
+/**
+ * Addresses found in the matches that are not the claimed one, mapped to the
+ * sources that name each.
+ *
+ * A claimed "3300 Oak Creek Dr" parses to the key "3300 oak", while a title
+ * writing it out yields "3300 oak creek". Treating those as different would let
+ * a listing be accused of belonging to its own address, so a key that extends a
+ * claimed one counts as the same address.
+ */
+function competingAddresses(
+  matches: Match[],
+  claimed: string,
+): Map<string, { display: string; sources: Set<string> }> {
+  const mine = streetCandidates(claimed).map((c) => `${c.number} ${c.name}`);
+  const isMine = (key: string) => mine.some((m) => key === m || key.startsWith(`${m} `));
+
+  const found = new Map<string, { display: string; sources: Set<string> }>();
+  for (const m of matches) {
+    const title = typeof m?.title === 'string' ? m.title : '';
+    const hit = extractStreetAddress(title);
+    if (hit === null || isMine(hit.key)) continue;
+    const source = normalizeSource(m?.source);
+    // Grouped by key so suffix variants are one address; the first spelling
+    // seen is kept for display.
+    const entry = found.get(hit.key) ?? { display: hit.display, sources: new Set<string>() };
+    if (source) entry.sources.add(source);
+    found.set(hit.key, entry);
+  }
+  return found;
 }
 
 export function classify(matches: Match[], claim: Claim): Result {
@@ -74,15 +121,37 @@ export function classify(matches: Match[], claim: Claim): Result {
 
   const addressHits = addressAppearsIn(titles, claim.address);
 
+  // Checked before anything else can accuse. The real Lenox response carries the
+  // claimed address AND about thirty others, so without this precedence a
+  // genuine listing would be convicted by its own neighbours' addresses.
   if (addressHits > 0) return { verdict: 'CORROBORATED', sourceCount, addressHits };
 
-  // The claimed address appears nowhere, but that only means something if the
-  // photo is demonstrably published widely. Thin evidence must not accuse.
-  if (sourceCount >= MIN_SOURCES_TO_CONTRADICT) {
-    return { verdict: 'CONTRADICTED', sourceCount, addressHits };
+  // ADR-0001: from here, absence of the claimed address proves nothing. A
+  // truncated result set produces exactly this state, and did in production.
+  // Only a competing address actually found in the evidence may accuse.
+  const competing = competingAddresses(matches, claim.address);
+
+  if (competing.size === 0) {
+    return { verdict: 'UNVERIFIED', sourceCount, addressHits, reason: 'no_addresses_found' };
   }
 
-  // ponytail: everything else is UNVERIFIED on purpose. There is no safe/pass
-  // verdict in the type, so an unmatched photo can never render as clean.
+  // A photo tied to several addresses identifies none of them: an apartment
+  // block's marketing shot, reused across every unit and aggregator page.
+  // Measured across four complexes: 0, 10, 10 and 26 competing addresses, never 1.
+  if (competing.size > 1) {
+    return { verdict: 'UNVERIFIED', sourceCount, addressHits, reason: 'generic_photo' };
+  }
+
+  const only = [...competing.values()][0];
+  if (only.sources.size >= MIN_SOURCES_TO_CONTRADICT) {
+    return {
+      verdict: 'CONTRADICTED',
+      sourceCount,
+      addressHits,
+      contradictingAddress: only.display,
+    };
+  }
+
+  // One site saying so is a coincidence away from an accusation.
   return { verdict: 'UNVERIFIED', sourceCount, addressHits };
 }

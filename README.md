@@ -25,7 +25,7 @@ The photos are the part the scammer cannot change. If they change them, the list
 | Verdict | Meaning |
 |---|---|
 | `CORROBORATED` | The photos appear elsewhere alongside the same address — what a genuine syndicated listing looks like. |
-| `CONTRADICTED` | The photos are published widely, but not one of those listings carries your address. |
+| `CONTRADICTED` | The photos were found to belong to one specific *other* address, which the result names. |
 | `UNVERIFIED` | Not enough evidence either way. |
 
 There is no green "this listing is safe" state, and that is a design decision rather than an omission. A listing built from AI-generated photos returns zero reverse-image matches — the same signal as an honest landlord who photographed the flat themselves and posted it nowhere else. **Absence of corroboration is not evidence of honesty**, and a UI that implied otherwise would be at its most confident exactly when it was most dangerous.
@@ -34,7 +34,17 @@ For the same reason the tool reports signals with their sources and never assert
 
 ### Guarding against false accusations
 
-Telling someone their honest landlord is a fraudster is the worst thing this tool could do, so the accusation path is deliberately hard to reach. `CONTRADICTED` requires the photo to be demonstrably well-syndicated first — at least three distinct sources — because absence of your address only means something when the evidence was rich enough to have contained it. An address that cannot be parsed produces `UNVERIFIED` with an explicit "we could not read that address", never an accusation resting on an empty input box.
+Telling someone their honest landlord is a fraudster is the worst thing this tool could do, so an accusation requires **positive evidence** — a competing street address actually found in the matches, named by at least two independent sites. Not finding your address is never enough on its own.
+
+That rule was bought with a real failure. On the first genuine production request the tool accused a real landlord: a photo of Lenox Grand, submitted with its true address, came back `CONTRADICTED`. The cause was not the matching logic but a **truncated search response** — that request received 23 matches, while twelve later calls for the same photo returned 84 to 88, three of which name 13505 Burnet Rd. The earlier rule treated "your address is absent" as evidence, and a truncated response is indistinguishable from a genuine mismatch. No threshold separates them; the truncated response still carried 23 matches across 9 sources. So absence stopped counting as evidence altogether. The reasoning is recorded in [ADR-0001](docs/adr/0001-accuse-only-on-positive-evidence.md), and the real truncated response is checked in as a regression fixture.
+
+An address that cannot be parsed produces `UNVERIFIED` with an explicit "we could not read that address", never an accusation resting on an empty input box.
+
+### What it cannot do
+
+**It cannot judge an apartment complex's marketing photo.** Those staged show-unit shots are reused across every unit and on every aggregator's category pages, so the same image legitimately appears under many addresses. Measured across four complexes, such photos yielded 0, 10, 10 and 26 competing addresses — never exactly one. The tool says so plainly and asks for a different photo: a window view or an awkward corner of the actual unit identifies a property where a show kitchen cannot.
+
+This is a real limit, not a rough edge. Detection works on listings whose photos trace to a single property, which in practice means houses and individual units rather than complexes.
 
 ## Setup
 

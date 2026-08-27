@@ -46,14 +46,33 @@ describe('handleAnalyze', () => {
     expect(body.matches).toHaveLength(4);
   });
 
-  test('contradicts when a well-syndicated photo never carries the claimed address', async () => {
+  // ADR-0001: absence of the claimed address no longer accuses, so this seam is
+  // checked with the shape that does — one competing address, two sources.
+  test('contradicts and names the address the photo really belongs to', async () => {
+    const oneOtherProperty = [
+      { title: '5210 Martin Ave, Austin, TX 78751 | Zillow', source: 'Zillow' },
+      { title: '5210 Martin Ave, Austin, TX 78751 - HotPads', source: 'HotPads' },
+    ];
+    const res = await handleAnalyze(
+      post({ imageUrl: IMAGE, address: '456 Oak Ave' }),
+      deps({ lookup: ok(oneOtherProperty) }),
+    );
+    const body = await res.json();
+    expect(body.verdict).toBe('CONTRADICTED');
+    expect(body.addressHits).toBe(0);
+    // The competing address must survive the trip to the client: it is the
+    // evidence, and a warning the user cannot check is not much of a warning.
+    expect(body.contradictingAddress).toBe('5210 Martin Ave');
+  });
+
+  test('a widely syndicated photo carrying no single address does not accuse', async () => {
     const res = await handleAnalyze(
       post({ imageUrl: IMAGE, address: '456 Oak Ave' }),
       deps({ lookup: ok(syndicated('13505 Burnet Rd')) }),
     );
     const body = await res.json();
-    expect(body.verdict).toBe('CONTRADICTED');
-    expect(body.addressHits).toBe(0);
+    expect(body.verdict).toBe('UNVERIFIED');
+    expect(body).not.toHaveProperty('contradictingAddress');
   });
 
   test('a photo that appears nowhere is UNVERIFIED, never a pass', async () => {
