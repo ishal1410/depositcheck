@@ -1,90 +1,49 @@
 /*
- * DepositCheck — case-file direction.
+ * DepositCheck — instrument direction.
  *
- * The page is a record being assembled: the renter's photo is the exhibit, the
- * listings carrying it are the evidence, and the verdict is pressed onto the
- * record like a stamp. Colour carries meaning and nothing else: three seal inks
- * for three verdicts, everything around them kept quiet.
+ * The page is a scanner, not a document. A control rail down the left holds the
+ * photo, the address and the button and never scrolls away; the right pane is
+ * the work surface the answer lands on. Nothing is a centred column.
+ *
+ * Colour is a signal system, not decoration: one ink per verdict, one ink for
+ * anything interactive, and they are never allowed to mean each other's thing.
+ * The palette is the high-contrast dark profile — saturated accent on a
+ * near-black navy ground — because this screen is read once, quickly, by
+ * someone deciding whether to send money.
+ *
+ * Committed to a single dark appearance on purpose. A light twin of a signal
+ * system is a second set of contrast problems to keep correct, and the previous
+ * light/dark pair is exactly where the band inverted itself into a white slab.
  */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --paper: #e9ede8;
-  --surface: #ffffff;
-  --sunken: #dfe5dd;
-  --ink: #131a16;
-  --ink-2: #59635c;
-  --rule: #c6cfc4;
-  --rule-strong: #9aa79a;
+  --ground: #020617;
+  --surface: #0e1223;
+  --raised: #191f33;
+  --line: #2c3650;
+  --line-soft: #1b2338;
 
-  /*
-   * The band has its own ground and its own text colour rather than borrowing
-   * `--ink` and `--paper`. Borrowing them meant the band inverted with the
-   * theme: in dark mode it became a near-white slab across the top of a dark
-   * page, and the accent inside it sat at about 1.7:1. A dark band is a dark
-   * band in both themes.
-   */
-  --band: #131a16;
-  --on-band: #e9ede8;
-  /* Light mode needs no edge: black meeting paper is edge enough. */
-  --band-edge: transparent;
+  --text: #f8fafc;
+  --text-2: #94a3b8;
 
-  --seal-corroborated: #1b5e3a;
-  --seal-contradicted: #93261b;
-  --seal-unverified: #8a6413;
-  --seal-tint: #ffffff;
+  /* Interactive. Kept away from every verdict ink so a link can never be read
+     as a finding, and a finding never as a link. */
+  --action: #38bdf8;
+  --action-hi: #7dd3fc;
+  --on-action: #04131c;
 
-  /* Interactive colour is separated from verdict colour on purpose: a seal ink
-     must never be mistaken for "this is a link", and a link must never read as
-     a verdict. Trust blue, contrast-checked against --surface. */
-  --action: #0b4f74;
-  --action-strong: #0c4a6e;
-  --on-action: #ffffff;
-  /* Same role, but legible against the dark band. */
-  --action-on-band: #7cc4e8;
+  --v-corroborated: #34d399;
+  --v-contradicted: #fb5b4b;
+  --v-unverified: #fbbf24;
 
-  --shadow: 0 1px 0 var(--rule), 0 12px 28px -22px rgba(19, 26, 22, 0.55);
+  --rail-w: 23rem;
 
   --step-0: 1rem;
-  --step-1: 1.1875rem;
-  --step-2: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
-  --step-3: clamp(2.25rem, 1.6rem + 3.2vw, 3.75rem);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-
-    --paper: #121714;
-    --surface: #1a201d;
-    --sunken: #151b18;
-    --ink: #e7ede8;
-    --ink-2: #9aa79f;
-    --rule: #2b3430;
-    --rule-strong: #46524c;
-
-    /* Deeper than --paper and --surface, so the band still reads as the ground
-       the working surface is lifted off. */
-    --band: #090d0b;
-    --on-band: #e7ede8;
-    /* In dark mode the band, the paper and the card sit within a few percent
-       of each other, so the edge that separates context from working surface
-       needs to be drawn rather than implied. */
-    --band-edge: #232b27;
-
-    --seal-corroborated: #6cd196;
-    --seal-contradicted: #f4877a;
-    --seal-unverified: #e2bd5f;
-    --seal-tint: #10150f;
-
-    --action: #7cc4e8;
-    --action-strong: #a5d8f3;
-    --on-action: #0b1a22;
-    --action-on-band: #7cc4e8;
-
-    --shadow: 0 1px 0 var(--rule), 0 14px 30px -24px rgba(0, 0, 0, 0.9);
-  }
+  --step-1: 1.125rem;
+  --step-2: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+  --step-3: clamp(2.5rem, 1.7rem + 3.4vw, 4rem);
 }
 
 * {
@@ -93,57 +52,12 @@
 
 body {
   margin: 0;
-  /* The horizontal ruling that used to live here read as a screen artifact at
-     full size rather than as paper. Plain ground, and let the dark band do the
-     work of separating context from the working surface. */
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ground);
+  color: var(--text);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--step-0);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-}
-
-main {
-  max-width: 62rem;
-  margin: 0 auto;
-  padding: 0 1.25rem 3rem;
-}
-
-/* ------------------------------------------------------------------- band */
-
-/*
- * The page had no figure and no ground: paper, cards and text all sat within a
- * few percent of each other, so it read as an unstyled document. This band is
- * the anchor — everything inside it is context, and the working surface begins
- * where it ends.
- */
-.band {
-  position: relative;
-  margin: 0 -1.25rem;
-  padding: 1.25rem 1.25rem 5.5rem;
-  background: var(--band);
-  color: var(--on-band);
-  /*
-   * Full-bleed to the window edges, painted rather than laid out.
-   *
-   * This was an absolutely positioned `inset: 0 -100vw` pseudo-element, and it
-   * really did lay out that wide: 2416px of scrollable document on a 1280px
-   * window, 780 on a 390px phone. Half the page was empty void you could
-   * scroll into. `overflow-x: clip` on the root does not fix it either —
-   * overflow set on `html` propagates to the viewport and leaves the element
-   * itself visible. Box shadows paint outside the border box without
-   * contributing to scrollable overflow, which is exactly what this needs.
-   */
-  box-shadow: -100vmax 0 0 var(--band), 100vmax 0 0 var(--band),
-    0 1px 0 var(--band-edge), -100vmax 1px 0 var(--band-edge),
-    100vmax 1px 0 var(--band-edge);
-}
-
-@media (min-width: 46rem) {
-  .band {
-    padding-bottom: 6.5rem;
-  }
 }
 
 a {
@@ -151,135 +65,137 @@ a {
 }
 
 :where(a, button, input, summary):focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--action);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* ---------------------------------------------------------------- masthead */
+/* ------------------------------------------------------------------ frame */
+
+.app {
+  display: grid;
+  min-height: 100dvh;
+}
+
+@media (min-width: 64rem) {
+  .app {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  }
+
+  /* The control rail is the one thing that must never scroll away: the answer
+     is worthless if you cannot see which photo and which address produced it. */
+  .rail {
+    position: sticky;
+    top: 0;
+    max-height: 100dvh;
+    overflow-y: auto;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1.5rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.pane {
+  min-width: 0;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+@media (min-width: 64rem) {
+  .pane {
+    padding: 3rem 3rem 5rem;
+  }
+}
+
+/* ------------------------------------------------------------------ brand */
 
 .masthead {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--on-band) 22%, transparent);
-}
-
-.band .filed,
-.band .lede {
-  color: color-mix(in srgb, var(--on-band) 72%, transparent);
-}
-
-/* On the band the second line carries the accent, so the headline reads as one
-   deliberate two-tone phrase rather than as text that faded out. */
-.band h1 .turn {
-  color: var(--action-on-band);
-}
-
-.band .wordmark .icon {
-  color: var(--action-on-band);
+  gap: 0.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  margin: 0;
+}
+
+.wordmark .icon {
+  color: var(--action);
+}
+
+/* The one microtype role that survived. It used to be nine, and at nine it is
+   not a signal, it is a texture. */
+.filed,
+.field-label,
+.exhibit-label,
+.side-label,
+.tally dt,
+.evidence h3,
+.evidence summary,
+.verdict-tag,
+.replace,
+.src,
+.colophon {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .filed {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
   margin: 0;
-}
-
-h1 {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--step-3);
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  margin: 2.5rem 0 0;
-  max-width: 16ch;
-}
-
-h1 .turn {
-  display: block;
-  color: var(--ink-2);
-}
-
-.lede {
-  margin: 1rem 0 0;
-  max-width: 46ch;
-  font-size: var(--step-1);
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 /* ------------------------------------------------------------------- form */
 
-/* Lifted onto the band, so the thing you came to do is the first solid object
-   on the page instead of the last. */
-form.card {
-  position: relative;
+.controls {
   display: grid;
   gap: 1.25rem;
-  align-items: start;
-  margin-top: -4.25rem;
-  padding: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  box-shadow: 0 20px 40px -32px rgba(9, 16, 13, 0.7);
 }
 
-@media (min-width: 46rem) {
-  form.card {
-    grid-template-columns: 20rem 1fr;
-    gap: 1.75rem;
-    margin-top: -5rem;
-    padding: 1.75rem;
-  }
-}
-
-.exhibit {
+.exhibit,
+.field {
   display: grid;
   gap: 0.5rem;
   margin: 0;
 }
 
-.field {
-  display: grid;
-  gap: 0.5rem;
-  align-content: start;
-}
-
 .field-label,
 .exhibit-label {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 .hint {
   display: block;
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
   letter-spacing: normal;
   text-transform: none;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
-/* The real input stays in the tab order and keeps its own keyboard behaviour;
+/* The real input keeps its own keyboard behaviour and stays in the tab order;
    the frame around it is what people see and click. */
 .dropzone {
   position: relative;
@@ -287,15 +203,14 @@ form.card {
   align-content: center;
   justify-items: center;
   gap: 0.35rem;
-  min-height: 13.5rem;
-  padding: 1.25rem;
+  min-height: 10rem;
+  padding: 1rem;
   text-align: center;
   cursor: pointer;
-  /* The primary action was a grey box on a grey page, which reads as disabled.
-     Tinted in the interactive colour, it reads as somewhere to put something. */
-  background: color-mix(in srgb, var(--action) 6%, var(--surface));
-  border: 1.5px dashed color-mix(in srgb, var(--action) 45%, transparent);
+  background: var(--raised);
+  border: 1.5px dashed var(--line);
   border-radius: 3px;
+  transition: border-color 180ms ease, background-color 180ms ease;
 }
 
 .dropzone input {
@@ -306,229 +221,372 @@ form.card {
 }
 
 .dropzone:hover,
+.dropzone.dragging,
 .dropzone:has(input:focus-visible) {
-  border-color: var(--ink);
+  border-color: var(--action);
+  background: color-mix(in srgb, var(--action) 10%, var(--raised));
 }
 
 .dropzone:has(input:focus-visible) {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--action);
   outline-offset: 3px;
+}
+
+.dropzone .icon {
+  color: var(--action);
 }
 
 .dropzone strong {
   font-weight: 600;
+  font-size: 0.9375rem;
 }
 
-.dropzone span {
-  font-size: 0.8125rem;
-  color: var(--ink-2);
+.dropzone > span:not(.replace) {
+  font-size: 0.75rem;
+  color: var(--text-2);
 }
 
 .dropzone.filled {
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-style: solid;
-  background: var(--surface);
+  background: var(--raised);
 }
 
-/* Capped shorter than it was: a tall preview stretched the card past the
-   controls beside it and left a quarter of the form as blank white. The photo
-   is the input, not the subject. */
 .preview {
+  display: block;
   width: 100%;
-  max-height: 11rem;
+  max-height: 9rem;
   object-fit: cover;
   border-radius: 2px;
-  display: block;
 }
 
 .replace {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--action);
 }
 
 input[type='text'] {
   width: 100%;
-  padding: 0.8rem 0.85rem;
-  border: 1px solid var(--rule-strong);
+  padding: 0.75rem 0.8rem;
+  background: var(--raised);
+  border: 1px solid var(--line);
   border-radius: 3px;
-  background: var(--surface);
-  color: inherit;
+  color: var(--text);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.9375rem;
 }
 
 input[type='text']::placeholder {
-  color: color-mix(in srgb, var(--ink-2) 70%, transparent);
+  color: color-mix(in srgb, var(--text-2) 70%, transparent);
 }
 
 input[type='text']:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
-  border-color: var(--ink);
+  border-color: var(--action);
 }
 
 button[type='submit'] {
-  justify-self: start;
-  margin-top: 0.25rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.85rem 1.25rem;
   border: 0;
   border-radius: 3px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--action);
+  color: var(--on-action);
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 700;
   cursor: pointer;
+  transition: background-color 180ms ease;
 }
 
 button[type='submit']:hover:not([disabled]) {
-  background: color-mix(in srgb, var(--ink) 86%, var(--seal-corroborated));
+  background: var(--action-hi);
 }
 
-/*
- * Waiting, not broken, and still readable. `opacity: 0.45` faded the white
- * label along with the fill and left it at roughly 2.5:1 on white — the label
- * on the page's only call to action was the least legible text on it. A solid
- * pale fill with dark ink says the same thing and can be read.
- */
+/* Waiting, not broken, and still readable. Fading the fill and the label
+   together left the page's only call to action as its least legible text. */
 button[type='submit'][disabled] {
-  background: color-mix(in srgb, var(--action) 12%, var(--surface));
-  color: var(--ink-2);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--action) 30%, transparent);
+  background: var(--raised);
+  color: var(--text-2);
+  box-shadow: inset 0 0 0 1px var(--line);
   cursor: not-allowed;
 }
 
 .method {
   margin: 0;
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  max-width: 42ch;
+  font-size: 0.75rem;
+  color: var(--text-2);
 }
 
-/* ----------------------------------------------------------- verdict key */
+/* --------------------------------------------------------- check progress */
+
+/* The check crosses two real boundaries and can take twenty seconds. Showing
+   which one it is on is the difference between "working" and "hung". */
+.progress {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
+
+.progress li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.progress li::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+}
+
+.progress .done::before {
+  background: var(--v-corroborated);
+  border-color: var(--v-corroborated);
+}
+
+.progress .now {
+  color: var(--text);
+}
+
+.progress .now::before {
+  background: var(--action);
+  border-color: var(--action);
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ------------------------------------------------------------ verdict key */
 
 .legend {
   display: grid;
-  gap: 0.6rem;
-  margin: 0.75rem 0 0;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
+  gap: 0.75rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
 }
 
 .legend div {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
-  gap: 0.25rem 0.9rem;
-  align-items: baseline;
-}
-
-@media (max-width: 30rem) {
-  .legend div {
-    grid-template-columns: 1fr;
-  }
+  gap: 0.15rem;
 }
 
 .legend dt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
+  color: var(--ink-key, var(--text));
 }
 
-/* The same three inks the verdict itself uses, so the key teaches the colour. */
 .legend dt::before {
   content: '';
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 1px;
-  background: var(--seal-unverified);
+  background: var(--v-unverified);
 }
 
 .legend dt[data-verdict='CORROBORATED']::before {
-  background: var(--seal-corroborated);
+  background: var(--v-corroborated);
 }
 
 .legend dt[data-verdict='CONTRADICTED']::before {
-  background: var(--seal-contradicted);
+  background: var(--v-contradicted);
 }
 
 .legend dd {
   margin: 0;
   font-size: 0.8125rem;
-  color: var(--ink-2);
+  color: var(--text-2);
+}
+
+/* ------------------------------------------------------------------- hero */
+
+/* Shown in the pane only until there is something better to put there. */
+.hero {
+  max-width: 44rem;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+h1 .turn {
+  display: block;
+  color: var(--action);
+}
+
+.lede {
+  margin: 1.25rem 0 0;
+  max-width: 46ch;
+  font-size: var(--step-1);
+  color: var(--text-2);
+}
+
+/* The one statistic on the page, so it is set as evidence rather than as a
+   marketing number: figure, caption, and a visible citation. */
+.proof {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 1.35rem;
+  max-width: 34rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--v-contradicted);
+  border-radius: 3px;
+}
+
+.proof b {
+  display: block;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.5rem, 2rem + 2.4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--v-contradicted);
+}
+
+.proof figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+
+.proof cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-2) 80%, transparent);
+}
+
+/* ----------------------------------------------------- how it works strip */
+
+.how {
+  display: grid;
+  gap: 1px;
+  margin: 3rem 0 0;
+  padding: 0;
+  list-style: none;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+@media (min-width: 46rem) {
+  .how {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.how li {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1.1rem 1.15rem;
+  background: var(--surface);
+}
+
+.how .icon {
+  color: var(--action);
+}
+
+.how b {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.how span {
+  font-size: 0.8125rem;
+  color: var(--text-2);
 }
 
 /* ---------------------------------------------------------------- verdict */
 
-/* One place the three inks are bound to the three verdicts, so any block that
-   carries the verdict — the panel, the tally — inks itself the same way. */
+/* One place the three inks are bound to the three verdicts, so every block that
+   carries the verdict inks itself the same way. */
 [data-verdict] {
-  --seal: var(--seal-unverified);
+  --seal: var(--v-unverified);
 }
 
 [data-verdict='CORROBORATED'] {
-  --seal: var(--seal-corroborated);
+  --seal: var(--v-corroborated);
 }
 
 [data-verdict='CONTRADICTED'] {
-  --seal: var(--seal-contradicted);
+  --seal: var(--v-contradicted);
 }
 
 .result {
-  position: relative;
   /* The panel is scrolled to on every check; without this its own top rule —
      the one carrying the verdict colour — lands just above the fold. */
   scroll-margin-top: 1.25rem;
-  margin-top: 3rem;
-  padding: 2rem 1.5rem 1.75rem;
+  padding: 1.75rem;
   background: var(--surface);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line);
   border-top: 3px solid var(--seal);
   border-radius: 3px;
-  box-shadow: var(--shadow);
+  animation: settle 320ms ease-out both;
 }
 
-/* The verdict word: an eyebrow in the seal ink, not an object. The tilted
-   double-ruled stamp that used to sit here was the loudest thing on the page
-   and said less than the comparison below it. */
+@media (min-width: 64rem) {
+  .result {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+.result:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 4px;
+}
+
 .verdict-tag {
   display: inline-flex;
   align-items: center;
-  /* The letter-spacing below is what the trailing text-indent compensates for;
-     without an explicit gap the icon collides with the first letter. */
   gap: 0.45rem;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.5rem;
   color: var(--seal);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-indent: 0.2em;
-  text-transform: uppercase;
 }
 
 .result h2 {
+  margin: 0 0 0.75rem;
+  max-width: 22ch;
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--step-2);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0.35rem 0 0.6rem;
-  max-width: 24ch;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
-.result p {
+.result > p {
   margin: 0;
-  max-width: 62ch;
-  color: var(--ink-2);
+  max-width: 64ch;
+  color: var(--text-2);
 }
 
 /* --------------------------------------------------------- the comparison */
@@ -536,26 +594,23 @@ button[type='submit'][disabled] {
 /*
  * The signature element, and the entire check in one line: the address a
  * stranger gave you, set against the address the photographs actually carry.
- * It replaced a one-line "found published as" footnote — the single most
- * important fact the tool produces was being delivered as a caption.
- *
  * The relation glyph is the only decorative mark on the page that changes
- * meaning, so it is the only one allowed to be large. It is aria-hidden: the
- * heading and body above already say the same thing in words, and "=" read
- * aloud between two addresses is noise.
+ * meaning, so it is the only one allowed to be large. It is aria-hidden — the
+ * heading above says the same thing in words, and "=" read aloud between two
+ * addresses is noise.
  */
 .faceoff {
   display: grid;
-  gap: 1.1rem;
-  margin-top: 1.75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
 }
 
-@media (min-width: 44rem) {
+@media (min-width: 48rem) {
   .faceoff {
     grid-template-columns: 1fr auto 1fr;
-    gap: 1.75rem;
+    gap: 2rem;
     align-items: start;
   }
 }
@@ -566,26 +621,23 @@ button[type='submit'][disabled] {
 }
 
 .side-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 /* Addresses are the one thing on this page a reader is meant to compare
-   character by character, which is the whole reason a monospaced face is here
-   at all. */
+   character by character, which is the whole reason a monospaced face is here. */
 .result .faceoff .addr {
-  margin-top: 0.4rem !important;
+  margin-top: 0.5rem !important;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: clamp(1.0625rem, 0.92rem + 0.6vw, 1.375rem);
+  font-size: clamp(1.125rem, 0.95rem + 0.75vw, 1.5rem);
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: var(--ink);
+  color: var(--text);
   overflow-wrap: anywhere;
 }
 
 .result .faceoff .addr.none {
-  color: var(--ink-2);
+  color: var(--text-2);
   font-style: italic;
 }
 
@@ -594,71 +646,54 @@ button[type='submit'][disabled] {
 }
 
 .result .faceoff .side-note {
-  margin-top: 0.5rem !important;
+  margin-top: 0.6rem !important;
   font-size: 0.8125rem;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 .relation {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
   line-height: 1;
   color: var(--seal);
-  align-self: center;
   justify-self: start;
 }
 
-@media (min-width: 44rem) {
+@media (min-width: 48rem) {
   .relation {
     justify-self: center;
-    /* Optically level with the addresses, not with the labels above them. */
-    margin-top: 1.4rem !important;
+    /* Optically level with the addresses, not the labels above them. */
+    margin-top: 1.5rem !important;
   }
 }
 
-/* Programmatic focus lands here after every check. Keyboard users get the ring;
-   a mouse click that produced the same focus move does not trigger it. */
-.result:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 4px;
-}
-
-/* ------------------------------------------------------------- the tally */
+/* -------------------------------------------------------------- the tally */
 
 .tally {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1px;
   margin: 1.5rem 0 0;
-  border: 1px solid var(--rule);
+  background: var(--line);
+  border: 1px solid var(--line);
   border-radius: 3px;
   overflow: hidden;
 }
 
 .tally div {
-  flex: 1 1 6rem;
-  padding: 0.75rem 0.9rem;
+  padding: 0.85rem 1rem;
   background: var(--surface);
-  border-right: 1px solid var(--rule);
-}
-
-.tally div:last-child {
-  border-right: 0;
 }
 
 .tally dt {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.625rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 .tally dd {
-  margin: 0.2rem 0 0;
+  margin: 0.25rem 0 0;
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -666,47 +701,54 @@ button[type='submit'][disabled] {
 
 /*
  * The third figure is the one the verdict actually turns on — how many of the
- * listings carrying this photo name the address in question. It was set
- * identically to the two context numbers beside it, so the count that decides
- * the answer read as the least important of the three.
+ * listings carrying this photo name the address in question. Set identically to
+ * the two context numbers, the count that decides the answer read as the least
+ * important of the three.
  */
 .tally div:last-child {
-  background: color-mix(in srgb, var(--seal, var(--rule)) 7%, var(--surface));
-  box-shadow: inset 3px 0 0 var(--seal, var(--rule-strong));
+  background: color-mix(in srgb, var(--seal) 12%, var(--surface));
+  box-shadow: inset 3px 0 0 var(--seal);
+  /* At phone width auto-fit gives two columns and three cells, which left the
+     deciding figure sitting beside an empty slot. It takes the whole row. */
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 34rem) {
+  .tally div:last-child {
+    grid-column: auto;
+  }
 }
 
 .tally div:last-child dt {
-  color: var(--ink);
+  color: var(--text);
 }
 
 .tally div:last-child dd {
-  font-size: 2rem;
-  color: var(--seal, var(--ink));
+  font-size: 2.25rem;
+  color: var(--seal);
 }
 
 /* --------------------------------------------------------------- evidence */
 
 .evidence {
   margin-top: 2.5rem;
+  animation: settle 320ms ease-out both;
 }
 
 .evidence h3,
 .evidence summary {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--rule-strong);
+  color: var(--text-2);
+  border-bottom: 1px solid var(--line);
 }
 
-/* The 2rem was unconditional, so on a verdict with no address-naming listings
-   the fold opened the section with a band of nothing above it. */
 .evidence summary {
   cursor: pointer;
+}
+
+.evidence summary:hover {
+  color: var(--text);
 }
 
 .named + details summary {
@@ -717,40 +759,59 @@ button[type='submit'][disabled] {
   list-style: none;
   margin: 0;
   padding: 0;
+  counter-reset: row;
 }
 
 .evidence li {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.5rem 0.75rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--rule);
+  gap: 0.4rem 0.75rem;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--line-soft);
 }
 
-/* `flex: 1 1 20rem` grew the title to fill the row, which threw the site name
-   to the far right edge — the two halves of one fact, a headline and where it
-   was published, separated by up to 400px of nothing. They belong side by side,
-   wrapping together when the title is long. */
+.evidence li:hover {
+  background: var(--surface);
+}
+
+/* The count is the point — a photo on seventy-six pages is the finding — so the
+   rows are numbered. It is a tally, not a ranking. */
+.evidence li::before {
+  counter-increment: row;
+  content: counter(row, decimal-leading-zero);
+  flex: none;
+  width: 2rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  color: color-mix(in srgb, var(--text-2) 70%, transparent);
+}
+
 .evidence li a,
-.evidence li > span:first-child {
+.evidence li > span:not(.src) {
   flex: 0 1 auto;
-  text-decoration-color: var(--rule-strong);
+  color: var(--action);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  text-decoration-color: color-mix(in srgb, var(--action) 45%, transparent);
   text-underline-offset: 3px;
 }
 
 .evidence li a:hover {
-  text-decoration-color: var(--ink);
+  color: var(--action-hi);
+  text-decoration-color: currentColor;
+}
+
+.evidence li a .icon {
+  color: var(--text-2);
 }
 
 .src {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--rule);
+  flex: none;
+  padding: 0.15rem 0.45rem;
+  color: var(--text-2);
+  border: 1px solid var(--line);
   border-radius: 2px;
   white-space: nowrap;
 }
@@ -758,40 +819,72 @@ button[type='submit'][disabled] {
 /* Listings that name the claimed address are the whole point of the check, so
    they are read first and marked, not left to be found in a list of ninety. */
 .named li {
-  background: color-mix(in srgb, var(--seal-corroborated) 8%, transparent);
-  padding-inline: 0.6rem;
-  border-bottom-color: color-mix(in srgb, var(--seal-corroborated) 25%, transparent);
+  background: color-mix(in srgb, var(--v-corroborated) 10%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--v-corroborated) 28%, transparent);
 }
 
 .named .src {
-  border-color: color-mix(in srgb, var(--seal-corroborated) 40%, transparent);
-  color: var(--seal-corroborated);
+  color: var(--v-corroborated);
+  border-color: color-mix(in srgb, var(--v-corroborated) 40%, transparent);
 }
 
 .evidence .note {
-  margin: 0.75rem 0 0;
+  margin: 0.85rem 0 0;
   font-size: 0.8125rem;
-  color: var(--ink-2);
+  color: var(--text-2);
 }
 
 /* ----------------------------------------------------------------- errors */
 
 .error {
-  margin-top: 2rem;
-  padding: 1rem 1.1rem;
-  background: var(--surface);
-  border: 1px solid var(--seal-contradicted);
-  border-left-width: 3px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--v-contradicted) 12%, var(--surface));
+  border: 1px solid var(--v-contradicted);
   border-radius: 3px;
-  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.error .icon {
+  color: var(--v-contradicted);
+  margin-top: 0.15rem;
+}
+
+/* ----------------------------------------------------------------- footer */
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+
+footer p {
+  margin: 0 0 0.75rem;
+  max-width: 68ch;
+}
+
+footer b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.colophon {
+  color: color-mix(in srgb, var(--text-2) 80%, transparent);
+}
+
+/* ----------------------------------------------------------------- icons */
+
+.icon {
+  flex: none;
+  vertical-align: -0.15em;
 }
 
 /* ---------------------------------------------------------------- motion */
-
-.result,
-.evidence {
-  animation: settle 380ms ease-out both;
-}
 
 @keyframes settle {
   from {
@@ -812,260 +905,4 @@ button[type='submit'][disabled] {
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
   }
-}
-
-/* ------------------------------------------------------------------ hero */
-
-.hero {
-  display: grid;
-  gap: 2rem;
-  align-items: end;
-}
-
-@media (min-width: 60rem) {
-  .hero {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3rem;
-  }
-}
-
-.wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.wordmark .icon {
-  color: var(--action);
-}
-
-/* The one statistic on the page, so it is set as evidence rather than as a
-   marketing number: figure, caption, and a visible citation. */
-.proof {
-  margin: 0;
-  padding: 1.25rem 1.35rem;
-  background: color-mix(in srgb, var(--on-band) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--on-band) 18%, transparent);
-  border-left: 3px solid var(--action-on-band);
-  border-radius: 3px;
-}
-
-.proof figcaption {
-  color: color-mix(in srgb, var(--on-band) 78%, transparent);
-}
-
-.proof cite {
-  color: color-mix(in srgb, var(--on-band) 60%, transparent);
-}
-
-.proof b {
-  display: block;
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.5rem, 2rem + 2.4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--action-on-band);
-}
-
-.proof figcaption {
-  margin-top: 0.6rem;
-  font-size: 0.875rem;
-}
-
-.proof cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  font-style: normal;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* ----------------------------------------------------------------- icons */
-
-.icon {
-  flex: none;
-  vertical-align: -0.15em;
-}
-
-/* ----------------------------------------------------- how it works strip */
-
-.how {
-  display: grid;
-  gap: 1px;
-  margin: 3rem 0 0;
-  padding: 0;
-  list-style: none;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-@media (min-width: 46rem) {
-  .how {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.how li {
-  display: grid;
-  gap: 0.3rem;
-  padding: 1.1rem 1.15rem;
-  background: var(--surface);
-}
-
-.how .icon {
-  color: var(--action);
-  margin-bottom: 0.15rem;
-}
-
-.how b {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.how span {
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-}
-
-/* --------------------------------------------------------- check progress */
-
-/* The check crosses two real boundaries and can take twenty seconds. Showing
-   which one it is on is the difference between "working" and "hung". */
-.progress {
-  display: grid;
-  gap: 0.4rem;
-  margin: 0.25rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--ink-2);
-}
-
-.progress li {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.progress li::before {
-  content: '';
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  border: 1px solid var(--rule-strong);
-}
-
-.progress .done::before {
-  background: var(--seal-corroborated);
-  border-color: var(--seal-corroborated);
-}
-
-.progress .now {
-  color: var(--ink);
-}
-
-.progress .now::before {
-  background: var(--action);
-  border-color: var(--action);
-  animation: pulse 1.1s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.3;
-  }
-}
-
-/* ------------------------------------------------------------ interaction */
-
-.dropzone,
-button[type='submit'],
-.evidence summary,
-.evidence li a {
-  transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease;
-}
-
-.dropzone.dragging {
-  border-color: var(--action);
-  border-style: solid;
-  background: color-mix(in srgb, var(--action) 10%, var(--surface));
-}
-
-.dropzone .icon {
-  color: var(--action);
-}
-
-button[type='submit'] {
-  background: var(--action-strong);
-  color: var(--on-action);
-}
-
-button[type='submit']:hover:not([disabled]) {
-  background: var(--action);
-}
-
-.evidence li a {
-  color: var(--action);
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-}
-
-.evidence li a .icon {
-  color: var(--ink-2);
-}
-
-.evidence summary:hover {
-  color: var(--ink);
-}
-
-h1 {
-  text-wrap: balance;
-}
-
-.error {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-}
-
-.error .icon {
-  color: var(--seal-contradicted);
-  margin-top: 0.15rem;
-}
-
-/* ---------------------------------------------------------------- footer */
-
-footer {
-  margin-top: 2.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule-strong);
-  font-size: 0.875rem;
-  color: var(--ink-2);
-}
-
-footer p {
-  margin: 0 0 0.75rem;
-  max-width: 62ch;
-}
-
-footer b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.colophon {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }

@@ -385,120 +385,99 @@ export default function Home() {
   }
 
   return (
-    <main>
-      {/* A dark band, so the page has a figure and a ground. Everything above
-          the form is context; the form itself sits on paper below. */}
-      <div className="band">
+    <main className="app">
+      {/*
+        A control rail, not a header. The photo and the address are what the
+        answer is about, so they stay on screen beside it instead of scrolling
+        away above it — and the page stops being one centred column of stacked
+        cards, which is what it read as.
+      */}
+      <aside className="rail">
         <header className="masthead">
           <p className="wordmark">
             <Icon path={ICONS.search} size={16} />
             DepositCheck
           </p>
-          <p className="filed">Reverse image check · SerpApi</p>
+          <p className="filed">Google Lens · SerpApi</p>
         </header>
 
-        <div className="hero">
-          <div>
-            <h1>
-              Do these photos
-              <span className="turn">belong to that address?</span>
-            </h1>
-            <p className="lede">
-              Scammers relist someone else&rsquo;s photos under an address they do not own. Check
-              where the photos already live before you wire a deposit.
-            </p>
-          </div>
+        <form className="controls" onSubmit={check}>
+          <p className="exhibit">
+            <label className="exhibit-label" htmlFor="photo">
+              Listing photo
+              <span className="hint">Screenshot or save one image from the listing.</span>
+            </label>
+            {/* Drop is an enhancement, never the only route: the file input inside
+                this frame stays clickable and keyboard-operable, which is what WCAG
+                2.2 asks for wherever dragging appears. */}
+            <span
+              className={`dropzone${previewUrl ? ' filled' : ''}${dragging ? ' dragging' : ''}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragging(true);
+              }}
+              // Dragleave also fires when the pointer crosses onto a child, which
+              // made the frame flicker while the file was still over it.
+              onDragLeave={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
+              }}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragging(false);
+                accept(e.dataTransfer.files?.[0]);
+              }}
+            >
+              {/* Deliberately not `required`. The submit button is disabled until
+                  a photo is chosen and `check()` returns without one, so the
+                  attribute added nothing — but it could refuse a submit on the
+                  drop path, and it does so through a control styled invisible,
+                  where the browser's message cannot be read. */}
+              <input
+                ref={photoRef}
+                id="photo"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={(e) => {
+                  setFile(e.target.files?.[0] ?? null);
+                  retract();
+                }}
+              />
+              {previewUrl ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- a local object URL, not a remote asset */}
+                  <img className="preview" src={previewUrl} alt="The photo you selected" />
+                  <span className="replace">Choose a different photo</span>
+                </>
+              ) : (
+                <>
+                  <Icon path={ICONS.photo} size={24} />
+                  <strong>Drop a photo, or choose one</strong>
+                  <span>JPEG, PNG or WebP · up to 4 MB</span>
+                </>
+              )}
+            </span>
+          </p>
 
-          {/* One measured number, cited. The population it was measured on is
-              the same one this tool examines, which is the only reason it
-              belongs here rather than a rounder, bigger, less honest figure. */}
-          <figure className="proof">
-            <b>56%</b>
-            <figcaption>
-              of 300 Facebook Marketplace rental listings were advertised with photos lifted from
-              Booking.com, Rightmove or Zoopla.
-              <cite>Generation Rent, 2024</cite>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <form className="card" onSubmit={check}>
-        <p className="exhibit">
-          <label className="exhibit-label" htmlFor="photo">
-            Listing photo
-            <span className="hint">Screenshot or save one image from the listing.</span>
-          </label>
-          {/* Drop is an enhancement, never the only route: the file input inside
-              this frame stays clickable and keyboard-operable, which is what WCAG
-              2.2 asks for wherever dragging appears. */}
-          <span
-            className={`dropzone${previewUrl ? ' filled' : ''}${dragging ? ' dragging' : ''}`}
-            onDragOver={(e) => {
-              e.preventDefault();
-              setDragging(true);
-            }}
-            // Dragleave also fires when the pointer crosses onto a child, which
-            // made the frame flicker while the file was still over it.
-            onDragLeave={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
-            }}
-            onDrop={(e) => {
-              e.preventDefault();
-              setDragging(false);
-              accept(e.dataTransfer.files?.[0]);
-            }}
-          >
-            {/* Deliberately not `required`. The submit button is disabled until
-                a photo is chosen and `check()` returns without one, so the
-                attribute added nothing — but it could refuse a submit on the
-                drop path, and it does so through a control styled invisible,
-                where the browser's message cannot be read. */}
+          <div className="field">
+            <label className="field-label" htmlFor="address">
+              Address you were given
+              <span className="hint">The street number and street name are what get compared.</span>
+            </label>
             <input
-              ref={photoRef}
-              id="photo"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
+              id="address"
+              type="text"
+              // The file input was required and this one was not, so the commonest
+              // way to reach the server with nothing to compare was one click away.
+              required
+              maxLength={200}
+              placeholder="13505 Burnet Rd, Austin TX"
+              value={address}
               onChange={(e) => {
-                setFile(e.target.files?.[0] ?? null);
+                setAddress(e.target.value);
                 retract();
               }}
             />
-            {previewUrl ? (
-              <>
-                {/* eslint-disable-next-line @next/next/no-img-element -- a local object URL, not a remote asset */}
-                <img className="preview" src={previewUrl} alt="The photo you selected" />
-                <span className="replace">Choose a different photo</span>
-              </>
-            ) : (
-              <>
-                <Icon path={ICONS.photo} size={26} />
-                <strong>Drop a photo, or choose one</strong>
-                <span>JPEG, PNG or WebP · up to 4 MB</span>
-              </>
-            )}
-          </span>
-        </p>
-
-        <div className="field">
-          <label className="field-label" htmlFor="address">
-            Address you were given
-            <span className="hint">The street number and street name are what get compared.</span>
-          </label>
-          <input
-            id="address"
-            type="text"
-            // The file input was required and this one was not, so the commonest
-            // way to reach the server with nothing to compare was one click away.
-            required
-            maxLength={200}
-            placeholder="13505 Burnet Rd, Austin TX"
-            value={address}
-            onChange={(e) => {
-              setAddress(e.target.value);
-              retract();
-            }}
-          />
+          </div>
 
           <button type="submit" disabled={busy || !file}>
             {busy ? 'Checking…' : 'Check this listing'}
@@ -521,192 +500,215 @@ export default function Home() {
             The photo is stored just long enough for the reverse image search to read it, then
             deleted.
           </p>
+        </form>
 
-          {/* The three answers, before the check rather than after it. Saying up
-              front that there is no "safe" outcome is the honest version of a
-              feature list, and it is the thing about this tool worth knowing. */}
-          {!result && (
-            <dl className="legend">
-              <div>
-                <dt data-verdict="CORROBORATED">Corroborated</dt>
-                <dd>The same address appears with these photos elsewhere.</dd>
-              </div>
-              <div>
-                <dt data-verdict="CONTRADICTED">Contradicted</dt>
-                <dd>The photos were found to belong to one other address.</dd>
-              </div>
-              <div>
-                <dt data-verdict="UNVERIFIED">Unverified</dt>
-                <dd>Not enough evidence. There is deliberately no &ldquo;safe&rdquo;.</dd>
-              </div>
-            </dl>
-          )}
-        </div>
-      </form>
+        {/* The three answers, before the check rather than after it. Saying up
+            front that there is no "safe" outcome is the honest version of a
+            feature list, and it is the thing about this tool worth knowing.
+            It stays after the check too: it is the key to the ink the verdict
+            is printed in, and it is needed most at the moment a verdict is on
+            screen. */}
+        <dl className="legend">
+          <div>
+            <dt data-verdict="CORROBORATED">Corroborated</dt>
+            <dd>The same address appears with these photos elsewhere.</dd>
+          </div>
+          <div>
+            <dt data-verdict="CONTRADICTED">Contradicted</dt>
+            <dd>The photos were found to belong to one other address.</dd>
+          </div>
+          <div>
+            <dt data-verdict="UNVERIFIED">Unverified</dt>
+            <dd>Not enough evidence. There is deliberately no &ldquo;safe&rdquo;.</dd>
+          </div>
+        </dl>
+      </aside>
 
-      {error && (
-        <p className="error" role="alert">
-          <Icon path={ICONS.alert} />
-          {error}
-        </p>
-      )}
+      <div className="pane">
+        {error && (
+          <p className="error" role="alert">
+            <Icon path={ICONS.alert} />
+            {error}
+          </p>
+        )}
 
-      {result && (
-        <>
-          <section
-            className="result"
-            data-verdict={result.verdict}
-            ref={resultRef}
-            tabIndex={-1}
-            aria-labelledby="verdict-heading"
-          >
-            {/* The verdict word, quietly. It used to be a tilted double-ruled
-                stamp, which competed with the comparison below for the same
-                job — and the comparison is the one that shows its working. One
-                bold element per screen; this is not it. */}
-            <p className="verdict-tag">
-              <Icon path={VERDICT_ICON[result.verdict]} size={15} />
-              {result.verdict}
-            </p>
-            <h2 id="verdict-heading">
-              {(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}
-            </h2>
-            <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
-
-            {/* The whole check, in one line: the address you were handed, and
-                the address the photographs actually carry. Every other element
-                on this page is a way of getting to this comparison or of
-                showing the working behind it. It is drawn only when the
-                comparison was really run — an unreadable address never reached
-                it, and inventing a right-hand side there would be a lie. */}
-            {result.reason !== 'unreadable_address' && (
-              <div className="faceoff">
-                <div className="side">
-                  <p className="side-label">The address you were given</p>
-                  <p className="addr">{checked}</p>
-                </div>
-                <p className="relation" aria-hidden="true">
-                  {result.verdict === 'CORROBORATED' ? '=' : result.verdict === 'CONTRADICTED' ? '≠' : '?'}
-                </p>
-                <div className="side">
-                  <p className="side-label">The address those photos carry</p>
-                  {result.verdict === 'CORROBORATED' ? (
-                    <>
-                      <p className="addr">{checked}</p>
-                      <p className="side-note">
-                        Named in {result.addressHits} of {result.matches.length} listings carrying
-                        this photo.
-                      </p>
-                    </>
-                  ) : result.contradictingAddress ? (
-                    <>
-                      <p className="addr">{result.contradictingAddress}</p>
-                      <p className="side-note">
-                        Not one of the {result.matches.length} listings names the address you were
-                        given.
-                      </p>
-                    </>
-                  ) : (
-                    // Each unverified case has its own right-hand side. A single
-                    // "no address named" fallback contradicted the paragraph
-                    // above it on the generic-photo case, where the problem is
-                    // the opposite: too many addresses, not none.
-                    <>
-                      <p className="addr none">{UNKNOWN[unknownKey].addr}</p>
-                      <p className="side-note">{UNKNOWN[unknownKey].note}</p>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
-          </section>
-
-          {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
-            <dl className="tally" data-verdict={result.verdict}>
-              <div>
-                <dt>Copies of this photo</dt>
-                <dd>{result.matches.length}</dd>
-              </div>
-              <div>
-                <dt>Sites carrying it</dt>
-                <dd>{result.sourceCount}</dd>
-              </div>
-              <div>
-                <dt>Naming your address</dt>
-                <dd>{result.addressHits}</dd>
-              </div>
-            </dl>
-          )}
-
-          {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
-            <section className="evidence">
-              {named.length > 0 && (
-                <>
-                  <h3>Listings that name your address</h3>
-                  <ol className="named">{rows(named)}</ol>
-                </>
-              )}
-
-              {/* Always folded. Opening eighty rows was the old failure: it read
-                  as a data dump and buried the three rows that answer the
-                  question. The count in the summary is the honest headline. */}
-              <details>
-                <summary>
-                  {named.length > 0 ? 'Everywhere else this photo appears' : 'Where this photo appears'}{' '}
-                  ({others.length})
-                </summary>
-                <ol>{rows(others)}</ol>
-              </details>
-
-              <p className="note">
-                Each link opens the page carrying the photo, so you can read the address it was
-                published under yourself.
+        {result ? (
+          <>
+            <section
+              className="result"
+              data-verdict={result.verdict}
+              ref={resultRef}
+              tabIndex={-1}
+              aria-labelledby="verdict-heading"
+            >
+              {/* The verdict word, quietly. It used to be a tilted double-ruled
+                  stamp, which competed with the comparison below for the same
+                  job — and the comparison is the one that shows its working. */}
+              <p className="verdict-tag">
+                <Icon path={VERDICT_ICON[result.verdict]} size={15} />
+                {result.verdict}
               </p>
+              <h2 id="verdict-heading">
+                {(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}
+              </h2>
+              <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
+
+              {/* The whole check, in one line: the address you were handed, and
+                  the address the photographs actually carry. It is drawn only
+                  when the comparison was really run — an unreadable address
+                  never reached it, and inventing a right-hand side there would
+                  be a lie. */}
+              {result.reason !== 'unreadable_address' && (
+                <div className="faceoff">
+                  <div className="side">
+                    <p className="side-label">The address you were given</p>
+                    <p className="addr">{checked}</p>
+                  </div>
+                  <p className="relation" aria-hidden="true">
+                    {result.verdict === 'CORROBORATED'
+                      ? '='
+                      : result.verdict === 'CONTRADICTED'
+                        ? '≠'
+                        : '?'}
+                  </p>
+                  <div className="side">
+                    <p className="side-label">The address those photos carry</p>
+                    {result.verdict === 'CORROBORATED' ? (
+                      <>
+                        <p className="addr">{checked}</p>
+                        <p className="side-note">
+                          Named in {result.addressHits} of {result.matches.length} listings carrying
+                          this photo.
+                        </p>
+                      </>
+                    ) : result.contradictingAddress ? (
+                      <>
+                        <p className="addr">{result.contradictingAddress}</p>
+                        <p className="side-note">
+                          Not one of the {result.matches.length} listings names the address you were
+                          given.
+                        </p>
+                      </>
+                    ) : (
+                      // Each unverified case is a different absence and they are
+                      // not interchangeable: generic_photo has too many
+                      // addresses rather than none.
+                      <>
+                        <p className="addr none">{UNKNOWN[unknownKey].addr}</p>
+                        <p className="side-note">{UNKNOWN[unknownKey].note}</p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
             </section>
-          )}
-        </>
-      )}
 
-      {/* Below the form, not above it: explanation should not stand between
-          someone and the thing they came to do. It also stops once there is a
-          verdict — a diagram of how the check works, wedged between the
-          question and its answer, is the one place it is pure noise. */}
-      {!result && (
-        <ol className="how">
-          <li>
-            <Icon path={ICONS.photo} />
-            <b>You add one listing photo</b>
-            <span>Stored only while the search reads it, then deleted.</span>
-          </li>
-          <li>
-            <Icon path={ICONS.search} />
-            <b>We find every copy online</b>
-            <span>Reverse image search across the listing sites.</span>
-          </li>
-          <li>
-            <Icon path={ICONS.scale} />
-            <b>We compare the addresses</b>
-            <span>Yours against the ones those copies name.</span>
-          </li>
-        </ol>
-      )}
+            {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
+              <dl className="tally" data-verdict={result.verdict}>
+                <div>
+                  <dt>Copies of this photo</dt>
+                  <dd>{result.matches.length}</dd>
+                </div>
+                <div>
+                  <dt>Sites carrying it</dt>
+                  <dd>{result.sourceCount}</dd>
+                </div>
+                <div>
+                  <dt>Naming your address</dt>
+                  <dd>{result.addressHits}</dd>
+                </div>
+              </dl>
+            )}
 
-      {/* The limits belong on the page, not only in the README. A tool that
-          tells you what it cannot see is easier to trust with what it can. */}
-      <footer>
-        <p>
-          <b>What this cannot do.</b> An apartment complex&rsquo;s marketing photo is reused
-          across every unit and every listing site, so it identifies no single property. A photo
-          of the actual unit — a window view, an awkward corner — works where a show kitchen
-          does not.
-        </p>
-        <p>
-          There is deliberately no &ldquo;this listing is safe&rdquo; result. A listing built
-          from AI-generated photos matches nothing, and so does an honest landlord who posted
-          nowhere else.
-        </p>
-        <p className="colophon">Reverse image search by SerpApi&rsquo;s Google Lens engine</p>
-      </footer>
+            {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
+              <section className="evidence">
+                {named.length > 0 && (
+                  <>
+                    <h3>Listings that name your address</h3>
+                    <ol className="named">{rows(named)}</ol>
+                  </>
+                )}
+
+                {/* Always folded. Opening eighty rows was the old failure: it read
+                    as a data dump and buried the three rows that answer the
+                    question. The count in the summary is the honest headline. */}
+                <details>
+                  <summary>
+                    {named.length > 0
+                      ? 'Everywhere else this photo appears'
+                      : 'Where this photo appears'}{' '}
+                    ({others.length})
+                  </summary>
+                  <ol>{rows(others)}</ol>
+                </details>
+
+                <p className="note">
+                  Each link opens the page carrying the photo, so you can read the address it was
+                  published under yourself.
+                </p>
+              </section>
+            )}
+          </>
+        ) : (
+          <section className="hero">
+            <h1>
+              Do these photos
+              <span className="turn">belong to that address?</span>
+            </h1>
+            <p className="lede">
+              Scammers relist someone else&rsquo;s photos under an address they do not own. Check
+              where the photos already live before you wire a deposit.
+            </p>
+
+            {/* One measured number, cited. The population it was measured on is
+                the same one this tool examines, which is the only reason it
+                belongs here rather than a rounder, bigger, less honest figure. */}
+            <figure className="proof">
+              <b>56%</b>
+              <figcaption>
+                of 300 Facebook Marketplace rental listings were advertised with photos lifted from
+                Booking.com, Rightmove or Zoopla.
+                <cite>Generation Rent, 2024</cite>
+              </figcaption>
+            </figure>
+
+            <ol className="how">
+              <li>
+                <Icon path={ICONS.photo} />
+                <b>You add one listing photo</b>
+                <span>Stored only while the search reads it, then deleted.</span>
+              </li>
+              <li>
+                <Icon path={ICONS.search} />
+                <b>We find every copy online</b>
+                <span>Reverse image search across the listing sites.</span>
+              </li>
+              <li>
+                <Icon path={ICONS.scale} />
+                <b>We compare the addresses</b>
+                <span>Yours against the ones those copies name.</span>
+              </li>
+            </ol>
+          </section>
+        )}
+
+        {/* The limits belong on the page, not only in the README. A tool that
+            tells you what it cannot see is easier to trust with what it can. */}
+        <footer>
+          <p>
+            <b>What this cannot do.</b> An apartment complex&rsquo;s marketing photo is reused
+            across every unit and every listing site, so it identifies no single property. A photo
+            of the actual unit — a window view, an awkward corner — works where a show kitchen
+            does not.
+          </p>
+          <p>
+            There is deliberately no &ldquo;this listing is safe&rdquo; result. A listing built
+            from AI-generated photos matches nothing, and so does an honest landlord who posted
+            nowhere else.
+          </p>
+          <p className="colophon">Reverse image search by SerpApi&rsquo;s Google Lens engine</p>
+        </footer>
+      </div>
     </main>
   );
 }
