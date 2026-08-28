@@ -168,10 +168,15 @@ export function addressAppearsIn(titles: string[], claim: string): number {
   // The trailing group captures whatever word follows the street name, and only
   // across a space — a comma ends the street ("13505 Burnet, Austin"), so that
   // case captures nothing and stays a match.
+  //
+  // The captured word may start with a digit, because ordinal street names are
+  // ordinary: with a letters-only class, "1200 East St" matched a title reading
+  // "1200 East 5th St" — the continuation "5th" simply failed to capture and the
+  // claim was corroborated by a different street.
   const patterns = candidates.flatMap((c) =>
     suffixVariants(c.name).map(
       (v) => new RegExp(
-        String.raw`\b${c.number}[a-z]?\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?${v}\b(?:\s+([a-z][a-z'-]*))?`,
+        String.raw`\b${c.number}[a-z]?\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?${v}\b(?:\s+([a-z0-9][a-z0-9'-]*))?`,
         'g',
       ),
     ),

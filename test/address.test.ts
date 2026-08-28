@@ -149,6 +149,23 @@ describe('addressAppearsIn', () => {
   test('matches a later occurrence when an earlier one is a longer street', () => {
     expect(addressAppearsIn(['1 Oak Ridge Rd and 1 Oak St, Austin TX'], '1 Oak St')).toBe(1);
   });
+
+  // Regression: the longer-street guard only looked at letters, so an ordinal
+  // continuation escaped it entirely. "1200 East St" was corroborated by a title
+  // naming East 5th St — a real Austin street, and not the claimed one.
+  test.each([
+    ['1200 East 5th St, Austin TX', '1200 East St'],
+    ['700 Main 2nd Ave, Dallas TX', '700 Main St'],
+    ['13505 Burnet 5th Rd', '13505 Burnet Rd'],
+  ])('%s does not corroborate the different claim %s', (title, claim) => {
+    expect(addressAppearsIn([title], claim)).toBe(0);
+  });
+
+  // The ordinal street itself must still corroborate; it is the street name,
+  // not a continuation.
+  test('an ordinal street still matches when it is the claim', () => {
+    expect(addressAppearsIn(['1200 East 5th St, Austin TX'], '1200 East 5th St')).toBe(1);
+  });
 });
 
 describe('extractStreetAddress', () => {
