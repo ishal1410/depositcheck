@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { addressAppearsIn } from '../lib/address';
 import type { UnverifiedReason, Verdict } from '../lib/verdict';
 
@@ -204,12 +204,26 @@ export default function Home() {
    */
   const [stage, setStage] = useState<'idle' | 'storing' | 'searching'>('idle');
   const [dragging, setDragging] = useState(false);
+  const photoRef = useRef<HTMLInputElement>(null);
 
   function accept(dropped: File | undefined) {
     if (!dropped) return;
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(dropped.type)) {
       setError('Upload a JPEG, PNG, or WebP photo.');
       return;
+    }
+    // The file input has to be told too, not just React. A dropped file that
+    // lives only in state leaves the input empty, and an empty input is what
+    // the form validates against — the submit button lit up and then did
+    // nothing, with the browser's own warning pointing at a control styled
+    // invisible. try/catch because assigning `files` needs DataTransfer, and
+    // the check must not become the thing that breaks the drop.
+    try {
+      const carrier = new DataTransfer();
+      carrier.items.add(dropped);
+      if (photoRef.current) photoRef.current.files = carrier.files;
+    } catch {
+      // The state below still drives the preview and the request.
     }
     setError(null);
     setFile(dropped);
@@ -376,18 +390,27 @@ export default function Home() {
               e.preventDefault();
               setDragging(true);
             }}
-            onDragLeave={() => setDragging(false)}
+            // Dragleave also fires when the pointer crosses onto a child, which
+            // made the frame flicker while the file was still over it.
+            onDragLeave={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
+            }}
             onDrop={(e) => {
               e.preventDefault();
               setDragging(false);
               accept(e.dataTransfer.files?.[0]);
             }}
           >
+            {/* Deliberately not `required`. The submit button is disabled until
+                a photo is chosen and `check()` returns without one, so the
+                attribute added nothing — but it could refuse a submit on the
+                drop path, and it does so through a control styled invisible,
+                where the browser's message cannot be read. */}
             <input
+              ref={photoRef}
               id="photo"
               type="file"
               accept="image/jpeg,image/png,image/webp"
-              required
               onChange={(e) => setFile(e.target.files?.[0] ?? null)}
             />
             {previewUrl ? (
