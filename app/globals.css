@@ -340,7 +340,11 @@ button[type='submit'][disabled] {
 /* The signature element: the verdict pressed onto the record. Double-ruled and
    set off the grid by a couple of degrees, the way a real stamp lands. */
 .stamp {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  /* The letter-spacing below is what the trailing text-indent compensates for;
+     without an explicit gap the icon collides with the first letter. */
+  gap: 0.45rem;
   transform: rotate(-2.4deg);
   padding: 0.4rem 0.9rem;
   border: 2px solid var(--seal);
