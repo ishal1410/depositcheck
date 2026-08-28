@@ -227,6 +227,18 @@ export default function Home() {
     }
     setError(null);
     setFile(dropped);
+    setResult(null);
+  }
+
+  /**
+   * A verdict describes the photo and address it was asked about. The moment
+   * either changes it describes nothing on screen, and leaving it there put an
+   * accusation — "these photos belong to a different address" — above a photo
+   * and an address it was never about.
+   */
+  function retract() {
+    setResult(null);
+    setError(null);
   }
 
   // Derived once per file, not once per render. Called inline in the JSX it
@@ -411,7 +423,10 @@ export default function Home() {
               id="photo"
               type="file"
               accept="image/jpeg,image/png,image/webp"
-              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => {
+                setFile(e.target.files?.[0] ?? null);
+                retract();
+              }}
             />
             {previewUrl ? (
               <>
@@ -443,7 +458,10 @@ export default function Home() {
             maxLength={200}
             placeholder="13505 Burnet Rd, Austin TX"
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => {
+              setAddress(e.target.value);
+              retract();
+            }}
           />
 
           <button type="submit" disabled={busy || !file}>
