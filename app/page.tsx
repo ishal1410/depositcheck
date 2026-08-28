@@ -333,61 +333,44 @@ export default function Home() {
 
   return (
     <main>
-      <header className="masthead">
-        <p className="wordmark">
-          <Icon path={ICONS.search} size={16} />
-          DepositCheck
-        </p>
-        <p className="filed">Reverse image check · SerpApi</p>
-      </header>
-
-      <div className="hero">
-        <div>
-          <h1>
-            Do these photos
-            <span className="turn">belong to that address?</span>
-          </h1>
-          <p className="lede">
-            Scammers relist someone else&rsquo;s photos under an address they do not own. Check
-            where the photos already live before you wire a deposit.
+      {/* A dark band, so the page has a figure and a ground. Everything above
+          the form is context; the form itself sits on paper below. */}
+      <div className="band">
+        <header className="masthead">
+          <p className="wordmark">
+            <Icon path={ICONS.search} size={16} />
+            DepositCheck
           </p>
-        </div>
+          <p className="filed">Reverse image check · SerpApi</p>
+        </header>
 
-        {/* One measured number, cited. The population it was measured on is the
-            same one this tool examines, which is the only reason it belongs
-            here rather than a rounder, bigger, less honest figure. */}
-        <figure className="proof">
-          <b>56%</b>
-          <figcaption>
-            of 300 Facebook Marketplace rental listings were advertised with photos lifted from
-            Booking.com, Rightmove or Zoopla.
-            <cite>Generation Rent, 2024</cite>
-          </figcaption>
-        </figure>
+        <div className="hero">
+          <div>
+            <h1>
+              Do these photos
+              <span className="turn">belong to that address?</span>
+            </h1>
+            <p className="lede">
+              Scammers relist someone else&rsquo;s photos under an address they do not own. Check
+              where the photos already live before you wire a deposit.
+            </p>
+          </div>
+
+          {/* One measured number, cited. The population it was measured on is
+              the same one this tool examines, which is the only reason it
+              belongs here rather than a rounder, bigger, less honest figure. */}
+          <figure className="proof">
+            <b>56%</b>
+            <figcaption>
+              of 300 Facebook Marketplace rental listings were advertised with photos lifted from
+              Booking.com, Rightmove or Zoopla.
+              <cite>Generation Rent, 2024</cite>
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
-      {/* The mechanism, stated before the form. Someone deciding whether to hand
-          over a photo of their prospective home deserves to know what happens to
-          it first. */}
-      <ol className="how">
-        <li>
-          <Icon path={ICONS.photo} />
-          <b>You add one listing photo</b>
-          <span>Stored only while the search reads it, then deleted.</span>
-        </li>
-        <li>
-          <Icon path={ICONS.search} />
-          <b>We find every copy online</b>
-          <span>Reverse image search across the listing sites.</span>
-        </li>
-        <li>
-          <Icon path={ICONS.scale} />
-          <b>We compare the addresses</b>
-          <span>Yours against the ones those copies name.</span>
-        </li>
-      </ol>
-
-      <form onSubmit={check}>
+      <form className="card" onSubmit={check}>
         <p className="exhibit">
           <label className="exhibit-label" htmlFor="photo">
             Listing photo
@@ -485,6 +468,26 @@ export default function Home() {
             The photo is stored just long enough for the reverse image search to read it, then
             deleted.
           </p>
+
+          {/* The three answers, before the check rather than after it. Saying up
+              front that there is no "safe" outcome is the honest version of a
+              feature list, and it is the thing about this tool worth knowing. */}
+          {!result && (
+            <dl className="legend">
+              <div>
+                <dt data-verdict="CORROBORATED">Corroborated</dt>
+                <dd>The same address appears with these photos elsewhere.</dd>
+              </div>
+              <div>
+                <dt data-verdict="CONTRADICTED">Contradicted</dt>
+                <dd>The photos were found to belong to one other address.</dd>
+              </div>
+              <div>
+                <dt data-verdict="UNVERIFIED">Unverified</dt>
+                <dd>Not enough evidence. There is deliberately no &ldquo;safe&rdquo;.</dd>
+              </div>
+            </dl>
+          )}
         </div>
       </form>
 
@@ -494,6 +497,28 @@ export default function Home() {
           {error}
         </p>
       )}
+
+      {/* Below the form, not above it. It explains what will happen to the
+          photo, and explanation should not stand between someone and the thing
+          they came to do — particularly on a phone, where it cost two screens
+          of scrolling before the first field. */}
+      <ol className="how">
+        <li>
+          <Icon path={ICONS.photo} />
+          <b>You add one listing photo</b>
+          <span>Stored only while the search reads it, then deleted.</span>
+        </li>
+        <li>
+          <Icon path={ICONS.search} />
+          <b>We find every copy online</b>
+          <span>Reverse image search across the listing sites.</span>
+        </li>
+        <li>
+          <Icon path={ICONS.scale} />
+          <b>We compare the addresses</b>
+          <span>Yours against the ones those copies name.</span>
+        </li>
+      </ol>
 
       {result && (
         <>

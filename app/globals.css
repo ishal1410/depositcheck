@@ -29,6 +29,8 @@
   --action: #0b4f74;
   --action-strong: #0c4a6e;
   --on-action: #ffffff;
+  /* Same role, but legible against the dark band. */
+  --action-on-band: #7cc4e8;
 
   --shadow: 0 1px 0 var(--rule), 0 12px 28px -22px rgba(19, 26, 22, 0.55);
 
@@ -58,6 +60,7 @@
     --action: #7cc4e8;
     --action-strong: #a5d8f3;
     --on-action: #0b1a22;
+    --action-on-band: #7cc4e8;
 
     --shadow: 0 1px 0 var(--rule), 0 14px 30px -24px rgba(0, 0, 0, 0.9);
   }
@@ -69,14 +72,10 @@
 
 body {
   margin: 0;
-  background:
-    /* A faint horizontal ruling, like the paper this record is kept on. */
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0 2.25rem,
-      color-mix(in srgb, var(--rule) 32%, transparent) 2.25rem 2.3125rem
-    ),
-    var(--paper);
+  /* The horizontal ruling that used to live here read as a screen artifact at
+     full size rather than as paper. Plain ground, and let the dark band do the
+     work of separating context from the working surface. */
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--step-0);
@@ -87,7 +86,38 @@ body {
 main {
   max-width: 62rem;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 6rem;
+  padding: 0 1.25rem 6rem;
+}
+
+/* ------------------------------------------------------------------- band */
+
+/*
+ * The page had no figure and no ground: paper, cards and text all sat within a
+ * few percent of each other, so it read as an unstyled document. This band is
+ * the anchor — everything inside it is context, and the working surface begins
+ * where it ends.
+ */
+.band {
+  position: relative;
+  margin: 0 -1.25rem;
+  padding: 1.25rem 1.25rem 5.5rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Full-bleed to the window edges without a horizontal scrollbar. */
+.band::before {
+  content: '';
+  position: absolute;
+  inset: 0 -100vw;
+  z-index: -1;
+  background: inherit;
+}
+
+@media (min-width: 46rem) {
+  .band {
+    padding-bottom: 6.5rem;
+  }
 }
 
 a {
@@ -109,7 +139,22 @@ a {
   justify-content: space-between;
   gap: 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+}
+
+.band .filed,
+.band .lede {
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+
+/* On the band the second line carries the accent, so the headline reads as one
+   deliberate two-tone phrase rather than as text that faded out. */
+.band h1 .turn {
+  color: var(--action-on-band);
+}
+
+.band .wordmark .icon {
+  color: var(--action-on-band);
 }
 
 .wordmark {
@@ -153,17 +198,27 @@ h1 .turn {
 
 /* ------------------------------------------------------------------- form */
 
-form {
+/* Lifted onto the band, so the thing you came to do is the first solid object
+   on the page instead of the last. */
+form.card {
+  position: relative;
   display: grid;
   gap: 1.25rem;
-  margin-top: 2.5rem;
   align-items: start;
+  margin-top: -4.25rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: 0 20px 40px -32px rgba(9, 16, 13, 0.7);
 }
 
 @media (min-width: 46rem) {
-  form {
+  form.card {
     grid-template-columns: 20rem 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
+    margin-top: -5rem;
+    padding: 1.75rem;
   }
 }
 
@@ -210,8 +265,10 @@ form {
   padding: 1.25rem;
   text-align: center;
   cursor: pointer;
-  background: var(--sunken);
-  border: 1px dashed var(--rule-strong);
+  /* The primary action was a grey box on a grey page, which reads as disabled.
+     Tinted in the interactive colour, it reads as somewhere to put something. */
+  background: color-mix(in srgb, var(--action) 6%, var(--surface));
+  border: 1.5px dashed color-mix(in srgb, var(--action) 45%, transparent);
   border-radius: 3px;
 }
 
@@ -303,8 +360,10 @@ button[type='submit']:hover:not([disabled]) {
   background: color-mix(in srgb, var(--ink) 86%, var(--seal-corroborated));
 }
 
+/* Keeps its colour while it waits for a photo. Greyed out, it read as broken
+   rather than as not-yet-ready — and it is the only call to action on the page. */
 button[type='submit'][disabled] {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
@@ -313,6 +372,63 @@ button[type='submit'][disabled] {
   font-size: 0.8125rem;
   color: var(--ink-2);
   max-width: 42ch;
+}
+
+/* ----------------------------------------------------------- verdict key */
+
+.legend {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.legend div {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.25rem 0.9rem;
+  align-items: baseline;
+}
+
+@media (max-width: 30rem) {
+  .legend div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.legend dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* The same three inks the verdict itself uses, so the key teaches the colour. */
+.legend dt::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 1px;
+  background: var(--seal-unverified);
+}
+
+.legend dt[data-verdict='CORROBORATED']::before {
+  background: var(--seal-corroborated);
+}
+
+.legend dt[data-verdict='CONTRADICTED']::before {
+  background: var(--seal-contradicted);
+}
+
+.legend dd {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
 }
 
 /* ---------------------------------------------------------------- verdict */
@@ -590,10 +706,18 @@ button[type='submit'][disabled] {
 .proof {
   margin: 0;
   padding: 1.25rem 1.35rem;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--action);
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  border-left: 3px solid var(--action-on-band);
   border-radius: 3px;
+}
+
+.proof figcaption {
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
+}
+
+.proof cite {
+  color: color-mix(in srgb, var(--paper) 60%, transparent);
 }
 
 .proof b {
@@ -603,13 +727,12 @@ button[type='submit'][disabled] {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--action);
+  color: var(--action-on-band);
 }
 
 .proof figcaption {
   margin-top: 0.6rem;
   font-size: 0.875rem;
-  color: var(--ink-2);
 }
 
 .proof cite {
@@ -634,7 +757,7 @@ button[type='submit'][disabled] {
 .how {
   display: grid;
   gap: 1px;
-  margin: 2.5rem 0 0;
+  margin: 3rem 0 0;
   padding: 0;
   list-style: none;
   background: var(--rule);
