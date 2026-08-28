@@ -153,14 +153,51 @@ export function addressAppearsIn(titles: string[], claim: string): number {
   const candidates = streetCandidates(claim);
   if (candidates.length === 0) return 0;
 
+  // Every word the claim itself uses. A title that carries the claimed street
+  // name and then keeps going ("7 Lake View Ct" against "7 Lake Rd") is naming
+  // a DIFFERENT street, so a continuation word only counts as the same address
+  // when the claim contains it too — which is what lets a genuine multi-word
+  // street ("5210 Martin Luther King Blvd") still corroborate itself.
+  const claimWords = new Set(claim.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean));
+
   // Adjacency, not co-presence: requiring the number to sit immediately before
   // the street name is what stops "2 Austin St" matching any title that merely
   // contains both "2" and "Austin". Measured on real data: co-presence produced
   // 5 false hits on the Lenox Grand fixture, adjacency produced 0.
+  //
+  // The trailing group captures whatever word follows the street name, and only
+  // across a space — a comma ends the street ("13505 Burnet, Austin"), so that
+  // case captures nothing and stays a match.
   const patterns = candidates.flatMap((c) =>
     suffixVariants(c.name).map(
-      (v) => new RegExp(String.raw`\b${c.number}[a-z]?\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?${v}\b`),
+      (v) => new RegExp(
+        String.raw`\b${c.number}[a-z]?\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?${v}\b(?:\s+([a-z][a-z'-]*))?`,
+        'g',
+      ),
     ),
   );
-  return titles.filter((t) => patterns.some((p) => p.test(t.toLowerCase()))).length;
+  return titles.filter((t) => patterns.some((p) => matchesAddress(p, t.toLowerCase(), claimWords))).length;
+}
+
+/**
+ * Whether any occurrence of `pattern` in `title` names the claimed street
+ * rather than a longer street that merely starts the same way.
+ *
+ * Every occurrence is tried, not just the first: one title can carry both
+ * "1 Oak Ridge Rd" and "1 Oak St", and the second is a real match.
+ *
+ * ponytail: accepted ceiling — a continuation word that happens to appear
+ * elsewhere in the claim ("1 Oak St, Ridge City" against a title reading
+ * "1 Oak Ridge Rd") is taken as the same street. It needs the claim's city or
+ * unit text to equal the other street's second word, and it fails toward a
+ * missing accusation rather than a false one. Upgrade path: match the claim's
+ * name words in sequence instead of as a set.
+ */
+function matchesAddress(pattern: RegExp, title: string, claimWords: Set<string>): boolean {
+  pattern.lastIndex = 0;
+  for (let m = pattern.exec(title); m !== null; m = pattern.exec(title)) {
+    const next = m[1];
+    if (next === undefined || isSuffix(next) || claimWords.has(next)) return true;
+  }
+  return false;
 }

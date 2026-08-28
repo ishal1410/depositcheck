@@ -117,6 +117,38 @@ describe('addressAppearsIn', () => {
   test('a street actually named after a direction still matches', () => {
     expect(addressAppearsIn(['1200 East St, Austin TX'], '1200 East St')).toBe(1);
   });
+
+  // A street name must not match a LONGER street name that merely starts the
+  // same way. Telling someone their scam listing "checks out" is the one
+  // failure worse than accusing an honest landlord.
+  test('a street name does not match a longer street beginning with it', () => {
+    expect(addressAppearsIn(['5210 Martin Luther King Blvd, Austin TX'], '5210 Martin Ave')).toBe(0);
+  });
+
+  test.each([
+    ['1 Oak Ridge Rd, Austin TX', '1 Oak St'],
+    ['20 Park Meadow Dr, Dallas TX', '20 Park Ave'],
+    ['7 Lake View Ct, Austin TX', '7 Lake Rd'],
+  ])('%s does not corroborate the different claim %s', (title, claim) => {
+    expect(addressAppearsIn([title], claim)).toBe(0);
+  });
+
+  // The name still has to match when the title omits the suffix entirely,
+  // which real titles do ("Lenox Grand, 13505 Burnet, Austin").
+  test('still matches when the title writes the street with no suffix', () => {
+    expect(addressAppearsIn(['Lenox Grand, 13505 Burnet, Austin'], '13505 Burnet Rd')).toBe(1);
+  });
+
+  // Rejecting a longer street must not reject a street that IS longer. The
+  // claim carries "Luther" itself, so the continuation is the same address.
+  test('a genuine multi-word street still corroborates itself', () => {
+    expect(addressAppearsIn(['5210 Martin Luther King Blvd, Austin TX'], '5210 Martin Luther King Blvd')).toBe(1);
+  });
+
+  // One title can name two streets sharing a number; the second is a real match.
+  test('matches a later occurrence when an earlier one is a longer street', () => {
+    expect(addressAppearsIn(['1 Oak Ridge Rd and 1 Oak St, Austin TX'], '1 Oak St')).toBe(1);
+  });
 });
 
 describe('extractStreetAddress', () => {
