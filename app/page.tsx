@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { addressAppearsIn } from '../lib/address';
 import type { UnverifiedReason, Verdict } from '../lib/verdict';
 
@@ -77,6 +77,30 @@ const REASON_COPY: Record<UnverifiedReason, { heading: string; body: string }> =
       'nothing to check yours against. That is not a red flag by itself, and not a pass either.',
   },
 };
+
+/**
+ * The right-hand side of the comparison when there is no address to put there.
+ *
+ * Each case is a different absence and they are not interchangeable:
+ * `generic_photo` has too many addresses rather than none, and a photo found
+ * nowhere at all has no pages to have named one.
+ */
+const UNKNOWN = {
+  generic_photo: {
+    addr: 'Several different addresses',
+    note: 'One marketing photo, many properties. It cannot point at one of them.',
+  },
+  no_addresses_found: {
+    addr: 'No address named',
+    note: 'The pages carrying this photo do not state a street address.',
+  },
+  nowhere: {
+    addr: 'Not found anywhere',
+    note: 'This photo does not appear elsewhere online, so there is nothing to compare.',
+  },
+  unreadable_address: { addr: 'Not compared', note: 'The address could not be read.' },
+  none: { addr: 'No address named', note: 'Nothing on those pages names a street address.' },
+} as const;
 
 const ERRORS: Record<string, string> = {
   invalid_token: 'That upload is no longer valid. Select the photo again.',
@@ -205,6 +229,26 @@ export default function Home() {
   const [stage, setStage] = useState<'idle' | 'storing' | 'searching'>('idle');
   const [dragging, setDragging] = useState(false);
   const photoRef = useRef<HTMLInputElement>(null);
+  const resultRef = useRef<HTMLElement>(null);
+
+  /**
+   * Take the reader to the answer.
+   *
+   * The verdict used to render below a three-panel explainer, roughly a
+   * thousand pixels under the button that asked for it — so pressing "Check
+   * this listing" appeared to do nothing at all. Focus moves as well as the
+   * scroll: it is what carries a screen reader and a keyboard to the same
+   * place, and it makes the next Tab continue from the answer rather than from
+   * the form above it. Layout effect, so it runs before the paint that would
+   * otherwise show the old scroll position first.
+   */
+  useLayoutEffect(() => {
+    const panel = resultRef.current;
+    if (!panel) return;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    panel.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+    panel.focus({ preventScroll: true });
+  }, [result]);
 
   function accept(dropped: File | undefined) {
     if (!dropped) return;
@@ -259,6 +303,15 @@ export default function Home() {
     const names = (m: Evidence) => m.title !== '' && addressAppearsIn([m.title], checked) > 0;
     return { named: rows.filter(names), others: rows.filter((m) => !names(m)) };
   }, [result, checked]);
+
+  // Which "nothing to compare against" wording the right-hand side gets. A photo
+  // that appears nowhere is a different absence from one whose pages simply name
+  // no street, and the panel must not claim the wrong one.
+  const unknownKey: keyof typeof UNKNOWN = !result
+    ? 'none'
+    : result.matches.length === 0
+      ? 'nowhere'
+      : (result.reason ?? 'none');
 
   function rows(list: Evidence[]) {
     return list.map((m, i) => (
@@ -498,46 +551,78 @@ export default function Home() {
         </p>
       )}
 
-      {/* Below the form, not above it. It explains what will happen to the
-          photo, and explanation should not stand between someone and the thing
-          they came to do — particularly on a phone, where it cost two screens
-          of scrolling before the first field. */}
-      <ol className="how">
-        <li>
-          <Icon path={ICONS.photo} />
-          <b>You add one listing photo</b>
-          <span>Stored only while the search reads it, then deleted.</span>
-        </li>
-        <li>
-          <Icon path={ICONS.search} />
-          <b>We find every copy online</b>
-          <span>Reverse image search across the listing sites.</span>
-        </li>
-        <li>
-          <Icon path={ICONS.scale} />
-          <b>We compare the addresses</b>
-          <span>Yours against the ones those copies name.</span>
-        </li>
-      </ol>
-
       {result && (
         <>
-          <section className="result" data-verdict={result.verdict}>
-            <p className="stamp">
+          <section
+            className="result"
+            data-verdict={result.verdict}
+            ref={resultRef}
+            tabIndex={-1}
+            aria-labelledby="verdict-heading"
+          >
+            {/* The verdict word, quietly. It used to be a tilted double-ruled
+                stamp, which competed with the comparison below for the same
+                job — and the comparison is the one that shows its working. One
+                bold element per screen; this is not it. */}
+            <p className="verdict-tag">
               <Icon path={VERDICT_ICON[result.verdict]} size={15} />
               {result.verdict}
             </p>
-            <h2>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}</h2>
+            <h2 id="verdict-heading">
+              {(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}
+            </h2>
             <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
-            {result.contradictingAddress && (
-              <p className="competing">
-                Found published as <strong>{result.contradictingAddress}</strong>
-              </p>
+
+            {/* The whole check, in one line: the address you were handed, and
+                the address the photographs actually carry. Every other element
+                on this page is a way of getting to this comparison or of
+                showing the working behind it. It is drawn only when the
+                comparison was really run — an unreadable address never reached
+                it, and inventing a right-hand side there would be a lie. */}
+            {result.reason !== 'unreadable_address' && (
+              <div className="faceoff">
+                <div className="side">
+                  <p className="side-label">The address you were given</p>
+                  <p className="addr">{checked}</p>
+                </div>
+                <p className="relation" aria-hidden="true">
+                  {result.verdict === 'CORROBORATED' ? '=' : result.verdict === 'CONTRADICTED' ? '≠' : '?'}
+                </p>
+                <div className="side">
+                  <p className="side-label">The address those photos carry</p>
+                  {result.verdict === 'CORROBORATED' ? (
+                    <>
+                      <p className="addr">{checked}</p>
+                      <p className="side-note">
+                        Named in {result.addressHits} of {result.matches.length} listings carrying
+                        this photo.
+                      </p>
+                    </>
+                  ) : result.contradictingAddress ? (
+                    <>
+                      <p className="addr">{result.contradictingAddress}</p>
+                      <p className="side-note">
+                        Not one of the {result.matches.length} listings names the address you were
+                        given.
+                      </p>
+                    </>
+                  ) : (
+                    // Each unverified case has its own right-hand side. A single
+                    // "no address named" fallback contradicted the paragraph
+                    // above it on the generic-photo case, where the problem is
+                    // the opposite: too many addresses, not none.
+                    <>
+                      <p className="addr none">{UNKNOWN[unknownKey].addr}</p>
+                      <p className="side-note">{UNKNOWN[unknownKey].note}</p>
+                    </>
+                  )}
+                </div>
+              </div>
             )}
           </section>
 
           {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
-            <dl className="tally">
+            <dl className="tally" data-verdict={result.verdict}>
               <div>
                 <dt>Copies of this photo</dt>
                 <dd>{result.matches.length}</dd>
@@ -582,6 +667,30 @@ export default function Home() {
         </>
       )}
 
+      {/* Below the form, not above it: explanation should not stand between
+          someone and the thing they came to do. It also stops once there is a
+          verdict — a diagram of how the check works, wedged between the
+          question and its answer, is the one place it is pure noise. */}
+      {!result && (
+        <ol className="how">
+          <li>
+            <Icon path={ICONS.photo} />
+            <b>You add one listing photo</b>
+            <span>Stored only while the search reads it, then deleted.</span>
+          </li>
+          <li>
+            <Icon path={ICONS.search} />
+            <b>We find every copy online</b>
+            <span>Reverse image search across the listing sites.</span>
+          </li>
+          <li>
+            <Icon path={ICONS.scale} />
+            <b>We compare the addresses</b>
+            <span>Yours against the ones those copies name.</span>
+          </li>
+        </ol>
+      )}
+
       {/* The limits belong on the page, not only in the README. A tool that
           tells you what it cannot see is easier to trust with what it can. */}
       <footer>
@@ -596,10 +705,7 @@ export default function Home() {
           from AI-generated photos matches nothing, and so does an honest landlord who posted
           nowhere else.
         </p>
-        <p className="colophon">
-          Reverse image search by SerpApi&rsquo;s Google Lens engine · photos deleted after each
-          check
-        </p>
+        <p className="colophon">Reverse image search by SerpApi&rsquo;s Google Lens engine</p>
       </footer>
     </main>
   );

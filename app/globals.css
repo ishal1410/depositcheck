@@ -18,6 +18,18 @@
   --rule: #c6cfc4;
   --rule-strong: #9aa79a;
 
+  /*
+   * The band has its own ground and its own text colour rather than borrowing
+   * `--ink` and `--paper`. Borrowing them meant the band inverted with the
+   * theme: in dark mode it became a near-white slab across the top of a dark
+   * page, and the accent inside it sat at about 1.7:1. A dark band is a dark
+   * band in both themes.
+   */
+  --band: #131a16;
+  --on-band: #e9ede8;
+  /* Light mode needs no edge: black meeting paper is edge enough. */
+  --band-edge: transparent;
+
   --seal-corroborated: #1b5e3a;
   --seal-contradicted: #93261b;
   --seal-unverified: #8a6413;
@@ -51,6 +63,15 @@
     --ink-2: #9aa79f;
     --rule: #2b3430;
     --rule-strong: #46524c;
+
+    /* Deeper than --paper and --surface, so the band still reads as the ground
+       the working surface is lifted off. */
+    --band: #090d0b;
+    --on-band: #e7ede8;
+    /* In dark mode the band, the paper and the card sit within a few percent
+       of each other, so the edge that separates context from working surface
+       needs to be drawn rather than implied. */
+    --band-edge: #232b27;
 
     --seal-corroborated: #6cd196;
     --seal-contradicted: #f4877a;
@@ -86,7 +107,7 @@ body {
 main {
   max-width: 62rem;
   margin: 0 auto;
-  padding: 0 1.25rem 6rem;
+  padding: 0 1.25rem 3rem;
 }
 
 /* ------------------------------------------------------------------- band */
@@ -101,17 +122,22 @@ main {
   position: relative;
   margin: 0 -1.25rem;
   padding: 1.25rem 1.25rem 5.5rem;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-/* Full-bleed to the window edges without a horizontal scrollbar. */
-.band::before {
-  content: '';
-  position: absolute;
-  inset: 0 -100vw;
-  z-index: -1;
-  background: inherit;
+  background: var(--band);
+  color: var(--on-band);
+  /*
+   * Full-bleed to the window edges, painted rather than laid out.
+   *
+   * This was an absolutely positioned `inset: 0 -100vw` pseudo-element, and it
+   * really did lay out that wide: 2416px of scrollable document on a 1280px
+   * window, 780 on a 390px phone. Half the page was empty void you could
+   * scroll into. `overflow-x: clip` on the root does not fix it either —
+   * overflow set on `html` propagates to the viewport and leaves the element
+   * itself visible. Box shadows paint outside the border box without
+   * contributing to scrollable overflow, which is exactly what this needs.
+   */
+  box-shadow: -100vmax 0 0 var(--band), 100vmax 0 0 var(--band),
+    0 1px 0 var(--band-edge), -100vmax 1px 0 var(--band-edge),
+    100vmax 1px 0 var(--band-edge);
 }
 
 @media (min-width: 46rem) {
@@ -139,12 +165,12 @@ a {
   justify-content: space-between;
   gap: 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-band) 22%, transparent);
 }
 
 .band .filed,
 .band .lede {
-  color: color-mix(in srgb, var(--paper) 72%, transparent);
+  color: color-mix(in srgb, var(--on-band) 72%, transparent);
 }
 
 /* On the band the second line carries the accent, so the headline reads as one
@@ -304,9 +330,12 @@ form.card {
   background: var(--surface);
 }
 
+/* Capped shorter than it was: a tall preview stretched the card past the
+   controls beside it and left a quarter of the form as blank white. The photo
+   is the input, not the subject. */
 .preview {
   width: 100%;
-  max-height: 16rem;
+  max-height: 11rem;
   object-fit: cover;
   border-radius: 2px;
   display: block;
@@ -360,10 +389,16 @@ button[type='submit']:hover:not([disabled]) {
   background: color-mix(in srgb, var(--ink) 86%, var(--seal-corroborated));
 }
 
-/* Keeps its colour while it waits for a photo. Greyed out, it read as broken
-   rather than as not-yet-ready — and it is the only call to action on the page. */
+/*
+ * Waiting, not broken, and still readable. `opacity: 0.45` faded the white
+ * label along with the fill and left it at roughly 2.5:1 on white — the label
+ * on the page's only call to action was the least legible text on it. A solid
+ * pale fill with dark ink says the same thing and can be read.
+ */
 button[type='submit'][disabled] {
-  opacity: 0.45;
+  background: color-mix(in srgb, var(--action) 12%, var(--surface));
+  color: var(--ink-2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--action) 30%, transparent);
   cursor: not-allowed;
 }
 
@@ -433,9 +468,25 @@ button[type='submit'][disabled] {
 
 /* ---------------------------------------------------------------- verdict */
 
-.result {
+/* One place the three inks are bound to the three verdicts, so any block that
+   carries the verdict — the panel, the tally — inks itself the same way. */
+[data-verdict] {
   --seal: var(--seal-unverified);
+}
+
+[data-verdict='CORROBORATED'] {
+  --seal: var(--seal-corroborated);
+}
+
+[data-verdict='CONTRADICTED'] {
+  --seal: var(--seal-contradicted);
+}
+
+.result {
   position: relative;
+  /* The panel is scrolled to on every check; without this its own top rule —
+     the one carrying the verdict colour — lands just above the fold. */
+  scroll-margin-top: 1.25rem;
   margin-top: 3rem;
   padding: 2rem 1.5rem 1.75rem;
   background: var(--surface);
@@ -445,46 +496,23 @@ button[type='submit'][disabled] {
   box-shadow: var(--shadow);
 }
 
-.result[data-verdict='CORROBORATED'] {
-  --seal: var(--seal-corroborated);
-}
-
-.result[data-verdict='CONTRADICTED'] {
-  --seal: var(--seal-contradicted);
-}
-
-/* The signature element: the verdict pressed onto the record. Double-ruled and
-   set off the grid by a couple of degrees, the way a real stamp lands. */
-.stamp {
+/* The verdict word: an eyebrow in the seal ink, not an object. The tilted
+   double-ruled stamp that used to sit here was the loudest thing on the page
+   and said less than the comparison below it. */
+.verdict-tag {
   display: inline-flex;
   align-items: center;
   /* The letter-spacing below is what the trailing text-indent compensates for;
      without an explicit gap the icon collides with the first letter. */
   gap: 0.45rem;
-  transform: rotate(-2.4deg);
-  padding: 0.4rem 0.9rem;
-  border: 2px solid var(--seal);
-  box-shadow: 0 0 0 1px var(--surface), 0 0 0 3px var(--seal);
+  margin: 0 0 0.35rem;
   color: var(--seal);
-  background: color-mix(in srgb, var(--seal) 7%, var(--seal-tint));
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
-  text-indent: 0.28em;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
   text-transform: uppercase;
-  animation: press 320ms cubic-bezier(0.2, 1.1, 0.4, 1) both;
-}
-
-@keyframes press {
-  from {
-    transform: rotate(-9deg) scale(1.35);
-    opacity: 0;
-  }
-  to {
-    transform: rotate(-2.4deg) scale(1);
-    opacity: 1;
-  }
 }
 
 .result h2 {
@@ -493,7 +521,7 @@ button[type='submit'][disabled] {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin: 1.1rem 0 0.6rem;
+  margin: 0.35rem 0 0.6rem;
   max-width: 24ch;
 }
 
@@ -503,16 +531,97 @@ button[type='submit'][disabled] {
   color: var(--ink-2);
 }
 
-.competing {
-  margin-top: 1rem !important;
-  padding-top: 0.9rem;
+/* --------------------------------------------------------- the comparison */
+
+/*
+ * The signature element, and the entire check in one line: the address a
+ * stranger gave you, set against the address the photographs actually carry.
+ * It replaced a one-line "found published as" footnote — the single most
+ * important fact the tool produces was being delivered as a caption.
+ *
+ * The relation glyph is the only decorative mark on the page that changes
+ * meaning, so it is the only one allowed to be large. It is aria-hidden: the
+ * heading and body above already say the same thing in words, and "=" read
+ * aloud between two addresses is noise.
+ */
+.faceoff {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--rule);
-  color: var(--ink) !important;
 }
 
-.competing strong {
+@media (min-width: 44rem) {
+  .faceoff {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.75rem;
+    align-items: start;
+  }
+}
+
+.result .faceoff p {
+  margin: 0;
+  max-width: none;
+}
+
+.side-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* Addresses are the one thing on this page a reader is meant to compare
+   character by character, which is the whole reason a monospaced face is here
+   at all. */
+.result .faceoff .addr {
+  margin-top: 0.4rem !important;
   font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: clamp(1.0625rem, 0.92rem + 0.6vw, 1.375rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.result .faceoff .addr.none {
+  color: var(--ink-2);
+  font-style: italic;
+}
+
+.result[data-verdict='CONTRADICTED'] .faceoff .side:last-of-type .addr {
   color: var(--seal);
+}
+
+.result .faceoff .side-note {
+  margin-top: 0.5rem !important;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.relation {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--seal);
+  align-self: center;
+  justify-self: start;
+}
+
+@media (min-width: 44rem) {
+  .relation {
+    justify-self: center;
+    /* Optically level with the addresses, not with the labels above them. */
+    margin-top: 1.4rem !important;
+  }
+}
+
+/* Programmatic focus lands here after every check. Keyboard users get the ring;
+   a mouse click that produced the same focus move does not trigger it. */
+.result:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 
 /* ------------------------------------------------------------- the tally */
@@ -555,6 +664,26 @@ button[type='submit'][disabled] {
   letter-spacing: -0.02em;
 }
 
+/*
+ * The third figure is the one the verdict actually turns on — how many of the
+ * listings carrying this photo name the address in question. It was set
+ * identically to the two context numbers beside it, so the count that decides
+ * the answer read as the least important of the three.
+ */
+.tally div:last-child {
+  background: color-mix(in srgb, var(--seal, var(--rule)) 7%, var(--surface));
+  box-shadow: inset 3px 0 0 var(--seal, var(--rule-strong));
+}
+
+.tally div:last-child dt {
+  color: var(--ink);
+}
+
+.tally div:last-child dd {
+  font-size: 2rem;
+  color: var(--seal, var(--ink));
+}
+
 /* --------------------------------------------------------------- evidence */
 
 .evidence {
@@ -574,8 +703,13 @@ button[type='submit'][disabled] {
   border-bottom: 1px solid var(--rule-strong);
 }
 
+/* The 2rem was unconditional, so on a verdict with no address-naming listings
+   the fold opened the section with a band of nothing above it. */
 .evidence summary {
   cursor: pointer;
+}
+
+.named + details summary {
   margin-top: 2rem;
 }
 
@@ -594,9 +728,13 @@ button[type='submit'][disabled] {
   border-bottom: 1px solid var(--rule);
 }
 
+/* `flex: 1 1 20rem` grew the title to fill the row, which threw the site name
+   to the far right edge — the two halves of one fact, a headline and where it
+   was published, separated by up to 400px of nothing. They belong side by side,
+   wrapping together when the title is long. */
 .evidence li a,
 .evidence li > span:first-child {
-  flex: 1 1 20rem;
+  flex: 0 1 auto;
   text-decoration-color: var(--rule-strong);
   text-underline-offset: 3px;
 }
@@ -706,18 +844,18 @@ button[type='submit'][disabled] {
 .proof {
   margin: 0;
   padding: 1.25rem 1.35rem;
-  background: color-mix(in srgb, var(--paper) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  background: color-mix(in srgb, var(--on-band) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--on-band) 18%, transparent);
   border-left: 3px solid var(--action-on-band);
   border-radius: 3px;
 }
 
 .proof figcaption {
-  color: color-mix(in srgb, var(--paper) 78%, transparent);
+  color: color-mix(in srgb, var(--on-band) 78%, transparent);
 }
 
 .proof cite {
-  color: color-mix(in srgb, var(--paper) 60%, transparent);
+  color: color-mix(in srgb, var(--on-band) 60%, transparent);
 }
 
 .proof b {
@@ -908,7 +1046,7 @@ h1 {
 /* ---------------------------------------------------------------- footer */
 
 footer {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule-strong);
   font-size: 0.875rem;
