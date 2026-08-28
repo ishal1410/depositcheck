@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { addressAppearsIn } from '../lib/address';
 import type { UnverifiedReason, Verdict } from '../lib/verdict';
 
 interface Evidence {
@@ -120,6 +121,8 @@ export default function Home() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<Analysis | null>(null);
+  /** The address the displayed result was checked against, not the live field. */
+  const [checked, setChecked] = useState('');
 
   // Derived once per file, not once per render. Called inline in the JSX it
   // minted a new object URL on every keystroke, each one pinning the whole File
@@ -130,6 +133,31 @@ export default function Home() {
     return () => URL.revokeObjectURL(previewUrl);
   }, [previewUrl]);
 
+  // The listings naming the claimed address ARE the answer; the other eighty
+  // are context. Split with the same matcher the server classified on, against
+  // the address that was actually checked rather than whatever is in the box
+  // now, so the split can never disagree with the counts shown beside it.
+  const { named, others } = useMemo(() => {
+    const rows = result?.matches ?? [];
+    const names = (m: Evidence) => m.title !== '' && addressAppearsIn([m.title], checked) > 0;
+    return { named: rows.filter(names), others: rows.filter((m) => !names(m)) };
+  }, [result, checked]);
+
+  function rows(list: Evidence[]) {
+    return list.map((m, i) => (
+      <li key={`${m.link}-${i}`}>
+        {m.link ? (
+          <a href={m.link} target="_blank" rel="noreferrer noopener">
+            {m.title || m.link}
+          </a>
+        ) : (
+          <span>{m.title}</span>
+        )}
+        {m.source && <span className="src">{m.source}</span>}
+      </li>
+    ));
+  }
+
   async function check(e: React.FormEvent) {
     e.preventDefault();
     if (!file) return;
@@ -137,6 +165,7 @@ export default function Home() {
     setBusy(true);
     setError(null);
     setResult(null);
+    setChecked(address);
 
     try {
       // The photo is stored first because Google Lens takes a URL and cannot be
@@ -180,48 +209,75 @@ export default function Home() {
 
   return (
     <main>
-      <h1>DepositCheck</h1>
+      <header className="masthead">
+        <p className="wordmark">DepositCheck</p>
+        <p className="filed">Reverse image check · SerpApi</p>
+      </header>
+
+      <h1>
+        Do these photos
+        <span className="turn">belong to that address?</span>
+      </h1>
       <p className="lede">
-        Before you wire a deposit, check whether the listing&rsquo;s photos actually belong to the
-        address you were given.
+        Scammers relist someone else&rsquo;s photos under an address they do not own. Check where
+        the photos already live before you wire a deposit.
       </p>
 
       <form onSubmit={check}>
-        <label htmlFor="photo">
-          Listing photo
-          <span className="hint"> — screenshot or save one image from the listing</span>
-        </label>
-        <input
-          id="photo"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          required
-          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-        />
-        {previewUrl && (
-          // eslint-disable-next-line @next/next/no-img-element -- a local object URL, not a remote asset
-          <img className="preview" src={previewUrl} alt="The photo you selected" />
-        )}
+        <p className="exhibit">
+          <label className="exhibit-label" htmlFor="photo">
+            Listing photo
+            <span className="hint">Screenshot or save one image from the listing.</span>
+          </label>
+          <span className={previewUrl ? 'dropzone filled' : 'dropzone'}>
+            <input
+              id="photo"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              required
+              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            />
+            {previewUrl ? (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element -- a local object URL, not a remote asset */}
+                <img className="preview" src={previewUrl} alt="The photo you selected" />
+                <span className="replace">Choose a different photo</span>
+              </>
+            ) : (
+              <>
+                <strong>Choose a photo</strong>
+                <span>JPEG, PNG or WebP · up to 4 MB</span>
+              </>
+            )}
+          </span>
+        </p>
 
-        <label htmlFor="address">
-          Address you were given
-          <span className="hint"> — street number and street name are what matter</span>
-        </label>
-        <input
-          id="address"
-          type="text"
-          // The file input was required and this one was not, so the commonest
-          // way to reach the server with nothing to compare was one click away.
-          required
-          maxLength={200}
-          placeholder="13505 Burnet Rd, Austin TX"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+        <div className="field">
+          <label className="field-label" htmlFor="address">
+            Address you were given
+            <span className="hint">The street number and street name are what get compared.</span>
+          </label>
+          <input
+            id="address"
+            type="text"
+            // The file input was required and this one was not, so the commonest
+            // way to reach the server with nothing to compare was one click away.
+            required
+            maxLength={200}
+            placeholder="13505 Burnet Rd, Austin TX"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
 
-        <button type="submit" disabled={busy || !file}>
-          {busy ? 'Checking…' : 'Check this listing'}
-        </button>
+          <button type="submit" disabled={busy || !file}>
+            {busy ? 'Checking…' : 'Check this listing'}
+          </button>
+
+          <p className="method">
+            The photo is stored just long enough for the reverse image search to read it, then
+            deleted.
+          </p>
+        </div>
       </form>
 
       {error && <p className="error">{error}</p>}
@@ -229,6 +285,7 @@ export default function Home() {
       {result && (
         <>
           <section className="result" data-verdict={result.verdict}>
+            <p className="stamp">{result.verdict}</p>
             <h2>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}</h2>
             <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
             {result.contradictingAddress && (
@@ -239,26 +296,46 @@ export default function Home() {
           </section>
 
           {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
+            <dl className="tally">
+              <div>
+                <dt>Copies of this photo</dt>
+                <dd>{result.matches.length}</dd>
+              </div>
+              <div>
+                <dt>Sites carrying it</dt>
+                <dd>{result.sourceCount}</dd>
+              </div>
+              <div>
+                <dt>Naming your address</dt>
+                <dd>{result.addressHits}</dd>
+              </div>
+            </dl>
+          )}
+
+          {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
             <section className="evidence">
-              <h3>
-                Found on {result.sourceCount} {result.sourceCount === 1 ? 'site' : 'sites'} ·{' '}
-                {result.addressHits} {result.addressHits === 1 ? 'listing names' : 'listings name'} your
-                address
-              </h3>
-              <ol>
-                {result.matches.map((m, i) => (
-                  <li key={`${m.link}-${i}`}>
-                    {m.link ? (
-                      <a href={m.link} target="_blank" rel="noreferrer noopener">
-                        {m.title || m.link}
-                      </a>
-                    ) : (
-                      m.title
-                    )}
-                    {m.source && <span className="src"> — {m.source}</span>}
-                  </li>
-                ))}
-              </ol>
+              {named.length > 0 && (
+                <>
+                  <h3>Listings that name your address</h3>
+                  <ol className="named">{rows(named)}</ol>
+                </>
+              )}
+
+              {/* Always folded. Opening eighty rows was the old failure: it read
+                  as a data dump and buried the three rows that answer the
+                  question. The count in the summary is the honest headline. */}
+              <details>
+                <summary>
+                  {named.length > 0 ? 'Everywhere else this photo appears' : 'Where this photo appears'}{' '}
+                  ({others.length})
+                </summary>
+                <ol>{rows(others)}</ol>
+              </details>
+
+              <p className="note">
+                Each link opens the page carrying the photo, so you can read the address it was
+                published under yourself.
+              </p>
             </section>
           )}
         </>
