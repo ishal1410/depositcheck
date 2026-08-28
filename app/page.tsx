@@ -115,6 +115,80 @@ async function readJson(res: Response): Promise<{ [k: string]: unknown } | null>
   }
 }
 
+/**
+ * Icons are inline SVG, never emoji: an emoji renders as a different picture on
+ * every platform and is announced as its own name by a screen reader. Each is
+ * decorative here — the text beside it carries the meaning — so all are hidden
+ * from assistive tech.
+ */
+function Icon({ path, size = 18 }: { path: React.ReactNode; size?: number }) {
+  return (
+    <svg
+      className="icon"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {path}
+    </svg>
+  );
+}
+
+const ICONS = {
+  photo: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="8.5" cy="9.5" r="1.5" />
+      <path d="m3 16 5-4 4 3 3-2 6 5" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </>
+  ),
+  scale: (
+    <>
+      <path d="M12 4v16M7 8h10M5 20h14" />
+      <path d="m7 8-3 6h6ZM17 8l-3 6h6Z" />
+    </>
+  ),
+  check: <path d="m4 12 5.5 5.5L20 7" />,
+  alert: (
+    <>
+      <path d="M12 3 2 20h20L12 3Z" />
+      <path d="M12 10v4M12 17.5v.01" />
+    </>
+  ),
+  question: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9.5a2.5 2.5 0 1 1 3.2 2.4c-.8.3-1.2.9-1.2 1.7v.4M12 17.5v.01" />
+    </>
+  ),
+  external: (
+    <>
+      <path d="M14 4h6v6" />
+      <path d="M20 4 11 13" />
+      <path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" />
+    </>
+  ),
+} as const;
+
+const VERDICT_ICON: Record<Verdict, React.ReactNode> = {
+  CORROBORATED: ICONS.check,
+  CONTRADICTED: ICONS.alert,
+  UNVERIFIED: ICONS.question,
+};
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [address, setAddress] = useState('');
@@ -123,6 +197,23 @@ export default function Home() {
   const [result, setResult] = useState<Analysis | null>(null);
   /** The address the displayed result was checked against, not the live field. */
   const [checked, setChecked] = useState('');
+  /**
+   * How far the check has actually got. Named after the real boundaries in
+   * `check()` rather than a timer, so the indicator can never claim progress
+   * the request has not made.
+   */
+  const [stage, setStage] = useState<'idle' | 'storing' | 'searching'>('idle');
+  const [dragging, setDragging] = useState(false);
+
+  function accept(dropped: File | undefined) {
+    if (!dropped) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(dropped.type)) {
+      setError('Upload a JPEG, PNG, or WebP photo.');
+      return;
+    }
+    setError(null);
+    setFile(dropped);
+  }
 
   // Derived once per file, not once per render. Called inline in the JSX it
   // minted a new object URL on every keystroke, each one pinning the whole File
@@ -149,6 +240,7 @@ export default function Home() {
         {m.link ? (
           <a href={m.link} target="_blank" rel="noreferrer noopener">
             {m.title || m.link}
+            <Icon path={ICONS.external} size={13} />
           </a>
         ) : (
           <span>{m.title}</span>
@@ -166,6 +258,7 @@ export default function Home() {
     setError(null);
     setResult(null);
     setChecked(address);
+    setStage('storing');
 
     try {
       // The photo is stored first because Google Lens takes a URL and cannot be
@@ -183,6 +276,10 @@ export default function Home() {
         setError(message(undefined));
         return;
       }
+
+      // The photo is stored; everything after this is the reverse image search
+      // and the comparison, which happen inside one request.
+      setStage('searching');
 
       const res = await fetch('/api/analyze', {
         method: 'POST',
@@ -204,24 +301,65 @@ export default function Home() {
       setError('Could not reach the server. Check your connection and try again.');
     } finally {
       setBusy(false);
+      setStage('idle');
     }
   }
 
   return (
     <main>
       <header className="masthead">
-        <p className="wordmark">DepositCheck</p>
+        <p className="wordmark">
+          <Icon path={ICONS.search} size={16} />
+          DepositCheck
+        </p>
         <p className="filed">Reverse image check · SerpApi</p>
       </header>
 
-      <h1>
-        Do these photos
-        <span className="turn">belong to that address?</span>
-      </h1>
-      <p className="lede">
-        Scammers relist someone else&rsquo;s photos under an address they do not own. Check where
-        the photos already live before you wire a deposit.
-      </p>
+      <div className="hero">
+        <div>
+          <h1>
+            Do these photos
+            <span className="turn">belong to that address?</span>
+          </h1>
+          <p className="lede">
+            Scammers relist someone else&rsquo;s photos under an address they do not own. Check
+            where the photos already live before you wire a deposit.
+          </p>
+        </div>
+
+        {/* One measured number, cited. The population it was measured on is the
+            same one this tool examines, which is the only reason it belongs
+            here rather than a rounder, bigger, less honest figure. */}
+        <figure className="proof">
+          <b>56%</b>
+          <figcaption>
+            of 300 Facebook Marketplace rental listings were advertised with photos lifted from
+            Booking.com, Rightmove or Zoopla.
+            <cite>Generation Rent, 2024</cite>
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* The mechanism, stated before the form. Someone deciding whether to hand
+          over a photo of their prospective home deserves to know what happens to
+          it first. */}
+      <ol className="how">
+        <li>
+          <Icon path={ICONS.photo} />
+          <b>You add one listing photo</b>
+          <span>Stored only while the search reads it, then deleted.</span>
+        </li>
+        <li>
+          <Icon path={ICONS.search} />
+          <b>We find every copy online</b>
+          <span>Reverse image search across the listing sites.</span>
+        </li>
+        <li>
+          <Icon path={ICONS.scale} />
+          <b>We compare the addresses</b>
+          <span>Yours against the ones those copies name.</span>
+        </li>
+      </ol>
 
       <form onSubmit={check}>
         <p className="exhibit">
@@ -229,7 +367,22 @@ export default function Home() {
             Listing photo
             <span className="hint">Screenshot or save one image from the listing.</span>
           </label>
-          <span className={previewUrl ? 'dropzone filled' : 'dropzone'}>
+          {/* Drop is an enhancement, never the only route: the file input inside
+              this frame stays clickable and keyboard-operable, which is what WCAG
+              2.2 asks for wherever dragging appears. */}
+          <span
+            className={`dropzone${previewUrl ? ' filled' : ''}${dragging ? ' dragging' : ''}`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragging(true);
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragging(false);
+              accept(e.dataTransfer.files?.[0]);
+            }}
+          >
             <input
               id="photo"
               type="file"
@@ -245,7 +398,8 @@ export default function Home() {
               </>
             ) : (
               <>
-                <strong>Choose a photo</strong>
+                <Icon path={ICONS.photo} size={26} />
+                <strong>Drop a photo, or choose one</strong>
                 <span>JPEG, PNG or WebP · up to 4 MB</span>
               </>
             )}
@@ -273,6 +427,19 @@ export default function Home() {
             {busy ? 'Checking…' : 'Check this listing'}
           </button>
 
+          {/* Named after the boundaries the request actually crosses. A search
+              can take twenty seconds, and a button that only says "Checking…"
+              for that long reads as a hang. */}
+          {busy && (
+            <ol className="progress" aria-live="polite">
+              <li className={stage === 'storing' ? 'now' : 'done'}>
+                {stage === 'storing' ? 'Storing the photo' : 'Photo stored'}
+              </li>
+              <li className={stage === 'searching' ? 'now' : 'todo'}>Searching for copies of it</li>
+              <li className="todo">Comparing the addresses</li>
+            </ol>
+          )}
+
           <p className="method">
             The photo is stored just long enough for the reverse image search to read it, then
             deleted.
@@ -280,12 +447,20 @@ export default function Home() {
         </div>
       </form>
 
-      {error && <p className="error">{error}</p>}
+      {error && (
+        <p className="error" role="alert">
+          <Icon path={ICONS.alert} />
+          {error}
+        </p>
+      )}
 
       {result && (
         <>
           <section className="result" data-verdict={result.verdict}>
-            <p className="stamp">{result.verdict}</p>
+            <p className="stamp">
+              <Icon path={VERDICT_ICON[result.verdict]} size={15} />
+              {result.verdict}
+            </p>
             <h2>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).heading}</h2>
             <p>{(result.reason ? REASON_COPY[result.reason] : COPY[result.verdict]).body}</p>
             {result.contradictingAddress && (
@@ -340,6 +515,26 @@ export default function Home() {
           )}
         </>
       )}
+
+      {/* The limits belong on the page, not only in the README. A tool that
+          tells you what it cannot see is easier to trust with what it can. */}
+      <footer>
+        <p>
+          <b>What this cannot do.</b> An apartment complex&rsquo;s marketing photo is reused
+          across every unit and every listing site, so it identifies no single property. A photo
+          of the actual unit — a window view, an awkward corner — works where a show kitchen
+          does not.
+        </p>
+        <p>
+          There is deliberately no &ldquo;this listing is safe&rdquo; result. A listing built
+          from AI-generated photos matches nothing, and so does an honest landlord who posted
+          nowhere else.
+        </p>
+        <p className="colophon">
+          Reverse image search by SerpApi&rsquo;s Google Lens engine · photos deleted after each
+          check
+        </p>
+      </footer>
     </main>
   );
 }
