@@ -1,0 +1,25 @@
+# Keep local secrets out of the deployment bundle.
+#
+# `vercel deploy` uploads the working directory, and .gitignore does not govern
+# that. So .env was being shipped into the build container -- the CLI said so on
+# every deploy ("Detected .env file, it is strongly recommended to use Vercel's
+# env handling instead"), and Next.js then loaded it at build time.
+#
+# Nothing was ever served: /.env, /.env.local and /.env.example all return 404,
+# because only files under public/ are reachable. The real problem is a second,
+# unmanaged copy of the configuration living in build artifacts, free to drift
+# out of sync with the encrypted values that `vercel env ls` reports.
+#
+# All five variables now live in the project's environment (Production), so the
+# file has no job left to do here.
+.env
+.env.local
+.env.*.local
+
+# Never needed remotely: the build regenerates them.
+.next
+node_modules
+tsconfig.tsbuildinfo
+
+# Local tooling and scratch output.
+.bug-hunter
