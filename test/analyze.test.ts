@@ -316,4 +316,59 @@ describe('handleAnalyze', () => {
     );
     expect(JSON.stringify(await res.json())).not.toContain('sk-secret-123');
   });
+
+  /*
+   * The replay: every exit path discards the blob and the token never expires,
+   * so a caller can re-send the same imageUrl once the object is gone. SerpApi
+   * answers a 404 image with "hasn't returned any results" on an HTTP 200, so
+   * without this guard the replay is handed a confident "appears nowhere" about
+   * a photo that was never searched — and pays a search for it.
+   */
+  test('a photo that no longer exists is refused, not searched', async () => {
+    let looked = 0;
+    const res = await handleAnalyze(
+      post({ imageUrl: IMAGE, address: '13505 Burnet Rd' }),
+      deps({
+        exists: async () => false,
+        lookup: async () => {
+          looked += 1;
+          return { ok: true, matches: [] };
+        },
+      }),
+    );
+    expect(res.status).toBe(400);
+    expect((await res.json()).error).toBe('invalid_image_url');
+    expect(looked).toBe(0);
+  });
+
+  test('a photo that still exists is searched as normal', async () => {
+    const res = await handleAnalyze(
+      post({ imageUrl: IMAGE, address: '13505 Burnet Rd' }),
+      deps({ exists: async () => true }),
+    );
+    expect(res.status).toBe(200);
+    expect((await res.json()).verdict).toBe('CORROBORATED');
+  });
+
+  test('the existence check runs before anything can discard the photo', async () => {
+    const order: string[] = [];
+    await handleAnalyze(
+      post({ imageUrl: IMAGE, address: '13505 Burnet Rd', token: 't' }),
+      deps({
+        verifyToken: () => {
+          order.push('token');
+          return true;
+        },
+        exists: async () => {
+          order.push('exists');
+          return false;
+        },
+        discard: async () => {
+          order.push('discard');
+        },
+      }),
+    );
+    // A URL whose object is already gone must not reach the discard path.
+    expect(order).toEqual(['token', 'exists']);
+  });
 });

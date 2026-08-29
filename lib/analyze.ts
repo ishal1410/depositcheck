@@ -30,6 +30,14 @@ export interface AnalyzeDeps {
    * enough authority to have someone else's photo deleted.
    */
   verifyToken?: (imageUrl: string, token: unknown) => boolean;
+  /**
+   * Is the stored photo still there?
+   *
+   * Fails closed: anything other than a confirmed hit counts as gone, so a
+   * transient storage blip costs the caller a re-upload rather than buying them
+   * a fabricated answer.
+   */
+  exists?: (imageUrl: string) => Promise<boolean>;
 }
 
 /**
@@ -96,6 +104,26 @@ export async function handleAnalyze(req: Request, deps: AnalyzeDeps): Promise<Re
   // limiter so a forged URL never reaches the discard in the finally below.
   if (deps.verifyToken && !deps.verifyToken(imageUrl, token)) {
     return Response.json({ error: 'invalid_token' }, { status: 403 });
+  }
+
+  /*
+   * A URL we issued is not the same thing as a photo that is still there, and
+   * the gap between those two is a fabricated verdict.
+   *
+   * Every exit path below deletes the blob, while the token signs only the path
+   * and never expires — so the same imageUrl and token replay cleanly once the
+   * object is gone. MEASURED, not assumed: SerpApi answers a 404 image URL with
+   * "Google Lens hasn't returned any results for this query" on an HTTP 200,
+   * which lens.ts correctly reads as a genuine "found nowhere". The replay
+   * therefore buys a confident "this photo does not appear elsewhere online"
+   * about a photo that was never searched, and spends a search to do it.
+   *
+   * Checked here rather than patched into the 429 path alone, because the same
+   * replay exists after any exit that discards: rate limit, unreadable address,
+   * or a completed check.
+   */
+  if (deps.exists && !(await deps.exists(imageUrl))) {
+    return Response.json({ error: 'invalid_image_url' }, { status: 400 });
   }
 
   // From here the photo is ours to clean up on every exit, including the early

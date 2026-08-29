@@ -1,4 +1,4 @@
-import { del } from '@vercel/blob';
+import { del, head } from '@vercel/blob';
 import { handleAnalyze } from '../../../lib/analyze';
 import { fetchExactMatches } from '../../../lib/lens';
 import { createRateLimiter } from '../../../lib/ratelimit';
@@ -34,6 +34,17 @@ export async function POST(req: Request): Promise<Response> {
     allowedImageHost,
     verifyToken: (imageUrl, token) => verifyImageUrl(imageUrl, token, secret),
     lookup: (imageUrl) => fetchExactMatches(imageUrl, apiKey),
+    // head() rather than a bare HEAD request: it is authenticated against the
+    // store, so it answers about the object rather than about a CDN cache. Any
+    // throw counts as gone, which fails closed — see AnalyzeDeps.exists.
+    exists: async (imageUrl) => {
+      try {
+        await head(imageUrl);
+        return true;
+      } catch {
+        return false;
+      }
+    },
     discard: async (imageUrl) => {
       await del(imageUrl);
     },

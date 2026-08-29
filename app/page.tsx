@@ -125,6 +125,26 @@ function message(code: unknown): string {
 }
 
 /**
+ * A match's link is third-party data on its way into an href.
+ *
+ * It reaches us from SerpApi, which mirrors whatever the pages Google indexed
+ * say, and SerpApi has an open bug returning malformed links (#4175). Measured
+ * on the deployed page: React 19 does neutralise a `javascript:` href, and
+ * Chrome refuses top-level navigation to `data:` — but `data:` and `vbscript:`
+ * both reach the DOM untouched, so the page is currently relying on defences it
+ * does not own. An allowlist of the two schemes a listing can actually live on
+ * costs a line; anything else renders as plain text instead.
+ */
+function safeHref(link: string): string | null {
+  try {
+    const { protocol } = new URL(link);
+    return protocol === 'https:' || protocol === 'http:' ? link : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Parse a response body that may not be JSON at all.
  *
  * Platform errors — a 413 raised above the app, a gateway 502, a framework
@@ -326,19 +346,24 @@ export default function Home() {
       : (result.reason ?? 'none');
 
   function rows(list: Evidence[]) {
-    return list.map((m, i) => (
-      <li key={`${m.link}-${i}`}>
-        {m.link ? (
-          <a href={m.link} target="_blank" rel="noreferrer noopener">
-            {m.title || m.link}
-            <Icon path={ICONS.external} size={13} />
-          </a>
-        ) : (
-          <span>{m.title}</span>
-        )}
-        {m.source && <span className="src">{m.source}</span>}
-      </li>
-    ));
+    return list.map((m, i) => {
+      const href = safeHref(m.link);
+      return (
+        <li key={`${m.link}-${i}`}>
+          {href ? (
+            <a href={href} target="_blank" rel="noreferrer noopener">
+              {m.title || m.link}
+              <Icon path={ICONS.external} size={13} />
+            </a>
+          ) : (
+            // Still shown, never linked: the row is evidence, and dropping it
+            // would quietly change the count the verdict was read against.
+            <span>{m.title || m.link}</span>
+          )}
+          {m.source && <span className="src">{m.source}</span>}
+        </li>
+      );
+    });
   }
 
   async function check(e: React.FormEvent) {
