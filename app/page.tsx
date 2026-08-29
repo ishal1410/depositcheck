@@ -294,15 +294,27 @@ export default function Home() {
     return () => URL.revokeObjectURL(previewUrl);
   }, [previewUrl]);
 
-  // The listings naming the claimed address ARE the answer; the other eighty
-  // are context. Split with the same matcher the server classified on, against
-  // the address that was actually checked rather than whatever is in the box
-  // now, so the split can never disagree with the counts shown beside it.
+  /**
+   * Which address the evidence list is read against.
+   *
+   * On CONTRADICTED the claimed address appears in nothing, by construction —
+   * so splitting on it left the open list empty and filed the whole accusation
+   * behind a closed fold, under body copy that says "check the sources below".
+   * The rows naming the competing address ARE that accusation's evidence, so on
+   * that verdict they are what gets read first.
+   */
+  const splitOn =
+    result?.verdict === 'CONTRADICTED' ? (result.contradictingAddress ?? checked) : checked;
+
+  // The listings naming that address ARE the answer; the other eighty are
+  // context. Split with the same matcher the server classified on, against the
+  // address that was actually checked rather than whatever is in the box now,
+  // so the split can never disagree with the counts shown beside it.
   const { named, others } = useMemo(() => {
     const rows = result?.matches ?? [];
-    const names = (m: Evidence) => m.title !== '' && addressAppearsIn([m.title], checked) > 0;
+    const names = (m: Evidence) => m.title !== '' && addressAppearsIn([m.title], splitOn) > 0;
     return { named: rows.filter(names), others: rows.filter((m) => !names(m)) };
-  }, [result, checked]);
+  }, [result, splitOn]);
 
   // Which "nothing to compare against" wording the right-hand side gets. A photo
   // that appears nowhere is a different absence from one whose pages simply name
@@ -621,10 +633,16 @@ export default function Home() {
             )}
 
             {result.reason !== 'unreadable_address' && result.matches.length > 0 && (
-              <section className="evidence">
+              <section className="evidence" data-verdict={result.verdict}>
                 {named.length > 0 && (
                   <>
-                    <h3>Listings that name your address</h3>
+                    {/* Named after the address actually being read for, because
+                        on CONTRADICTED it is not the reader's own. */}
+                    <h3>
+                      {result.verdict === 'CONTRADICTED'
+                        ? `Listings that name ${result.contradictingAddress}`
+                        : 'Listings that name your address'}
+                    </h3>
                     <ol className="named">{rows(named)}</ol>
                   </>
                 )}

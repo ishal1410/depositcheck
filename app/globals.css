@@ -1,42 +1,54 @@
 /*
- * DepositCheck — instrument direction.
+ * DepositCheck — particulars direction.
  *
- * The page is a scanner, not a document. A control rail down the left holds the
- * photo, the address and the button and never scrolls away; the right pane is
- * the work surface the answer lands on. Nothing is a centred column.
+ * The page is a property document, not a security dashboard. A control rail
+ * down the left holds the photo, the address and the button and never scrolls
+ * away; the right pane is the paper the answer is printed on. Nothing is a
+ * centred column.
  *
- * Colour is a signal system, not decoration: one ink per verdict, one ink for
- * anything interactive, and they are never allowed to mean each other's thing.
- * The palette is the high-contrast dark profile — saturated accent on a
- * near-black navy ground — because this screen is read once, quickly, by
- * someone deciding whether to send money.
+ * The register is civic print — an estate agent's particulars sheet crossed
+ * with a consumer-protection notice — because the reader is a frightened renter
+ * on a phone about to wire a deposit, not an analyst at a console. Dark
+ * neon-on-navy is the genre default for fraud tooling and it reads as a hacker
+ * toy; this reads as something an ombudsman would send you.
  *
- * Committed to a single dark appearance on purpose. A light twin of a signal
- * system is a second set of contrast problems to keep correct, and the previous
+ * COLOUR CARRIES ONE RULE, and every value obeys it:
+ *   ballpoint blue = what YOU supplied, and anything you can act on
+ *   verdict inks   = what WE found
+ * So the address you typed is blue wherever it appears — in the field as you
+ * type it, and on the left of the comparison — and the address the photographs
+ * actually carry is printed in the ink of the verdict. A link can never be read
+ * as a finding, and a finding never as a link.
+ *
+ * The inks are pen, stamp pad and printing ink rather than a UI kit's ramp, and
+ * every one is chosen to clear 4.5:1 on both paper and card.
+ *
+ * Committed to a single light appearance on purpose. A dark twin of a signal
+ * system is a second set of contrast problems to keep correct, and the old
  * light/dark pair is exactly where the band inverted itself into a white slab.
  */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --ground: #020617;
-  --surface: #0e1223;
-  --raised: #191f33;
-  --line: #2c3650;
-  --line-soft: #1b2338;
+  --ground: #e7e5e0;
+  --surface: #ffffff;
+  --raised: #f1efea;
+  --line: #c8c3b9;
+  --line-soft: #ddd8ce;
 
-  --text: #f8fafc;
-  --text-2: #94a3b8;
+  --text: #171a1c;
+  --text-2: #55595c;
 
-  /* Interactive. Kept away from every verdict ink so a link can never be read
-     as a finding, and a finding never as a link. */
-  --action: #38bdf8;
-  --action-hi: #7dd3fc;
-  --on-action: #04131c;
+  /* Ballpoint blue. Interactive, and the claim: the address a stranger gave
+     you is the one thing on this page you wrote yourself. */
+  --action: #2440c4;
+  --action-hi: #16279a;
+  --on-action: #ffffff;
 
-  --v-corroborated: #34d399;
-  --v-contradicted: #fb5b4b;
-  --v-unverified: #fbbf24;
+  --v-corroborated: #0f6b4f;
+  --v-contradicted: #c81e2b;
+  --v-unverified: #8a6a12;
 
   --rail-w: 23rem;
 
@@ -57,7 +69,8 @@ body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--step-0);
   line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
+  /* No -webkit-font-smoothing here: antialiased thins dark-on-light text and
+     was only ever compensating for the old light-on-dark ground. */
 }
 
 a {
@@ -80,6 +93,16 @@ a {
 @media (min-width: 64rem) {
   .app {
     grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    /* The rail's own background stops where its content does — it is capped at
+       one viewport so it can stick — which left a white slab hanging in the
+       middle of the page on any view taller than the fold. Painting the column
+       on the grid itself carries the card edge the full height of the
+       document, whatever either side does. */
+    background: linear-gradient(
+      to right,
+      var(--surface) 0 var(--rail-w),
+      var(--ground) var(--rail-w)
+    );
   }
 
   /* The control rail is the one thing that must never scroll away: the answer
@@ -270,7 +293,9 @@ input[type='text'] {
   background: var(--raised);
   border: 1px solid var(--line);
   border-radius: 3px;
-  color: var(--text);
+  /* Blue as it is typed, because it is the claim — the same ink it will be
+     printed in on the left of the comparison. Ballpoint on a form. */
+  color: var(--action);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.9375rem;
 }
@@ -389,7 +414,7 @@ button[type='submit'][disabled] {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-key, var(--text));
+  color: var(--text);
 }
 
 .legend dt::before {
@@ -636,13 +661,27 @@ h1 .turn {
   overflow-wrap: anywhere;
 }
 
-.result .faceoff .addr.none {
-  color: var(--text-2);
-  font-style: italic;
+/*
+ * The colour rule, stated where it matters most.
+ *
+ * Left is what you were handed, in the ink you typed it in. Right is what the
+ * photographs actually carry, in the ink of the verdict. On CORROBORATED the
+ * two strings are identical and only the colour distinguishes claim from
+ * record — which is exactly the distinction the whole tool exists to draw.
+ */
+.result .faceoff .side:first-of-type .addr {
+  color: var(--action);
 }
 
-.result[data-verdict='CONTRADICTED'] .faceoff .side:last-of-type .addr {
+.result .faceoff .side:last-of-type .addr {
   color: var(--seal);
+}
+
+/* An absence is not a finding, so it is not printed in a finding's ink. Placed
+   after the two rules above, at equal specificity, to win on order. */
+.result .faceoff .side .addr.none {
+  color: var(--text-2);
+  font-style: italic;
 }
 
 .result .faceoff .side-note {
@@ -816,16 +855,20 @@ h1 .turn {
   white-space: nowrap;
 }
 
-/* Listings that name the claimed address are the whole point of the check, so
-   they are read first and marked, not left to be found in a list of ninety. */
+/* The listings the verdict actually turns on are read first and marked, not
+   left to be found in a list of ninety. Inked with the verdict rather than with
+   green, because on CONTRADICTED these rows name the competing address — they
+   are what the accusation rests on, and green would read as reassurance. */
 .named li {
-  background: color-mix(in srgb, var(--v-corroborated) 10%, transparent);
-  border-bottom-color: color-mix(in srgb, var(--v-corroborated) 28%, transparent);
+  /* Lighter than it was on the dark ground: the same 10% tint that read as a
+     whisper on near-black reads as a highlighter pen across white. */
+  background: color-mix(in srgb, var(--seal) 6%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--seal) 30%, transparent);
 }
 
 .named .src {
-  color: var(--v-corroborated);
-  border-color: color-mix(in srgb, var(--v-corroborated) 40%, transparent);
+  color: var(--seal);
+  border-color: color-mix(in srgb, var(--seal) 40%, transparent);
 }
 
 .evidence .note {

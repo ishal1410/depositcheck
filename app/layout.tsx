@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, IBM_Plex_Mono, Public_Sans } from 'next/font/google';
+import { Archivo, IBM_Plex_Mono, Public_Sans } from 'next/font/google';
 import './globals.css';
 
-// Display carries the personality; body is the plain civic voice this subject
-// wants; mono is reserved for data a person can check — addresses, counts, site
-// labels — so the typeface itself marks what is evidence.
-const display = Bricolage_Grotesque({
+// A civic-print stack, not a product-UI one.
+//
+// Archivo is a grotesque drawn for print highlighting and official forms, which
+// is the register this page wants: institutional rather than techy. Public Sans
+// is the US federal typeface and carries the plain civic voice. Mono is
+// reserved for data a person can check — addresses, counts, site labels — so
+// the typeface itself marks what is evidence.
+const display = Archivo({
   subsets: ['latin'],
   weight: ['600', '700'],
   variable: '--font-display',
