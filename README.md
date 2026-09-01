@@ -70,7 +70,7 @@ Then:
 
 ```bash
 npm run dev        # http://localhost:3000
-npm test           # 131 tests, fully offline - spends no SerpApi searches
+npm test           # 177 tests, fully offline - spends no SerpApi searches
 npm run typecheck
 npm run build
 ```
@@ -108,6 +108,8 @@ lib/lens.ts               SerpApi client, discriminated result type
 lib/address.ts            street-address parsing and adjacency matching
 lib/verdict.ts            the three-state classifier
 lib/ratelimit.ts          fixed-window per-client limiter
+lib/sweep.ts              deletes abandoned uploads older than an hour
+app/api/cleanup/route.ts  cron entry point for the sweep, bearer-authenticated
 ```
 
 Handlers are written against the Web `Request`/`Response` API rather than Next.js types, so they are unit-testable with no framework running and drop into the App Router unchanged.
@@ -115,7 +117,7 @@ Handlers are written against the Web `Request`/`Response` API rather than Next.j
 ## Known limits
 
 - **Rate limits are per serverless instance.** Each instance enforces its own window and a cold start resets the count, so this bounds abuse rather than eliminating it. Upstash Redis is the upgrade path.
-- **Uploads that are never analyzed are never deleted.** The analyze flow deletes the photo on every exit path, but a client that abandons the flow leaves one behind. A scheduled sweep is the fix.
+- **An abandoned upload survives up to a day.** The analyze flow deletes the photo on every exit path, and a client that abandons the flow leaves one behind for the daily sweep (`/api/cleanup`, cron `0 4 * * *`) to remove. Vercel Hobby caps crons at one run per day, so that is the real bound rather than the one hour the sweep itself enforces.
 - **A street named after listing vocabulary can match prose.** "1 Bedroom Ln" matches "1 Bedroom Apartments". All ten real street names tested score zero, so this is accepted rather than closed — tightening it would risk turning a harmless false match into a false accusation.
 - **The upload token proves the URL came from us, not that it was issued to this caller.** Real per-caller binding needs session state this app does not have.
 - **4 MB upload cap**, set by Vercel's 4.5 MB request body limit rather than by preference.
