@@ -50,7 +50,11 @@
   --v-contradicted: #c81e2b;
   --v-unverified: #8a6a12;
 
-  --rail-w: 23rem;
+  /* The form is the product. At 23rem it was 26% of the page and narrower than
+     the marketing column beside it, which is backwards: the thing you read was
+     twice the width of the thing you operate. */
+  --rail-w: 27rem;
+  --masthead-h: 3.5rem;
 
   --step-0: 1rem;
   --step-1: 1.125rem;
@@ -87,11 +91,17 @@ a {
 
 .app {
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   min-height: 100dvh;
 }
 
+.body {
+  display: grid;
+  min-width: 0;
+}
+
 @media (min-width: 64rem) {
-  .app {
+  .body {
     grid-template-columns: var(--rail-w) minmax(0, 1fr);
     /* The rail's own background stops where its content does — it is capped at
        one viewport so it can stick — which left a white slab hanging in the
@@ -109,8 +119,8 @@ a {
      is worthless if you cannot see which photo and which address produced it. */
   .rail {
     position: sticky;
-    top: 0;
-    max-height: 100dvh;
+    top: var(--masthead-h);
+    max-height: calc(100dvh - var(--masthead-h));
     overflow-y: auto;
     border-right: 1px solid var(--line);
     border-bottom: 0;
@@ -121,7 +131,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem 1.5rem 2rem;
+  padding: 2rem 1.5rem;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
@@ -145,8 +155,16 @@ a {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
-  padding-bottom: 1.25rem;
+  min-height: var(--masthead-h);
+  padding: 0 1.5rem;
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 64rem) {
+  .masthead {
+    padding: 0 3rem;
+  }
 }
 
 .wordmark {
@@ -194,6 +212,13 @@ a {
 .controls {
   display: grid;
   gap: 1.25rem;
+  align-content: start;
+}
+
+@media (min-width: 64rem) {
+  .rail .controls {
+    flex: 1;
+  }
 }
 
 .exhibit,
@@ -226,7 +251,10 @@ a {
   align-content: center;
   justify-items: center;
   gap: 0.35rem;
-  min-height: 10rem;
+  /* Grows into the space the verdict key used to occupy. The drop target is the
+     first thing anyone does here, so it gets the room rather than leaving the
+     column to trail off in white. */
+  min-height: clamp(10rem, 30vh, 17rem);
   padding: 1rem;
   text-align: center;
   cursor: pointer;
@@ -394,10 +422,19 @@ button[type='submit'][disabled] {
 
 .legend {
   display: grid;
-  gap: 0.75rem;
-  margin: 0;
+  gap: 0.75rem 2rem;
+  margin: 2rem 0 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
+}
+
+/* Three across once there is room. In the form column it was a 204px stack of
+   coloured squares explaining results that did not exist yet, above the button
+   that produces them. */
+@media (min-width: 46rem) {
+  .legend {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .legend div {
@@ -475,7 +512,7 @@ h1 .turn {
   max-width: 34rem;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--v-contradicted);
+  border-left: 3px solid var(--line);
   border-radius: 3px;
 }
 
@@ -486,7 +523,10 @@ h1 .turn {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--v-contradicted);
+  /* Set in text, not in the accusation red. That red is the ink CONTRADICTED is
+     printed in; spending it on a marketing statistic makes it mean less at the
+     one moment it has to mean something. */
+  color: var(--text);
 }
 
 .proof figcaption {
@@ -917,6 +957,11 @@ footer b {
 }
 
 .colophon {
+  /* Clear of the verdict key above it. Sitting tight under the first column
+     read as a caption belonging to CORROBORATED rather than to the page. */
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-soft);
   color: color-mix(in srgb, var(--text-2) 80%, transparent);
 }
 
