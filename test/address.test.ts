@@ -188,6 +188,16 @@ describe('extractStreetAddress', () => {
     expect(extractStreetAddress(t)).toBeNull();
   });
 
+  // The regex used to run against title.toLowerCase() while `display` was sliced
+  // out of the ORIGINAL title. U+0130 lowercases to two code units, so every
+  // index past it shifted by one and the slice ate the first digit of the house
+  // number — printing "23 Main St" as the address a photo really belongs to.
+  // That string is the evidence behind an accusation, so it has to be exact.
+  test('keeps the house number when the title lowercases to a longer string', () => {
+    expect(extractStreetAddress('İstanbul 123 Main St'))
+      .toMatchObject({ key: '123 main', display: '123 Main St' });
+  });
+
   test('reads a two-word street name', () => {
     expect(extractStreetAddress('3300 Oak Creek Dr - Austin, TX - Rentable'))
       .toMatchObject({ key: '3300 oak creek', display: '3300 Oak Creek Dr' });

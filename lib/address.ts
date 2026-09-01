@@ -55,6 +55,10 @@ const SUFFIX_ALTERNATION = [...new Set([...Object.keys(SUFFIXES), ...Object.valu
  */
 const TITLE_ADDRESS = new RegExp(
   String.raw`\b(\d{1,6})\s+(?:(?:${DIRECTIONAL_ALTERNATION})\.?\s+)?([a-z][a-z'-]*(?:\s+[a-z][a-z'-]*)?)\s+(?:${SUFFIX_ALTERNATION})\b`,
+  // Case-insensitive, rather than matching against a lowercased copy, so the
+  // index this reports indexes the same string `display` is sliced out of.
+  // See extractStreetAddress.
+  'i',
 );
 
 export interface FoundAddress {
@@ -75,12 +79,18 @@ export interface FoundAddress {
  * The street address a title refers to, or null if it names none.
  */
 export function extractStreetAddress(title: string): FoundAddress | null {
-  const m = TITLE_ADDRESS.exec(title.toLowerCase());
+  // Run against the title itself. Matching a lowercased copy and then slicing
+  // the original is only safe while the two are the same length, and they are
+  // not: U+0130 lowercases to two code units, so every index past one shifted
+  // by a character and the slice ate the first digit of the house number —
+  // naming "23 Main St" as the address a photo really belongs to. That string
+  // is the evidence behind an accusation, so it has to be exact.
+  const m = TITLE_ADDRESS.exec(title);
   if (m === null || m.index === undefined) return null;
   return {
-    key: `${m[1]} ${m[2].replace(/\s+/g, ' ')}`,
-    // Sliced from the original string, not the lowercased copy the regex ran
-    // against, so the site's own capitalisation survives.
+    // Lowercased here rather than upstream: the key is a comparison artifact,
+    // while `display` below keeps the site's own capitalisation.
+    key: `${m[1]} ${m[2].toLowerCase().replace(/\s+/g, ' ')}`,
     display: title.slice(m.index, m.index + m[0].length).trim(),
   };
 }
