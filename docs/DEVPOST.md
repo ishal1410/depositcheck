@@ -94,7 +94,7 @@ I also learned to distrust green states. The strongest design decision in this p
 ## Submission checklist
 
 - [x] Public repo with setup instructions — https://github.com/ishal1410/depositcheck is public, README "Setup" section written.
-- [x] Demo video, 2–4 minutes, end-to-end functionality — `depositcheck-demo.mp4`, 2:20, 1440x900. Two live runs against the deployed app: CONTRADICTED then CORROBORATED. Silent, captioned by title cards; a voiceover can be laid over it.
+- [x] Demo video, 2–4 minutes, end-to-end functionality — `depositcheck-demo.mp4`, 2:24, 1920x1080. Two live runs against the deployed app: CONTRADICTED then CORROBORATED. Silent, captioned by title cards; a voiceover can be laid over it.
 - [x] Project name and one-line pitch — above.
 - [x] Screenshots — five in `depositcheck-media/`, all from live runs: landing, filled form, CONTRADICTED verdict, its evidence list, CORROBORATED verdict.
 - [ ] Select the SerpApi "Best AI Use Case" challenge on the Devpost form.
